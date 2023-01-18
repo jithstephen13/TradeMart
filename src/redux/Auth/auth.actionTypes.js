@@ -13,8 +13,20 @@ export const REMOVE_USER_SUCCESS = "user/remove/success";
 export const REMOVE_USER_ERROR = "user/remove/error";
 
 // set user data after login
-export const LOGIN_SET_USER_DATA = "login/userdata/set";
-export const LOGIN_GET_USER_DATA = "login/userdata/get";
-export const LOGIN_REMOVE_USER_DATA = "login/userdata/remove";
+export const LOGIN_USER_LOADING = "login/userdata/laoding";
+export const LOGIN_USER_SUCCESS = "login/userdata/success";
+export const LOGIN_USER_ERROR = "login/userdata/error";
 
- 
+export const LOGOut_USER_LOADING = "logOut/userdata/laoding";
+export const LOGOut_USER_SUCCESS = "logOut/userdata/success";
+export const LOGOut_USER_ERROR = "logOut/userdata/error";
+
+ // Admin add
+export const ADD_Admin_LOADING = "Admin/add/laoding";
+export const ADD_Admin_SUCCESS = "Admin/add/success";
+export const ADD_Admin_ERROR = "Admin/add/error";
+// Get Admin
+export const Get_Admin_LOADING = "Admin/Get/laoding";
+export const Get_Admin_SUCCESS = "Admin/Get/success";
+export const Get_Admin_ERROR = "Admin/Get/error";
+
