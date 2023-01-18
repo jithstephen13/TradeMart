@@ -1,10 +1,11 @@
+import { Box } from '@chakra-ui/react';
 import React from 'react';
 
 const Footer = () => {
     return (
-        <div>
+        <Box border="1px solid blue" >
             Footer
-        </div>
+        </Box>
     );
 };
 
