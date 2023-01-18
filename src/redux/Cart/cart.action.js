@@ -37,7 +37,7 @@ export const Updatecart=(id,chenge)=>async(dispatch)=>{
 }
 
 export const Deletefromcart=()=>async()=>{
-
+     
     try {
         
     } catch (error) {
