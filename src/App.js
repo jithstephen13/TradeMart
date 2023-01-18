@@ -11,6 +11,7 @@ function App() {
       {/* <Allroutes/> */}
       {/* <Footer/> */}
       <ProductDetails />
+
     </div>
   );
 }
