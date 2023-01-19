@@ -45,13 +45,13 @@ export default function Product() {
             <Text><AiOutlineAim /></Text>
             <Text>Near Me</Text>
         </Box>
-      {/* <Tabs>
+      <Tabs>
   <TabList>
     <Tab>One</Tab>
     <Tab>Two</Tab>
     <Tab>Three</Tab>
   </TabList>
-</Tabs> */}
+</Tabs>
       </Box>
    </Box>
   )
