@@ -1,10 +1,11 @@
-import { Avatar, Box, Button, Card, CardFooter, CardHeader, Flex, FormControl, Grid, Heading, Input, Text } from '@chakra-ui/react';
-import React, { useEffect, useState } from 'react';
+import { Avatar, Box, Button, Card, CardFooter, CardHeader, Flex, FormControl, Grid, Heading, Input, Stack, Text } from '@chakra-ui/react';
+import React, { useEffect, useState,useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { AddAdmin, AddUser, GetAllAdmin } from '../redux/Auth/auth.action';
 
 const AdminRegistration = () => {
     const [cred,setCred]=useState({})
+    const form = useRef();
     const {isLoading ,
         isError ,
         userData,
@@ -26,13 +27,15 @@ const dispatch=useDispatch()
          dispatch(AddAdmin(cred))
          if(!isLoading&&!isError){
             dispatch(GetAllAdmin())
-             window.location.reload()
+            //  window.location.reload()
+            form.current.reset()
          }
     
        }
     return (
-        <div>
-            < FormControl align='center' >
+        <Stack align={"center"}>
+          < Card  w={"50%"}>
+            < FormControl ref={form} align='center' >
             <Heading color={"blueviolet"}>Admin Registration form</Heading>
             <Input placeholder='First name...'  mt={4} name='name' onChange={handlechenge}></Input>
             <Input placeholder='Email...'  name='email'  mt={4} onChange={handlechenge}></Input>
@@ -45,6 +48,7 @@ const dispatch=useDispatch()
             </Button>
            
             </FormControl>
+            </ Card>
             <Grid templateColumns='repeat(3, 1fr)' gap={6}>
                 {
                     adminlist.map((user)=>{return(<Flex key={user.id} p="10" gap="2">
@@ -73,7 +77,7 @@ const dispatch=useDispatch()
                
             </Grid>
             
-        </div>
+        </Stack>
     );
 };
 

@@ -10,7 +10,6 @@ function App() {
       <Navbar/>
       <Allroutes/>
       <Footer/>
-      {/* <ProductDetails /> */}
 
     </div>
   );
