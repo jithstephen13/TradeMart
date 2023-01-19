@@ -19,6 +19,17 @@ import { CheckCircleIcon, PhoneIcon } from "@chakra-ui/icons";
 const ProductDetails = () => {
   const [data, setData] = useState([]);
 
+  let itemdata = {
+    id: "sp47",
+    img_src: "https://m.media-amazon.com/images/I/614umzFKhOL._AC_UL320_.jpg",
+    name: "UTL Solar 200 Watt 12 Volt Mono PERC Solar Panel 200W-12V (Pack of 2)",
+    desc: "consectetur adipiscing elit. Nam hendrerit nisi sed sollicitudin pellentesque. Nunc posuere purus   rhoncus pulvinar aliquam. Ut aliquet tristique",
+    company: "Luminous ",
+    rating: "4.1 out of 5 stars",
+    price: "₹19,499",
+    delear_name: "Cillian Murphy",
+  };
+
   const data1 = data.splice(4, 29);
 
   const getProduct = async () => {
@@ -36,94 +47,60 @@ const ProductDetails = () => {
   return (
     <div style={{ padding: "10px", backgroundColor: "#f9f8f7" }}>
       <Stack
+        w="100%"
         flexDirection={{ base: "column", md: "row" }}
         justifyContext="space-around"
       >
         {/* Product-Image */}
         <Box w={{ sm: "90%", md: "30%" }} textAlign="center" m="auto">
           <img
-            src="https://onemg.gumlet.io/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/ruma122iif8yx1nwhpfe.jpg"
+            src={itemdata.img_src}
             alt="medicine"
             style={{ borderRadius: "18px", height: "350px", margin: "auto" }}
           />
         </Box>
 
         {/* Product-Details */}
-        <Box w={{ sm: "90%", md: "40%" }} textAlign="center" m="auto">
+        <Box w={{ sm: "90%", md: "40%" }} textAlign="start" m="auto">
           <p
             style={{
-              margin: "auto",
               fontSize: "20px",
               fontWeight: "700",
               letterSpacing: "1px",
             }}
           >
-            Ascoril LS Syrup
+            {itemdata.name}
           </p>
-
           <p style={{ color: "blue", fontWeight: "bold" }}>
             {" "}
-            ₹ 70<span style={{ fontWeight: "lighter" }}>/Pack</span>{" "}
+            {itemdata.price}
+            <span style={{ fontWeight: "lighter" }}>/Pack</span>{" "}
           </p>
-
           <div style={{ marginTop: "22px" }}>
             <p>
-              <span
-                style={{
-                  marginRight: "35%",
-                  fontWeight: "light",
-                }}
-              >
-                Usage
-              </span>{" "}
-              Commercial, Hospital
+              <span style={{ fontWeight: "bold" }}>Name :</span>
+              {itemdata.name}
             </p>
             <hr />
-
             <p>
-              <span
-                style={{
-                  marginRight: "30%",
-                  fontWeight: "light",
-                }}
-              >
-                Product Type
-              </span>{" "}
-              Finished Product
+              <span style={{ fontWeight: "bold" }}>Description :</span>
+              {itemdata.desc}
             </p>
             <hr />
-
             <p>
-              <span
-                style={{
-                  marginRight: "20%",
-                  fontWeight: "light",
-                }}
-              >
-                Dosage Form (If Applicable)
-              </span>{" "}
-              Syrup
+              <span style={{ fontWeight: "bold" }}>company :</span> {"   "}
+              {itemdata.company}
             </p>
             <hr />
-
             <p>
-              <span
-                style={{
-                  marginRight: "30%",
-                  fontWeight: "light",
-                }}
-              >
-                Company
-              </span>{" "}
-              Alembic Pharmaceuticals Ltd
+              <span style={{ fontWeight: "bold" }}>Rating :</span> {"   "}
+              {itemdata.rating}
             </p>
             <hr />
           </div>
-
-          <p style={{ margin: "20px" }}>
-            We offers Bronchodilator & Expectorant Syrup.
+          <p style={{ margin: "10px", fontWeight: "bold" }}>
+            We offers Bronchodilator & Expectorant {itemdata.name}.
           </p>
-
           <Button
             w={{ sm: "200px", md: "250px" }}
             ml={{ sm: "20px", md: "50px" }}
@@ -147,8 +124,9 @@ const ProductDetails = () => {
           borderRadius="10px"
           box-shadow="rgba(0, 0, 0, 0.1) 0px 4px 12px"
         >
-          <Text fontWeight="bold">
-            Dwarkesh Pharmaceuticals Private Limited
+          <Text fontWeight="bold" textAlign="center">
+            {/* Dwarkesh Pharmaceuticals Private Limited */}
+            {itemdata.delear_name}
           </Text>
 
           <Stack direction={{ md: "row" }}>
