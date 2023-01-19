@@ -14,7 +14,7 @@
  Shivam Kumar.
  
  
-##  steps to follow
+##  Steps to follow
 git clone 
 
 npm i
