@@ -25,9 +25,7 @@ npm i react-firebase-hooks
 
 npm i @emailjs/browser
 
-npm i @chakra-ui/react @emotion/react @emotion/styled framer-motion
-
-npm i @chakra-ui/icons
+npm i @chakra-ui/react @emotion/react @emotion/styled framer-motion @chakra-ui/icons
 
 npm i react-icons --save
 
