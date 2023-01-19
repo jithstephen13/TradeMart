@@ -18,3 +18,4 @@
 git clone 
 
 npm i
+npm i @emailjs/browser
