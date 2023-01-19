@@ -7,10 +7,10 @@ import ProductDetails from "./component/ProductDetails";
 function App() {
   return (
     <div>
-      {/* <Navbar/> */}
-      {/* <Allroutes/> */}
-      {/* <Footer/> */}
-      <ProductDetails />
+      <Navbar/>
+      <Allroutes/>
+      <Footer/>
+      {/* <ProductDetails /> */}
 
     </div>
   );

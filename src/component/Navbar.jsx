@@ -10,7 +10,7 @@ import { MdOutlineMessage, MdSendToMobile } from "react-icons/md";
 import { BiMessageDetail, BiMobile, BiUserCircle } from "react-icons/bi";
 import { AiOutlineHome, AiOutlineSetting, AiOutlineTag } from "react-icons/ai";
 //-----------***------------------------------------------------------------------
-import Logo from "../utility/Logo.png"
+import Logo from "../assets/logo.png"
 
 const Navbar = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
