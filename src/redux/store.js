@@ -3,11 +3,13 @@ import thunk from "redux-thunk"
 import { Authreducer } from "./Auth/auth.reducer"
 import { Cartreducer } from "./Cart/car.reducer"
 import { Productreducer } from "./Product/product.reducer"
+import AdminReducer from "./ADMIN/admin.reducer"
 
 const rootReducer=combineReducers({
     product:Productreducer,
     cart:Cartreducer,
-    auth: Authreducer
+    auth: Authreducer,
+    admin:AdminReducer
 })
 
 const composer=window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
