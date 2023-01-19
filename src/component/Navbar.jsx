@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react';
 //-----------Chakra UI Components-------
 import { Box, Flex, HStack, Link, IconButton, useDisclosure, Stack, Input, Text, Image, Button, PopoverFooter, PopoverBody, PopoverHeader, PopoverCloseButton, PopoverArrow, PopoverContent, Popover, PopoverTrigger,  } from '@chakra-ui/react';
 //-----------ICONS----------------------
@@ -10,81 +9,11 @@ import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 import { MdOutlineMessage, MdSendToMobile } from "react-icons/md";
 import { BiMessageDetail, BiMobile, BiUserCircle } from "react-icons/bi";
 import { AiOutlineHome, AiOutlineSetting, AiOutlineTag } from "react-icons/ai";
-import {   Heading,    Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalOverlay, Spinner, useToast } from '@chakra-ui/react';
-
 //-----------***------------------------------------------------------------------
 import Logo from "../assets/logo.png"
-import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { AddUser, LoginUser, LogOUT } from '../redux/Auth/auth.action';
-import { getItem } from '../utility/localStorage';
 
 const Navbar = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
-    const[Registarion,setRegistarion] =useState(false)       
-    // const { isOpen, onOpen, onClose } = useDisclosure()
-    const [cred,setCred]=useState({})
-    const [conform,setConform]=useState("")
-    const navigate = useNavigate()
-    const toast = useToast();
-  
-    const handlechenge=(e)=>{
-      const { name, value } = e.target;
-      setCred({
-        ...cred,
-        [name]:value
-      })
-    }
-  const {isLoading ,
-    isError ,
-    userData,
-    isAuth,
-    userlist}=useSelector((store)=>store.auth)
-  const dispatch=useDispatch()
-  
-  
-    const handleClick=async()=>{
-      try {
-         dispatch(AddUser(cred))
-         toast({
-          title: "successfully sign in ",
-          description: "",
-          status: "success",
-          duration: 6000,
-          isClosable: true,
-        });
-        onClose()
-        navigate("/")
-      } catch (error) {
-        
-      }
-    
-    }
-  
-    const handleLogin=async()=>{
-      try {
-        dispatch(LoginUser(cred))
-        toast({
-          title: "successfully sign in ",
-          description: "",
-          status: "success",
-          duration: 6000,
-          isClosable: true,
-        });
-        onClose()
-        navigate("/")
-
-      } catch (error) {
-        
-      }
-    
-    }
-    let tocken=getItem("userData")
-    
-  
-  const handleLogout=()=>{
-    dispatch(LogOUT())
-  }
     
     return (
       <>
@@ -129,58 +58,9 @@ const Navbar = () => {
                           <PopoverCloseButton />
                           <PopoverHeader>
                               <Box align="center" >
-
-                              {tocken===null?<Button onClick={onOpen} fontSize={{base:"12px", md:"14px"}} colorScheme='teal' size='md' p="5px 40px" >
-                                  Login/siginup
-                                  </Button>:
-                                  <Button onClick={handleLogout} fontSize={{base:"12px", md:"14px"}} colorScheme='teal' size='md' p="5px 40px" >
-                                  Logout
-                                  </Button>}
-                                  <Modal closeOnOverlayClick={false} isOpen={isOpen} onClose={onClose}>
-        <ModalOverlay />
-        <ModalContent>
-         
-          <ModalCloseButton />
-          <ModalBody  textAlign={"center"}  pb={6}>
-          {!Registarion&& <Flex mt={20} flexDirection={"column"} gap={2}>
-             <Heading  color={"blueviolet"}>Login</Heading>
-            <Input placeholder='User name...' name='email' onChange={handlechenge}></Input>
-            <Input placeholder='Password...' type={"password"} name='password' onChange={handlechenge}></Input>
-            <Button onClick={handleLogin} colorScheme='blue' mr={3}>
-             {isLoading? <Spinner/>:"Login"} 
-            </Button>
-             <Link onClick={()=>setRegistarion(true)}>Don't have an account? <span style={{color:"blue"}}>Create your new account</span></Link>
- 
-            </Flex>} 
-
-            {Registarion&& <Flex flexDirection={"column"} gap={2}>
-            <Heading color={"blueviolet"}>Registration</Heading>
-            <Input placeholder='First name...'  name='firstname' onChange={handlechenge}></Input>
-            <Input placeholder='Lastst name...'  name='laststname' onChange={handlechenge}></Input>
-            <Input placeholder='Email...'  name='email' onChange={handlechenge}></Input>
-            <Input placeholder='Password...' name='password' type={"password"} onChange={handlechenge}></Input>
-
-            <Input placeholder='conform Password...'  type={"password"}  onChange={(e)=>setConform(e.target.value)}></Input>
-            <p style={{color:'red'}} >{cred.password!==undefined &&conform!==cred.password ? "password is not matching":""   }</p>
-            <Button onClick= {handleClick} colorScheme='blue' mr={3}>
-            {isLoading? <Spinner/>:"Sign Up"} 
-            </Button>
-            <Link onClick={()=>setRegistarion(!Registarion)}> already have an account</Link>
-                      </Flex>} 
-            
-         
-          </ModalBody>
-        
-          <ModalFooter>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
-
-
                                   <Button m="5px" fontSize={{base:"12px", md:"14px"}} colorScheme='teal' size='md' p="5px 40px" >
                                     Sign In
                                   </Button>
-
                                   <Text fontSize={{base:"11px", md:"12px"}} >New to TRADEMART <span style={{color:"blue"}} >Join Now</span></Text>
                               </Box>
                           </PopoverHeader>
