@@ -18,14 +18,14 @@ const Navbar = () => {
     return (
       <>
         <Box  px={4} backgroundColor="#2E3192" >
-          <Flex h={16} alignItems={'center'} justifyContent={'space-between'} >
+          <Flex h={14} alignItems={'center'} justifyContent={'space-between'} >
             <HStack spacing={{base:3, md:8}} alignItems={'center'}>
-              <Box w={["60%","38%","35%","30%"]} >
+              <Box w={["120px","140px","160px","200px"]} >
                   <Image src={Logo} />
               </Box>
-              <Input placeholder='search' display={{base:"none", md:"flex"}} />
+              {/* <Input placeholder='search' display={{base:"none", md:"flex"}} /> */}
             </HStack>
-            <Flex alignItems={'center'} w={{md:"65%",lg:"30%"}}>
+            <Flex alignItems={'center'} w={{md:"75%",md:"40%", lg:"30%"}} >
               <Box
                 justifyContent="space-around"
                 w="100%"
@@ -53,12 +53,12 @@ const Navbar = () => {
                               <Text cursor="pointer" fontSize="12px" color="white" >Sign In</Text>
                           </Box>
                       </PopoverTrigger>
-                      <PopoverContent>
+                      <PopoverContent border="none" borderRadius="0px" boxShadow="rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px" >
                           <PopoverArrow />
                           <PopoverCloseButton />
                           <PopoverHeader>
                               <Box align="center" >
-                                  <Button fontSize={{base:"12px", md:"14px"}} colorScheme='teal' size='md' p="5px 40px" >
+                                  <Button m="5px" fontSize={{base:"12px", md:"14px"}} colorScheme='teal' size='md' p="5px 40px" >
                                     Sign In
                                   </Button>
                                   <Text fontSize={{base:"11px", md:"12px"}} >New to TRADEMART <span style={{color:"blue"}} >Join Now</span></Text>
@@ -66,13 +66,34 @@ const Navbar = () => {
                           </PopoverHeader>
                           <PopoverBody>
                               <Box>
-                                  <Text display="flex" fontSize={{base:"12px", md:"14px"}} cursor="pointer" fontWeight="500" m={{base:"5px 0px", md:"10px 0px"}} ><AiOutlineHome fontSize="20px" color="gray" /> Home</Text>
-                                  <Text display="flex" fontSize={{base:"12px", md:"14px"}} cursor="pointer" fontWeight="500" m={{base:"5px 0px", md:"10px 0px"}} ><MdSendToMobile fontSize="20px" color="gray" /> Post Your Requirement</Text>
-                                  <Text display="flex" fontSize={{base:"12px", md:"14px"}} cursor="pointer" fontWeight="500" m={{base:"5px 0px", md:"10px 0px"}} ><ImUserCheck fontSize="20px" color="gray" /> Verified</Text>
-                                  <Text display="flex" fontSize={{base:"12px", md:"14px"}} cursor="pointer" fontWeight="500" m={{base:"5px 0px", md:"10px 0px"}} ><BiMessageDetail fontSize="20px" color="gray" /> My Orders</Text>
-                                  <Text display="flex" fontSize={{base:"12px", md:"14px"}} cursor="pointer" fontWeight="500" m={{base:"5px 0px", md:"10px 0px"}} ><RiCustomerServiceFill fontSize="20px" color="gray" /> Products/Services Directory</Text>
-                                  <Text display="flex" fontSize={{base:"12px", md:"14px"}} cursor="pointer" fontWeight="500" m={{base:"5px 0px", md:"10px 0px"}} ><AiOutlineSetting fontSize="20px" color="gray" /> Settings</Text>
-                                  <Text display="flex" fontSize={{base:"12px", md:"14px"}} cursor="pointer" fontWeight="500" m={{base:"5px 0px", md:"10px 0px"}} ><TiThSmall fontSize="20px" color="gray" /> Recent Activity</Text>
+                                <Flex m={{base:"5px 0px", md:"10px 0px"}} gap="5px" >
+                                    <AiOutlineHome fontSize="20px" color="gray" />         
+                                    <Text display="flex" fontSize={{base:"12px", md:"14px"}} cursor="pointer" fontWeight="500">Home</Text>
+                                </Flex>
+                                <Flex m={{base:"5px 0px", md:"10px 0px"}} gap="5px" >
+                                    <MdSendToMobile fontSize="20px" color="gray" />        
+                                    <Text display="flex" fontSize={{base:"12px", md:"14px"}} cursor="pointer" fontWeight="500">Post Your Requirement</Text>
+                                </Flex>
+                                <Flex m={{base:"5px 0px", md:"10px 0px"}} gap="5px" >
+                                    <ImUserCheck fontSize="20px" color="gray" />           
+                                    <Text display="flex" fontSize={{base:"12px", md:"14px"}} cursor="pointer" fontWeight="500">Verified</Text>
+                                </Flex>
+                                <Flex m={{base:"5px 0px", md:"10px 0px"}} gap="5px" >
+                                    <BiMessageDetail fontSize="20px" color="gray" />       
+                                    <Text display="flex" fontSize={{base:"12px", md:"14px"}} cursor="pointer" fontWeight="500">My Orders</Text>
+                                </Flex>
+                                <Flex m={{base:"5px 0px", md:"10px 0px"}} gap="5px" >
+                                    <RiCustomerServiceFill fontSize="20px" color="gray" /> 
+                                    <Text display="flex" fontSize={{base:"12px", md:"14px"}} cursor="pointer" fontWeight="500">Products/Services Directory</Text>
+                                </Flex>
+                                <Flex m={{base:"5px 0px", md:"10px 0px"}} gap="5px" >
+                                    <AiOutlineSetting fontSize="20px" color="gray" />      
+                                    <Text display="flex" fontSize={{base:"12px", md:"14px"}} cursor="pointer" fontWeight="500">Settings</Text>
+                                </Flex>
+                                <Flex m={{base:"5px 0px", md:"10px 0px"}} gap="5px" >
+                                    <TiThSmall fontSize="20px" color="gray" />             
+                                    <Text display="flex" fontSize={{base:"12px", md:"14px"}} cursor="pointer" fontWeight="500" >Recent Activity</Text>
+                                </Flex>
                               </Box>
                           </PopoverBody>
                           <PopoverFooter>
@@ -87,9 +108,15 @@ const Navbar = () => {
                                       <Text fontSize={{base:"12px", md:"14px"}} color="gray" >Easy booking & transport</Text>
                                   </Box>
                                   <hr />
-                                  <Box>
-                                      <Text fontSize={{base:"12px", md:"14px"}} fontWeight="500" display="flex"><BiMobile /> Download APP</Text>
+                                  <Box m="15px 0px" >
+                                      <Text fontSize={{base:"12px", md:"14px"}} fontWeight="500" display="flex"><BiMobile fontSize="20px" color="gray" /> Download APP</Text>
                                   </Box>
+                                  <hr />
+                              </Box>
+                              <Box align="center" >
+                                <Button m="5px 0px" fontSize={{base:"12px", md:"14px"}} colorScheme='teal' size='sm' >
+                                  Admin Login
+                                </Button>
                               </Box>
                           </PopoverFooter>
                       </PopoverContent>
@@ -100,6 +127,9 @@ const Navbar = () => {
                 icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
                 aria-label={'Open Menu'}
                 display={{ md: 'none' }}
+                backgroundColor="#2E3192"
+                color="white"
+                fontSize={{base:"20px", sm:"30px"}}
                 onClick={isOpen ? onClose : onOpen}
               />
             </Flex>
