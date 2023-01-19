@@ -1,6 +1,20 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Grid, GridItem } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Grid,
+  GridItem,
+  HStack,
+  Image,
+  Link,
+  Stack,
+  Text,
+  VStack,
+} from "@chakra-ui/react";
+import { MdLocationOn } from "react-icons/md";
+import { FaLocationArrow } from "react-icons/fa";
+import { CheckCircleIcon, PhoneIcon } from "@chakra-ui/icons";
 
 const ProductDetails = () => {
   const [data, setData] = useState([]);
@@ -20,21 +34,25 @@ const ProductDetails = () => {
   }, []);
 
   return (
-    <div style={{ padding: "10px", backgroundColor: "#f9f2eb" }}>
-      <div style={{ display: "flex", justifyContext: "space-around" }}>
+    <div style={{ padding: "10px", backgroundColor: "#f9f8f7" }}>
+      <Stack
+        flexDirection={{ base: "column", md: "row" }}
+        justifyContext="space-around"
+      >
         {/* Product-Image */}
-        <div style={{ width: "30%", textAlign: "center", margin: "auto" }}>
+        <Box w={{ sm: "90%", md: "30%" }} textAlign="center" m="auto">
           <img
             src="https://onemg.gumlet.io/a_ignore,w_380,h_380,c_fit,q_auto,f_auto/ruma122iif8yx1nwhpfe.jpg"
             alt="medicine"
-            style={{ borderRadius: "18px", height: "400px", margin: "20px" }}
+            style={{ borderRadius: "18px", height: "350px", margin: "auto" }}
           />
-        </div>
+        </Box>
 
         {/* Product-Details */}
-        <div style={{ margin: "auto", padding: "15px", width: "30%" }}>
+        <Box w={{ sm: "90%", md: "40%" }} textAlign="center" m="auto">
           <p
             style={{
+              margin: "auto",
               fontSize: "20px",
               fontWeight: "700",
               letterSpacing: "1px",
@@ -52,7 +70,7 @@ const ProductDetails = () => {
             <p>
               <span
                 style={{
-                  marginRight: "245px",
+                  marginRight: "35%",
                   fontWeight: "light",
                 }}
               >
@@ -65,7 +83,7 @@ const ProductDetails = () => {
             <p>
               <span
                 style={{
-                  marginRight: "200px",
+                  marginRight: "30%",
                   fontWeight: "light",
                 }}
               >
@@ -78,7 +96,7 @@ const ProductDetails = () => {
             <p>
               <span
                 style={{
-                  marginRight: "100px",
+                  marginRight: "20%",
                   fontWeight: "light",
                 }}
               >
@@ -91,7 +109,7 @@ const ProductDetails = () => {
             <p>
               <span
                 style={{
-                  marginRight: "200px",
+                  marginRight: "30%",
                   fontWeight: "light",
                 }}
               >
@@ -106,42 +124,78 @@ const ProductDetails = () => {
             We offers Bronchodilator & Expectorant Syrup.
           </p>
 
-          <button
-            style={{
-              marginLeft: "50px",
-              width: "250px",
-              padding: "20px",
-              color: "white",
-              fontWeight: "bold",
-              backgroundColor: "#25766a",
-              borderRadius: "10px",
-              fontSize: "17px",
-            }}
+          <Button
+            w={{ sm: "200px", md: "250px" }}
+            ml={{ sm: "20px", md: "50px" }}
+            p="20px"
+            color="white"
+            bgColor="#25766a"
+            fontWeight="bold"
+            borderRadius="10px"
+            fontSize="17px"
           >
-            Add to Cart
-          </button>
-        </div>
+            Get Latest Price
+          </Button>
+        </Box>
 
         {/* Retailer Details */}
-        <div style={{ margin: "auto", padding: "15px", width: "30%" }}>
-          
-        </div>
-      </div>
+        <Stack
+          m="auto"
+          p="25px"
+          w={{ sm: "90%", md: "25%" }}
+          border="1px solid #e2ddd9"
+          borderRadius="10px"
+          box-shadow="rgba(0, 0, 0, 0.1) 0px 4px 12px"
+        >
+          <Text fontWeight="bold">
+            Dwarkesh Pharmaceuticals Private Limited
+          </Text>
+
+          <Stack direction={{ md: "row" }}>
+            <Image
+              src="https://3.imimg.com/data3/GR/HK/MY-2474176/dwarkesh-pharmaceuticals-pvt-ltd-90x90.png"
+              alt="image"
+              h="80px"
+              w="80px"
+            />
+            <VStack>
+              <HStack>
+                <MdLocationOn size="22px" />
+                <Text>GIDC Vatwa, Ahmedabad, Gujarat</Text>
+              </HStack>
+              <HStack>
+                <CheckCircleIcon />
+                <Text ml="5px">GST- 24AAACD6674N1ZA</Text>
+              </HStack>
+            </VStack>
+          </Stack>
+          <hr />
+          <HStack width="80%">
+            <PhoneIcon size="22px" />
+            <Text>Call</Text>
+            <Text>08048603432</Text>
+          </HStack>
+          <Text>64% Response Rate</Text>
+          <HStack>
+            <FaLocationArrow />
+            <Link href="" style={{ color: "#1b9a84", fontWeight: "bold" }}>
+              Contact Supplier
+            </Link>
+          </HStack>
+          <hr />
+          <Link href="" style={{ color: "#1b9a84", fontWeight: "bold" }}>
+            View More Sellers >
+          </Link>
+        </Stack>
+      </Stack>
 
       {/* Browse Related categories */}
-      <div style={{ marginBottom: "25px" }}>
-        <p
-          style={{
-            fontSize: "22px",
-            fontWeight: "bold",
-            textAlign: "center",
-            margin: "15px",
-          }}
-        >
+      <Stack mb="25px">
+        <Text m="15px" fontSize="22px" fontWeight="bold" textAlign="center">
           Browse related categories
-        </p>
+        </Text>
         <Grid
-          templateColumns="repeat(4, 1fr)"
+          templateColumns={{ sm: "repeat(1,1fr)", md: "repeat(4,1fr)" }}
           gap="6"
           textAlign="center"
           margin="10px"
@@ -156,19 +210,17 @@ const ProductDetails = () => {
                   backgroundColor: "white",
                 }}
               />
-              <p>
-                <b>{el.name}</b>
-              </p>
-              <p>
-                <b>{el.price}</b>
-              </p>
-              <p>
-                <b>{el.company}</b>
-              </p>
+              <Text fontWeight="bold" mt="15px">
+                {el.name}
+              </Text>
+              <Text fontWeight="bold" color="blue">
+                {el.price}
+              </Text>
+              <Text fontWeight="bold">{el.company}</Text>
             </GridItem>
           ))}
         </Grid>
-      </div>
+      </Stack>
     </div>
   );
 };
