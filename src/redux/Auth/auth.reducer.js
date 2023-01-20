@@ -28,6 +28,7 @@ export const Authreducer = (state = initialState, { type, payload }) => {
        ...state,
        isLoading:false,
        isError:false,
+       isAuth:true
       }  
    }
 
@@ -51,7 +52,8 @@ case types.LOGIN_USER_SUCCESS :{
   return {
    ...state,
    isLoading:false,
-   isError:false
+   isError:false,
+   isAuth:true
   }  
 }
 
