@@ -1,26 +1,85 @@
 import React from 'react'
 import { Box, Flex, Text } from '@chakra-ui/react'
-import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LineChart, Line } from 'recharts';
+import { BarChart, Bar, Cell, XAxis, YAxis, LineChart, Line,CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { useDispatch, useSelector } from 'react-redux';
-import {Get_Medicine_data} from "../../redux/ADMIN/admin.action"
+import {Get_medicines_item} from "../../redux/medicines/medicines.action"
+import {Get_projector_item} from "../../redux/projector/projector.action"
+import {Get_solarpanel_item} from "../../redux/solarpanel/solarpanel.action"
 
 const Products = () => {
-  const {isLoading,isError,data} = useSelector((state)=>state.admin)
-  console.log(data)
-  const dispatch = useDispatch();
+  const {medicines}=useSelector((state)=>state.medicines)
+  console.log(medicines.length)
+  const {projector}=useSelector((state)=>state.projector)
+  console.log(projector)
+  const {solarpanel}=useSelector((state)=>state.solarpanel)
 
+  const dispatch = useDispatch()
+
+  const data=[
+    {
+      name: "Drugs",
+      count: medicines.length,
+      color: "blue"
+    },
+    {
+      name: "Projector",
+      count: projector.length,
+      color: "green"
+    },
+    {
+      name: "Solar Panels",
+      count: solarpanel.length,
+      color: "red"
+    },
+  ]
+
+  
   React.useEffect(()=>{
-     dispatch(Get_Medicine_data())
+    dispatch(Get_medicines_item())
+    dispatch(Get_projector_item())
+    dispatch(Get_solarpanel_item())
   },[])
-
   return (
     <div>
-      <Box w="84%" ml="16%" mt="50px" h="700px" p={10} bgColor="#f7f7f7 ">
+      <Box w="84%" ml="16%" mt="50px" h="auto" p={10} bgColor="#f7f7f7 ">
             <Text textStyle="DashboardHead">Products</Text>
 
             <Box w="100%" bgColor="#e8ecef" mt={6} p={3}>
             <Text color={"red"}>Products Charts</Text>
             </Box>
+
+            <Box w="50%" margin="auto" p={5}>
+              <BarChart width={400} height={500} data={data} margin={{top:1,right:1, left:1,bottom:5,}}>
+            <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="name" />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+          <Bar dataKey="count" fill="#8884d8" />
+          </BarChart>
+       
+            </Box>
+
+           {/* Medicines */}
+
+            <Box margin="auto" mt="40px">
+            <Box w="100%" bgColor="#e8ecef" mt={6} mb={6} p={3}>
+            <Text color={"red"}>Drugs And Pharmaceutical</Text>
+            </Box>
+            <LineChart width={1000} height={400} data={medicines} margin={{top:1,right:1,left: 1,bottom: 5}}>
+          <CartesianGrid strokeDasharray="30 30" />
+          <XAxis dataKey="id" />
+          <YAxis type="number" domain={[0, 400]}/>
+          <Tooltip />
+          <Legend />
+          <Line type="monotone" dataKey="price" stroke="#8884d8" activeDot={{ r: 8 }} />
+          
+        </LineChart>
+            </Box>
+ 
+
+          
+            
         </Box>
     </div>
   )
