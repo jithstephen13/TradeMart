@@ -17,7 +17,7 @@ const Allroutes = () => {
     setItem("admin",null)
     return (
         <Routes>
-            <Route path='/' element={<Home/>}/>
+            <Route path='/' element={<ProductDetails/>}/>
             <Route path='/cart' element={<Cart/>}/>
 
             <Route path='/block' element={<Block/>} />

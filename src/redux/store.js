@@ -8,22 +8,14 @@ import { solarpanelreducer } from "./solarpanel/solarpanel.reducer"
 import { projectorreducer } from "./projector/projector.reducer"
 import { medicinesreducer } from "./medicines/medicines.reducer"
 import { Cartreducer } from "./Carts/Cart.reducer"
+import AdminReducer from "./ADMIN/admin.reducer"
 
 const rootReducer=combineReducers({
     solarpanel:solarpanelreducer,
     projector:projectorreducer,
     medicines:medicinesreducer,
     auth: Authreducer,
-    Cart:Cartreducer
- 
-import { Cartreducer } from "./Cart/car.reducer"
-import { Productreducer } from "./Product/product.reducer"
-import AdminReducer from "./ADMIN/admin.reducer"
-
-const rootReducer=combineReducers({
-    product:Productreducer,
-    cart:Cartreducer,
-    auth: Authreducer,
+    Cart:Cartreducer,
     admin:AdminReducer
 
 })
