@@ -9,10 +9,11 @@ import {
   Text,
 } from "@chakra-ui/react";
 import axios from "axios";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const SearchPageDetails = () => {
-  const [data1, setData1] = useState([]);
+  const [data, setData] = useState([]);
   const [query, setQuery] = useState("");
 
   const fetchData = (query) => {
@@ -27,7 +28,7 @@ const SearchPageDetails = () => {
     fetchData(query)
       .then((res) => {
         console.log(res.data);
-        setData1(res.data);
+        setData(res.data);
       })
       .catch((err) => {
         console.log("Error: ", err);
@@ -38,7 +39,7 @@ const SearchPageDetails = () => {
   //   fetchData(query)
   //     .then((res) => {
   //       console.log(res.data);
-  //       setData1(res.data);
+  //       setData(res.data);
   //     })
   //     .catch((err) => {
   //       console.log("Error: ", true);
@@ -47,7 +48,8 @@ const SearchPageDetails = () => {
 
   return (
     <>
-      <Heading textAlign="center" textDecoration="underline">
+      {/* Body Part */}
+      <Heading textAlign="center" textDecoration="underline" margin="15px">
         Search Page
       </Heading>
       <HStack style={{ width: "400px", margin: "auto" }}>
@@ -58,23 +60,21 @@ const SearchPageDetails = () => {
             setQuery(e.target.value);
             handleSearch();
           }}
-          placeholder="search product name"
+          placeholder="Search Product"
         />
-        <Button
-          onClick={handleSearch}
-          style={{ margin: "10px", padding: "10px", border: "1px solid black" }}
-        >
-          Search
-        </Button>
+        <Button onClick={handleSearch}>Search</Button>
       </HStack>
 
       <Grid templateColumns="repeat(4, 1fr)" gap={6}>
-        {data1.map((el) => {
+        {data.map((el) => {
           return (
             <GridItem>
               <Image src={el.img_src} alt="image" />
               <Text>Name: {el.name}</Text>
               <Text>Price: {el.price}</Text>
+              <Link to={`/productdetails/${el.id}`}>
+                <Button>Show</Button>
+              </Link>
             </GridItem>
           );
         })}
