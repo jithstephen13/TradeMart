@@ -3,9 +3,11 @@ import {Box, Flex, Text,Image} from "@chakra-ui/react"
 import { BellIcon ,DragHandleIcon} from '@chakra-ui/icons'
 import logo from "../../assets/logo.png"
 import Styles from "./Admin.module.css"
+import { getItem } from '../../utility/localStorage'
 
 
 const Navbar = () => {
+    let addmin=getItem("admin")
   return (
     <div className={Styles.Navbar} >
         <Box w="100%" h="50px" bgColor="#2e3192">
@@ -17,7 +19,7 @@ const Navbar = () => {
                     <Flex justifyContent="space-around">
                     <Text><BellIcon color={"white"} boxSize={6}/> </Text>
                     <Text><DragHandleIcon color={"white"} boxSize={6} /></Text>
-                    <Text textStyle="AdminNav">Hii, Swati</Text>
+                    <Text textStyle="AdminNav">Hii,{addmin.name}</Text>
                     </Flex>
                 </Box>
             </Flex>

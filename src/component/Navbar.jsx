@@ -16,12 +16,13 @@ import {   Heading,    Modal, ModalBody, ModalCloseButton, ModalContent, ModalFo
 import Logo from "../assets/logo.png"
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { AddUser, LoginUser, LogOUT } from '../redux/Auth/auth.action';
-import { getItem } from '../utility/localStorage';
+import { AddUser, GetAllAdmin, LoginUser, LogOUT } from '../redux/Auth/auth.action';
+import { getItem, setItem } from '../utility/localStorage';
 
 const Navbar = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
-    const[Registarion,setRegistarion] =useState(false)       
+    const[Registarion,setRegistarion] =useState(false)   
+    const[admin,setAdmin]=useState(false)    
     // const { isOpen, onOpen, onClose } = useDisclosure()
     const [cred,setCred]=useState({})
     const [conform,setConform]=useState("")
@@ -35,14 +36,36 @@ const Navbar = () => {
         [name]:value
       })
     }
-  const {isLoading ,
-    isError ,
-    userData,
-    isAuth,
-    userlist}=useSelector((store)=>store.auth)
+    const {isLoading ,
+      isError ,
+      userData,
+      isAuth,
+      userlist,adminlist}=useSelector((store)=>store.auth)
   const dispatch=useDispatch()
   
-  
+    
+  const handleAdminLogin=()=>{
+    adminlist.forEach(element => {
+        if(element.email===cred.email&& element.password===cred.password){
+          setItem("admin",element)
+            toast({
+                title: "successfully sign in ",
+                description: "",
+                status: "success",
+                duration: 6000,
+                isClosable: true,
+              });
+              onClose()
+            navigate('/admin')
+        }
+        
+    });
+    
+}
+
+useEffect(()=>{
+dispatch(GetAllAdmin())
+},[])
     const handleClick=async()=>{
       try {
          dispatch(AddUser(cred))
@@ -136,7 +159,7 @@ const Navbar = () => {
                                   <Button onClick={handleLogout} fontSize={{base:"12px", md:"14px"}} colorScheme='teal' size='md' p="5px 40px" >
                                   Logout
                                   </Button>}
-                                  <Modal closeOnOverlayClick={false} isOpen={isOpen} onClose={onClose}>
+                                  {!admin&& <Modal closeOnOverlayClick={false} isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
          
@@ -174,12 +197,10 @@ const Navbar = () => {
           <ModalFooter>
           </ModalFooter>
         </ModalContent>
-      </Modal>
+      </Modal>}
 
 
-                                  <Button m="5px" fontSize={{base:"12px", md:"14px"}} colorScheme='teal' size='md' p="5px 40px" >
-                                    Sign In
-                                  </Button>
+                            
 
                                   <Text fontSize={{base:"11px", md:"12px"}} >New to TRADEMART <span style={{color:"blue"}} >Join Now</span></Text>
                               </Box>
@@ -234,9 +255,36 @@ const Navbar = () => {
                                   <hr />
                               </Box>
                               <Box align="center" >
-                                <Button m="5px 0px" fontSize={{base:"12px", md:"14px"}} colorScheme='teal' size='sm' >
+                                <Button onClick={()=>{setAdmin(!admin)
+                                  onOpen()}} m="5px 0px" fontSize={{base:"12px", md:"14px"}} colorScheme='teal' size='sm' >
                                   Admin Login
                                 </Button>
+                               {admin&& <Modal closeOnOverlayClick={false} isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+         
+          <ModalCloseButton />
+          <ModalBody  textAlign={"center"}  pb={6}>
+         <Flex mt={20} flexDirection={"column"} gap={2}>
+             <Heading  color={"blueviolet"}>Login</Heading>
+            <Input placeholder='User name...' name='email' onChange={handlechenge}></Input>
+            <Input placeholder='Password...' type={"password"} name='password' onChange={handlechenge}></Input>
+            <Button onClick={handleAdminLogin} colorScheme='blue' mr={3}>
+             {isLoading? <Spinner/>:"Login"} 
+            </Button>
+            
+ 
+            </Flex> 
+
+         
+            
+         
+          </ModalBody>
+        
+          <ModalFooter>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>}
                               </Box>
                           </PopoverFooter>
                       </PopoverContent>
