@@ -23,8 +23,6 @@ const Allroutes = () => {
 
             <Route path='/admin' element={<Admin/>} />
             <Route path='/productdtls' element={<AdminRegistration/>} />
-
-
         </Routes>
     );
 };
