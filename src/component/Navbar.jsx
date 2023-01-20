@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react';
 //-----------Chakra UI Components-------
 import { Box, Flex, HStack, Link, IconButton, useDisclosure, Stack, Input, Text, Image, Button, PopoverFooter, PopoverBody, PopoverHeader, PopoverCloseButton, PopoverArrow, PopoverContent, Popover, PopoverTrigger,  } from '@chakra-ui/react';
 //-----------ICONS----------------------
@@ -10,19 +9,16 @@ import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 import { MdOutlineMessage, MdSendToMobile } from "react-icons/md";
 import { BiMessageDetail, BiMobile, BiUserCircle } from "react-icons/bi";
 import { AiOutlineHome, AiOutlineSetting, AiOutlineTag } from "react-icons/ai";
-import {   Heading,    Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalOverlay, Spinner, useToast } from '@chakra-ui/react';
-
 //-----------***------------------------------------------------------------------
 import Logo from "../assets/logo.png"
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { AddUser, GetAllAdmin, LoginUser, LogOUT } from '../redux/Auth/auth.action';
-import { getItem, setItem } from '../utility/localStorage';
+import { AddUser, LoginUser, LogOUT } from '../redux/Auth/auth.action';
+import { getItem } from '../utility/localStorage';
 
 const Navbar = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
-    const[Registarion,setRegistarion] =useState(false)   
-    const[admin,setAdmin]=useState(false)    
+    const[Registarion,setRegistarion] =useState(false)       
     // const { isOpen, onOpen, onClose } = useDisclosure()
     const [cred,setCred]=useState({})
     const [conform,setConform]=useState("")
@@ -36,36 +32,14 @@ const Navbar = () => {
         [name]:value
       })
     }
-    const {isLoading ,
-      isError ,
-      userData,
-      isAuth,
-      userlist,adminlist}=useSelector((store)=>store.auth)
+  const {isLoading ,
+    isError ,
+    userData,
+    isAuth,
+    userlist}=useSelector((store)=>store.auth)
   const dispatch=useDispatch()
   
-    
-  const handleAdminLogin=()=>{
-    adminlist.forEach(element => {
-        if(element.email===cred.email&& element.password===cred.password){
-          setItem("admin",element)
-            toast({
-                title: "successfully sign in ",
-                description: "",
-                status: "success",
-                duration: 6000,
-                isClosable: true,
-              });
-              onClose()
-            navigate('/admin')
-        }
-        
-    });
-    
-}
-
-useEffect(()=>{
-dispatch(GetAllAdmin())
-},[])
+  
     const handleClick=async()=>{
       try {
          dispatch(AddUser(cred))
@@ -159,7 +133,7 @@ dispatch(GetAllAdmin())
                                   <Button onClick={handleLogout} fontSize={{base:"12px", md:"14px"}} colorScheme='teal' size='md' p="5px 40px" >
                                   Logout
                                   </Button>}
-                                  {!admin&& <Modal closeOnOverlayClick={false} isOpen={isOpen} onClose={onClose}>
+                                  <Modal closeOnOverlayClick={false} isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
          
@@ -197,10 +171,12 @@ dispatch(GetAllAdmin())
           <ModalFooter>
           </ModalFooter>
         </ModalContent>
-      </Modal>}
+      </Modal>
 
 
-                            
+                                  <Button m="5px" fontSize={{base:"12px", md:"14px"}} colorScheme='teal' size='md' p="5px 40px" >
+                                    Sign In
+                                  </Button>
 
                                   <Text fontSize={{base:"11px", md:"12px"}} >New to TRADEMART <span style={{color:"blue"}} >Join Now</span></Text>
                               </Box>

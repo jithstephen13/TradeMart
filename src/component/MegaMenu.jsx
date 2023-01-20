@@ -6,7 +6,6 @@ import image3 from "../assets/MegaMenu/mm3.png"
 import image4 from "../assets/MegaMenu/mm4.png"
 import image5 from "../assets/MegaMenu/mm5.png"
 import image6 from "../assets/MegaMenu/mm6.png"
-
 const MegaMenu = () => {
     return (
         <Box w={{base:"100%",lg:"95%"}} margin="auto" > 

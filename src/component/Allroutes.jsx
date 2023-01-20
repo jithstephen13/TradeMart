@@ -24,9 +24,6 @@ const Allroutes = () => {
             <Route path='product' element={<Product />} />
 
             <Route path='/admin' element={<Admin/>} />
-             
-
-
         </Routes>
     );
 };
