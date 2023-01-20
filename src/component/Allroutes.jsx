@@ -6,7 +6,6 @@ import Home from "../pages/Home";
 import Admin from "./ADMIN/admin";
 import Cart from "./Cart";
 import ProductDetails from "./ProductDetails";
-
 import Block from "../pages/Block/index";
 import Product from "../pages/Product";
 import SearchPageDetails from "./SearchPageDetails";

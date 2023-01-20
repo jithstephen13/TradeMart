@@ -1,4 +1,4 @@
-import { Avatar, Box, Button, Card, CardFooter, CardHeader, Flex, FormControl, Grid, Heading, Input, Stack, Text } from '@chakra-ui/react';
+import { Avatar, Box, Button, Card,   CardHeader, Flex, FormControl, Grid, Heading, Input, Stack, Text } from '@chakra-ui/react';
 import React, { useEffect, useState,useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { AddAdmin, AddUser, GetAllAdmin } from '../redux/Auth/auth.action';
