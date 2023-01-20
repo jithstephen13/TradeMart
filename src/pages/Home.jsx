@@ -25,6 +25,13 @@ import company9 from "../assets/homepage-assets/comp9.webp"
 import company10 from "../assets/homepage-assets/comp10.webp"
 import company11 from "../assets/homepage-assets/comp11.png"
 import company12 from "../assets/homepage-assets/comp12.png"
+import carousel1 from "../assets/homepage-assets/carousel1.jpg"
+import carousel2 from "../assets/homepage-assets/carousel2.jpg"
+import carousel3 from "../assets/homepage-assets/carousel3.jpg"
+import software1 from "../assets/homepage-assets/software1.png"
+import software2 from "../assets/homepage-assets/software2.png"
+import app1 from "../assets/homepage-assets/app1.png"
+import app2 from "../assets/homepage-assets/app2.PNG"
 
 const Home = () => {
     let [Carousel, setCarousel] = useState(false)
@@ -36,7 +43,8 @@ const Home = () => {
 
     let state = [ "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh", "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jammu and Kashmir", "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Odisha", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana", "Tripura", "Uttarakhand", "Uttar Pradesh", "West Bengal", "Andaman and Nicobar Islands", "Chandigarh", "Dadra and Nagar Haveli", "Daman and Diu", "Delhi", "Lakshadweep", "Puducherry"]
     return (
-        <Box>
+        <Box backgroundColor="#F3F3F3" align="center" >
+{/* ------------------------Banner & Search---------------------------------- */}
             <Box backgroundImage={banner1} backgroundPosition="center" display="flex" justifyContent="center" alignItems="center" position="relative" backgroundSize="cover" minHeight={{base:"120px",sm:"220px"}} >
                 <Box position="absolute" w={["90%","85%","75%","65%","60%"]} >
                     <Text textAlign= "center" outline= "0" margin= "0" padding= "10px" border= "0" font= "inherit" verticalAlign= "baseline" color= "#f9f9f9" fontSize={{base:"12px", sm:"17", md:"22px"}} >Search for products & find verified sellers near you</Text>
@@ -49,11 +57,47 @@ const Home = () => {
                     </Flex>
                 </Box>
             </Box>
-            <Box >
+{/* -----------------------MegaMenu--------------------------------------- */}
+            <Box backgroundColor="white" >
                 <MegaMenu />
             </Box>
-            <Box border="1px solid red" w="96%" m="auto" >
-                <Heading p="5px 10px" fontSize={{base:"18px",sm:"22px", md:"30px"}} fontFamily ="Arial" color="#333" >Find Suppliers from Top Cities</Heading>
+            <hr />
+{/* -------------------------Carousel------------------------------------------ */}
+            <Box backgroundColor="white">
+                <Flex>
+                    <Box w={{base:"0%", md:"35%"}} display={{base:"none", md:"flex"}} flexDirection="column" >
+                        <Heading align="left" p={{base:"5px 5px 5px 5px", md:"40px 20px 10px 20px"}} fontSize={{base:"15px",sm:"18px", md:"22px", lg:"30px"}} fontFamily ="Arial" color="#333" >We connect</Heading>
+                        <Heading align="left" p={{base:"0px 10px", md:"0px 20px"}} fontSize={{base:"18px",sm:"20px", md:"25px", lg:"35px"}} fontFamily ="Arial" color="#333" >Buyers & Sellers</Heading>
+                        <Text align="left" p="20px" fontSize={{base:"12px",sm:"13px", md:"15px", lg:"20px"}} >IndiaMART is India's largest online B2B marketplace, connecting buyers with suppliers.</Text>
+                        <Image p={{base:"0px", md:"10px 20px 10px 20px", xl:"30px 20px 10px 20px"}} w={{md:"100%", lg:"80%"}} src={carousel3} />
+                    </Box>
+                    <Box w={{base:"100%", md:"65%"}} display="flex" justifyContent="center" alignItems="center" >
+                        <Box w="100%" p="20px" >
+                            {Carousel?
+                                <Image src={carousel1} />
+                                :
+                                <Box position="relative" >
+                                    <Image src={carousel2} />
+                                    <Box border="1px solid gray" left="50%" top="20%" p="15px" w="50%" position="absolute" >
+                                        <Flex>
+                                            <Select fontSize={{ base:"10px", sm:"12px",md:"13px"}} backgroundColor= "#ececec" color= "#333" width={{sm:"20%", md:"30%"}} h={{base:"20px",md:"30px"}} display={{base:"none",sm:"flex"}} borderRadius="0px" placeholder='All India'>
+                                                {state?.map((el)=><option style={{fontSize:"12px"}} value='option2'>{el}</option>)}
+                                            </Select>
+                                            <Input fontSize={{base:"11px", sm:"12px",md:"13px"}} variant='unstyled' placeholder=' Enter product/service name' bg="white" h={{base:"15px",sm:"15px",md:"20px",xl:"25px"}} p="10px" borderRadius="0px" />
+                                        </Flex>
+                                        <Input  fontSize={{ base:"11px", sm:"12px",md:"13px"}} variant='unstyled' placeholder='Mobile No.' bg="white" h={{base:"15px",sm:"15px",md:"20px",xl:"25px"}} m="5px 0px" borderRadius="0px" p="10px" />
+                                        <Input display={{base:"none", sm:"flex"}}  fontSize={{ base:"11px", sm:"12px",md:"13px"}} variant='unstyled' placeholder=' Enter Your Name' bg="white" h={{base:"15px",sm:"15px",md:"20px",xl:"25px"}} p="10px" m="5px 0px" borderRadius="0px" />
+                                        <Button fontSize={{ base:"11px", sm:"12px",md:"13px"}} borderRadius="0px" fontFamily= "arial" background= "-webkit-gradient(linear,left top,left bottom,from(#058b80),to(#02625a))" colorScheme= "#fff" border= "none" margin= "0" h={{base:"15px",sm:"25px",md:"30px",xl:"40px"}} font-size= "19px"  position= "relative" left= "-4px" top= "0" cursor= "pointer" width= "142px" font-weight= "700" text-indent= "30px" >Search</Button>
+                                    </Box>
+                                </Box>
+                            }
+                        </Box>
+                    </Box>
+                </Flex>
+            </Box>
+{/* ------------------------Cities------------------------------------- */}
+            <Box backgroundColor="white" marginTop="20px" w="96%">
+                <Heading align="left" p="5px 10px" fontSize={{base:"18px",sm:"22px", md:"30px"}} fontFamily ="Arial" color="#333" >Find Suppliers from Top Cities</Heading>
                 <Flex justifyContent="space-around" >
                     <Box display="flex" flexDirection="column" p={{base:"10px 0px",md:"25px 0px"}} cursor="pointer" ><Image src={c1} pb="10px" w={{base:"40px", sm:"60px", md:"80px"}} /><Text fontSize={{base:"12px",sm:"15px", md:"18px" }} textAlign="center">Delhi</Text></Box>
                     <Box display="flex" flexDirection="column" p={{base:"10px 0px",md:"25px 0px"}} cursor="pointer" ><Image src={c2} pb="10px" w={{base:"40px", sm:"60px", md:"80px"}} /><Text fontSize={{base:"12px",sm:"15px", md:"18px" }} textAlign="center">Bengaluru</Text></Box>
@@ -69,8 +113,9 @@ const Home = () => {
                     <Box display="flex" flexDirection="column" p={{base:"10px 0px",md:"25px 0px"}} cursor="pointer" ><Image src={c10} pb="10px" w={{base:"40px", sm:"60px", md:"80px"}} /><Text fontSize={{base:"12px",sm:"15px", md:"18px" }} textAlign="center">Hyderabad</Text></Box>
                 </Flex>
             </Box>
-            <Box border="1px solid red" w="96%" m="auto" >
-                <Heading p="5px 10px" fontSize={{base:"18px",sm:"22px", md:"30px"}} fontFamily ="Arial" color="#333" >Explore products from Premium Brands</Heading>
+{/* ------------------------Brands------------------------------------- */}
+            <Box backgroundColor="white" marginTop="20px" w="96%">
+                <Heading align="left" p="5px 10px" fontSize={{base:"18px",sm:"22px", md:"30px"}} fontFamily ="Arial" color="#333" >Explore products from Premium Brands</Heading>
                 <Flex justifyContent="space-around" >
                     <Box w="20%" display="flex" justifyContent="center" p={{base:"10px", md:"20px 25px" }} alignItems="center" ><Image src={company1}  /></Box>
                     <Box w="20%" display="flex" justifyContent="center" p={{base:"10px", md:"20px 25px" }} alignItems="center" ><Image src={company2}  /></Box>
