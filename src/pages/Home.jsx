@@ -45,7 +45,7 @@ const Home = () => {
     return (
         <Box backgroundColor="#F3F3F3" align="center" >
 {/* ------------------------Banner & Search---------------------------------- */}
-            {/* <Box backgroundImage={banner1} backgroundPosition="center" display="flex" justifyContent="center" alignItems="center" position="relative" backgroundSize="cover" minHeight={{base:"120px",sm:"220px"}} >
+            <Box backgroundImage={banner1} backgroundPosition="center" display="flex" justifyContent="center" alignItems="center" position="relative" backgroundSize="cover" minHeight={{base:"120px",sm:"220px"}} >
                 <Box position="absolute" w={["90%","85%","75%","65%","60%"]} >
                     <Text textAlign= "center" outline= "0" margin= "0" padding= "10px" border= "0" font= "inherit" verticalAlign= "baseline" color= "#f9f9f9" fontSize={{base:"12px", sm:"17", md:"22px"}} >Search for products & find verified sellers near you</Text>
                     <Flex>
@@ -56,14 +56,14 @@ const Home = () => {
                         <Button fontSize={{ base:"12px", sm:"13px",md:"15px"}} borderRadius="0px" fontFamily= "arial" background= "-webkit-gradient(linear,left top,left bottom,from(#058b80),to(#02625a))" colorScheme= "#fff" p="5px 22px" border= "none" margin= "0" height={{ base:"20px", sm:"30px",md:"50px"}} font-size= "19px"  position= "relative" left= "-4px" top= "0" cursor= "pointer" width= "142px" font-weight= "700" text-indent= "30px" >Search</Button>
                     </Flex>
                 </Box>
-            </Box> */}
+            </Box>
 {/* -----------------------MegaMenu--------------------------------------- */}
-            {/* <Box backgroundColor="white" >
+            <Box backgroundColor="white" >
                 <MegaMenu />
-            </Box> */}
+            </Box>
             <hr />
 {/* -------------------------Carousel------------------------------------------ */}
-            {/* <Box backgroundColor="white">
+            <Box backgroundColor="white">
                 <Flex>
                     <Box w={{base:"0%", md:"35%"}} display={{base:"none", md:"flex"}} flexDirection="column" >
                         <Heading align="left" p={{base:"5px 5px 5px 5px", md:"40px 20px 10px 20px"}} fontSize={{base:"15px",sm:"18px", md:"22px", lg:"30px"}} fontFamily ="Arial" color="#333" >We connect</Heading>
@@ -94,9 +94,9 @@ const Home = () => {
                         </Box>
                     </Box>
                 </Flex>
-            </Box> */}
+            </Box>
 {/* ------------------------Cities------------------------------------- */}
-            {/* <Box backgroundColor="white" marginTop="20px" w="96%">
+            <Box backgroundColor="white" marginTop="20px" w="96%">
                 <Heading align="left" p="5px 10px" fontSize={{base:"18px",sm:"22px", md:"30px"}} fontFamily ="Arial" color="#333" >Find Suppliers from Top Cities</Heading>
                 <Flex justifyContent="space-around" >
                     <Box display="flex" flexDirection="column" p={{base:"10px 0px",md:"25px 0px"}} cursor="pointer" ><Image src={c1} pb="10px" w={{base:"40px", sm:"60px", md:"80px"}} /><Text fontSize={{base:"12px",sm:"15px", md:"18px" }} textAlign="center">Delhi</Text></Box>
@@ -112,9 +112,9 @@ const Home = () => {
                     <Box display="flex" flexDirection="column" p={{base:"10px 0px",md:"25px 0px"}} cursor="pointer" ><Image src={c9} pb="10px" w={{base:"40px", sm:"60px", md:"80px"}} /><Text fontSize={{base:"12px",sm:"15px", md:"18px" }} textAlign="center">Jaipur</Text></Box>
                     <Box display="flex" flexDirection="column" p={{base:"10px 0px",md:"25px 0px"}} cursor="pointer" ><Image src={c10} pb="10px" w={{base:"40px", sm:"60px", md:"80px"}} /><Text fontSize={{base:"12px",sm:"15px", md:"18px" }} textAlign="center">Hyderabad</Text></Box>
                 </Flex>
-            </Box> */}
+            </Box>
 {/* ------------------------Brands------------------------------------- */}
-            {/* <Box backgroundColor="white" marginTop="20px" w="96%">
+            <Box backgroundColor="white" marginTop="20px" w="96%">
                 <Heading align="left" p="5px 10px" fontSize={{base:"18px",sm:"22px", md:"30px"}} fontFamily ="Arial" color="#333" >Explore products from Premium Brands</Heading>
                 <Flex justifyContent="space-around" >
                     <Box w="20%" display="flex" justifyContent="center" p={{base:"10px", md:"20px 25px" }} alignItems="center" ><Image src={company1}  /></Box>
@@ -132,9 +132,9 @@ const Home = () => {
                     <Box w="20%" display="flex" justifyContent="center" p={{base:"10px", md:"20px 25px" }} alignItems="center" ><Image src={company12} /></Box>
                     <Box w="20%" display="flex" justifyContent="center" p={{base:"10px", md:"20px 25px" }} alignItems="center" ><Image src={company11} /></Box>
                 </Flex>
-            </Box> */}
+            </Box>
 {/* -------------------------------Software---------------------------------- */}
-            {/* <Flex backgroundColor="white" marginTop="20px" w="96%" >
+            <Flex backgroundColor="white" marginTop="20px" w="96%" >
                 <Box p={{base:"10px",md:"50px"}} align="start">
                     <Image w={{base:"20%",md:"50%"}}  src={software1} />
                     <Heading p={{base:"10px 0px 0px 0px", md:"20px 0px 0px 0px"}} fontSize={{base:"18px",sm:"20px", md:"30px"}} fontFamily ="Arial" color="#333" >Accounting Software</Heading>
@@ -160,9 +160,9 @@ const Home = () => {
                     <Image display={{base:"none", lg:"flex"}} w="50%" src={software2} />
                 </Box>
                 
-            </Flex> */}
+            </Flex>
 {/* -------------------------------Mobile App--------------------------------- */}
-            {/* <Flex backgroundColor="white" justifyContent="space-evenly" margin="20px" w="96%" >
+            <Flex backgroundColor="white" justifyContent="space-evenly" margin="20px" w="96%" >
                 <Box p={{base:"10px",md:"50px 0px 0px 0px"}} >
                     <Image w="70%" src={app1} />
                 </Box>
@@ -177,7 +177,7 @@ const Home = () => {
                     <Image w={{base:"20%",md:"50%"}}  src={app2} />
                 </Box>
                 
-            </Flex> */}
+            </Flex>
         
 {/* ------------------------------------------------------------------------- */}
 {/* ------------------------------------------------------------------------- */}
