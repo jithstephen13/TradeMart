@@ -16,12 +16,13 @@ import {   Heading,    Modal, ModalBody, ModalCloseButton, ModalContent, ModalFo
 import Logo from "../assets/logo.png"
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { AddUser, LoginUser, LogOUT } from '../redux/Auth/auth.action';
-import { getItem } from '../utility/localStorage';
+import { AddUser, GetAllAdmin, LoginUser, LogOUT } from '../redux/Auth/auth.action';
+import { getItem, setItem } from '../utility/localStorage';
 
 const Navbar = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
-    const[Registarion,setRegistarion] =useState(false)       
+    const[Registarion,setRegistarion] =useState(false)   
+    const[admin,setAdmin]=useState(false)    
     // const { isOpen, onOpen, onClose } = useDisclosure()
     const [cred,setCred]=useState({})
     const [conform,setConform]=useState("")
@@ -35,14 +36,36 @@ const Navbar = () => {
         [name]:value
       })
     }
-  const {isLoading ,
-    isError ,
-    userData,
-    isAuth,
-    userlist}=useSelector((store)=>store.auth)
+    const {isLoading ,
+      isError ,
+      userData,
+      isAuth,
+      userlist,adminlist}=useSelector((store)=>store.auth)
   const dispatch=useDispatch()
   
-  
+    
+  const handleAdminLogin=()=>{
+    adminlist.forEach(element => {
+        if(element.email===cred.email&& element.password===cred.password){
+          setItem("admin",element)
+            toast({
+                title: "successfully sign in ",
+                description: "",
+                status: "success",
+                duration: 6000,
+                isClosable: true,
+              });
+              onClose()
+            navigate('/admin')
+        }
+        
+    });
+    
+}
+
+useEffect(()=>{
+dispatch(GetAllAdmin())
+},[])
     const handleClick=async()=>{
       try {
          dispatch(AddUser(cred))
@@ -130,58 +153,44 @@ const Navbar = () => {
                           <PopoverHeader>
                               <Box align="center" >
 
-                              {tocken===null?<Button onClick={onOpen} fontSize={{base:"12px", md:"14px"}} colorScheme='teal' size='md' p="5px 40px" >
+                              {tocken===null?<Button onClick={onOpen} fontSize={{base:"12px", md:"14px"}} fontFamily= "arial" background= "-webkit-gradient(linear,left top,left bottom,from(#058b80),to(#02625a))" colorScheme= "#fff" size='md' p="5px 40px" >
                                   Login/siginup
                                   </Button>:
-                                  <Button onClick={handleLogout} fontSize={{base:"12px", md:"14px"}} colorScheme='teal' size='md' p="5px 40px" >
+                                  <Button onClick={handleLogout} fontSize={{base:"12px", md:"14px"}} fontFamily= "arial" background= "-webkit-gradient(linear,left top,left bottom,from(#058b80),to(#02625a))" colorScheme= "#fff" size='md' p="5px 40px" >
                                   Logout
                                   </Button>}
+                                  {!admin&& 
                                   <Modal closeOnOverlayClick={false} isOpen={isOpen} onClose={onClose}>
-        <ModalOverlay />
-        <ModalContent>
-         
-          <ModalCloseButton />
-          <ModalBody  textAlign={"center"}  pb={6}>
-          {!Registarion&& <Flex mt={20} flexDirection={"column"} gap={2}>
-             <Heading  color={"blueviolet"}>Login</Heading>
-            <Input placeholder='User name...' name='email' onChange={handlechenge}></Input>
-            <Input placeholder='Password...' type={"password"} name='password' onChange={handlechenge}></Input>
-            <Button onClick={handleLogin} colorScheme='blue' mr={3}>
-             {isLoading? <Spinner/>:"Login"} 
-            </Button>
-             <Link onClick={()=>setRegistarion(true)}>Don't have an account? <span style={{color:"blue"}}>Create your new account</span></Link>
- 
-            </Flex>} 
+                                    <ModalOverlay />
+                                    <ModalContent>
+                                      <ModalCloseButton />
+                                      <ModalBody  textAlign={"center"}  pb={6}>
+                                      {!Registarion&& <Flex mt={20} flexDirection={"column"} gap={2}>
+                                          <Heading  color={"#333"}>Login</Heading>
+                                          <Input placeholder='User name...' name='email' onChange={handlechenge}></Input>
+                                          <Input placeholder='Password...' type={"password"} name='password' onChange={handlechenge}></Input>
+                                          <Button onClick={handleLogin} fontFamily= "arial" background= "-webkit-gradient(linear,left top,left bottom,from(#058b80),to(#02625a))" colorScheme= "#fff" mr={3}>{isLoading? <Spinner/>:"Login"} </Button>
+                                          <Link onClick={()=>setRegistarion(true)}>Don't have an account? <span style={{color:"blue"}}>Create your new account</span></Link>
+                                        </Flex>} 
+                                                              
+                                        {Registarion&& 
+                                        <Flex flexDirection={"column"} gap={2}>
+                                          <Heading color={"#333"}>Registration</Heading>
+                                          <Input placeholder='First name...'  name='firstname' onChange={handlechenge}></Input>
+                                          <Input placeholder='Lastst name...'  name='laststname' onChange={handlechenge}></Input>
+                                          <Input placeholder='Email...'  name='email' onChange={handlechenge}></Input>
+                                          <Input placeholder='Password...' name='password' type={"password"} onChange={handlechenge}></Input>
 
-            {Registarion&& <Flex flexDirection={"column"} gap={2}>
-            <Heading color={"blueviolet"}>Registration</Heading>
-            <Input placeholder='First name...'  name='firstname' onChange={handlechenge}></Input>
-            <Input placeholder='Lastst name...'  name='laststname' onChange={handlechenge}></Input>
-            <Input placeholder='Email...'  name='email' onChange={handlechenge}></Input>
-            <Input placeholder='Password...' name='password' type={"password"} onChange={handlechenge}></Input>
-
-            <Input placeholder='conform Password...'  type={"password"}  onChange={(e)=>setConform(e.target.value)}></Input>
-            <p style={{color:'red'}} >{cred.password!==undefined &&conform!==cred.password ? "password is not matching":""   }</p>
-            <Button onClick= {handleClick} colorScheme='blue' mr={3}>
-            {isLoading? <Spinner/>:"Sign Up"} 
-            </Button>
-            <Link onClick={()=>setRegistarion(!Registarion)}> already have an account</Link>
-                      </Flex>} 
-            
-         
-          </ModalBody>
-        
-          <ModalFooter>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
-
-
-                                  <Button m="5px" fontSize={{base:"12px", md:"14px"}} colorScheme='teal' size='md' p="5px 40px" >
-                                    Sign In
-                                  </Button>
-
-                                  <Text fontSize={{base:"11px", md:"12px"}} >New to TRADEMART <span style={{color:"blue"}} >Join Now</span></Text>
+                                          <Input placeholder='conform Password...'  type={"password"}  onChange={(e)=>setConform(e.target.value)}></Input>
+                                          <p style={{color:'red'}} >{cred.password!==undefined &&conform!==cred.password ? "password is not matching":""   }</p>
+                                          <Button onClick= {handleClick} fontFamily= "arial" background= "-webkit-gradient(linear,left top,left bottom,from(#058b80),to(#02625a))" colorScheme= "#fff" mr={3}>{isLoading? <Spinner/>:"Sign Up"} </Button>
+                                          <Link onClick={()=>setRegistarion(!Registarion)}> already have an account</Link>
+                                        </Flex>} 
+                                                              
+                                      </ModalBody>
+                                    </ModalContent>
+                                  </Modal>}
+                                <Text fontSize={{base:"11px", md:"12px"}} >New to TRADEMART <span style={{color:"blue"}} >Join Now</span></Text>
                               </Box>
                           </PopoverHeader>
                           <PopoverBody>
@@ -234,9 +243,26 @@ const Navbar = () => {
                                   <hr />
                               </Box>
                               <Box align="center" >
-                                <Button m="5px 0px" fontSize={{base:"12px", md:"14px"}} colorScheme='teal' size='sm' >
+                                <Button onClick={()=>{setAdmin(!admin)
+                                  onOpen()}} m="5px 0px" fontSize={{base:"12px", md:"14px"}} fontFamily= "arial" background= "-webkit-gradient(linear,left top,left bottom,from(#058b80),to(#02625a))" colorScheme= "#fff" size='sm' >
                                   Admin Login
                                 </Button>
+                               {admin&& 
+                               <Modal closeOnOverlayClick={false} isOpen={isOpen} onClose={onClose}>
+                                  <ModalOverlay />
+                                  <ModalContent>
+                                    <ModalCloseButton />
+                                    <ModalBody  textAlign={"center"}  pb={6}>
+                                      <Flex mt={20} flexDirection={"column"} gap={2}>
+                                        <Heading  color={"#333"}>Login</Heading>
+                                        <Input placeholder='User name...' name='email' onChange={handlechenge}></Input>
+                                        <Input placeholder='Password...' type={"password"} name='password' onChange={handlechenge}></Input>
+                                        <Button onClick={handleAdminLogin} fontFamily= "arial" background= "-webkit-gradient(linear,left top,left bottom,from(#058b80),to(#02625a))" colorScheme= "#fff" mr={3}>
+                                        {isLoading? <Spinner/>:"Login"}</Button>
+                                      </Flex> 
+                                    </ModalBody>
+                                  </ModalContent>
+                                </Modal>}
                               </Box>
                           </PopoverFooter>
                       </PopoverContent>

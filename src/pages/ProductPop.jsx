@@ -1,10 +1,6 @@
 import React,{useRef,useState} from 'react';
 import emailjs from '@emailjs/browser';
-import { Button, Box, Flex, Heading,
-    FormControl,
-    FormLabel,
-    FormErrorMessage,
-    FormHelperText,
+import { Button, Box, Flex,  
     Drawer,
     DrawerBody,
     DrawerFooter,
@@ -13,7 +9,19 @@ import { Button, Box, Flex, Heading,
     DrawerContent,
     DrawerCloseButton,
     Input,Text, Image, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Spinner, useDisclosure, useToast } from '@chakra-ui/react';
-
+import { useDispatch } from 'react-redux';
+ 
+import { ADD_Cart_item } from '../redux/Carts/Cart.action';
+const Item  ={
+  id:"sp47",
+  img_src: "https://m.media-amazon.com/images/I/614umzFKhOL._AC_UL320_.jpg",
+  name: "UTL Solar 200 Watt 12 Volt Mono PERC Solar Panel 200W-12V (Pack of 2)",
+  desc:"consectetur adipiscing elit. Nam hendrerit nisi sed sollicitudin pellentesque. Nunc posuere purus   rhoncus pulvinar aliquam. Ut aliquet tristique",
+  company: "Luminous ",
+  rating: "4.1 out of 5 stars",
+  price: "₹19,499",
+  delear_name:"Cillian_Murphy",
+}
 const ProductPop = () => {
     const OverlayOne = () => (
         <ModalOverlay
@@ -23,7 +31,7 @@ const ProductPop = () => {
       )
     
       
-      const [cred,setCred]=useState({})
+      const [cred,setCred]=useState(Item)
       const handlechenge=(e)=>{
         const { name, value } = e.target;
         setCred({
@@ -33,26 +41,15 @@ const ProductPop = () => {
       }
       const { isOpen, onOpen, onClose } = useDisclosure()
       const [overlay, setOverlay] = React.useState(<OverlayOne />)
-      const Item={
-        id: "p1",
-        img_src : "https://m.media-amazon.com/images/I/61bAqLX2lRL._AC_UY218_.jpg",
-        name: "ZEBRONICS Zeb-PIXAPLAY 15 Android Smart LED Projector with WiFi/BT v5.1, FHD 1080p, Apps, Miracast DLNA/Airplay Support, 3400 Lumen, 30000H lifespan, HDMI, 2X USB Speaker and Remote Control",
-        rating: "3.9 out of 5 stars",
-        price: "₹14,449",
-        original: "₹42,999",
-        discount: "Save ₹28,550 (66%)",
-        delear_name:"christopher nolan",
-        service_id:"service_hakjw5z",
-        template_id:"template_p2zhnas",
-        key_ref:"pc7y9Dv2GAuWDsXZH"
-
-        }
+      
 
         const form = useRef();
+        const dispatch = useDispatch()
 
   const sendEmail = (e) => {
     e.preventDefault();
-    console.log(cred)
+     
+    dispatch(ADD_Cart_item(cred))
     emailjs.sendForm('service_hakjw5z', 'template_p2zhnas', form.current, 'pc7y9Dv2GAuWDsXZH')
       .then((result) => {
           console.log(result.text);
@@ -98,19 +95,19 @@ const ProductPop = () => {
       <label>Quantity</label>
       <input type='text' style={{border:"1px solid black"}}  placeholder='quantity' name='qty' onChange={handlechenge}    />
       <label>Product Name</label>
-      <select name='product name' style={{border:"1px solid black"}} onChange={handlechenge}>
+      <select name='product name' style={{border:"1px solid black"}}  >
         <option>selectname</option>
         <option value={Item.name}>{Item.name}</option>
       </select>
       {/* <input type='text'  value={Item.name} name='product name' onChange={handlechenge}   /> */}
       <label>Price</label>
       {/* <input type='text'  value={Item.price} name='price' onChange={handlechenge}    /> */}
-      <select name='price' style={{border:"1px solid black"}} onChange={handlechenge}>
+      <select name='price' style={{border:"1px solid black"}}  >
         <option>select price</option>
         <option value={Item.price}>{Item.price}</option>
       </select>
       <label> Message</label>
-      <input type='text' name='message' style={{border:"1px solid black"}}  h={32} onChange={handlechenge} />
+      <input type='text' name='message' style={{border:"1px solid black",padding:"32px"}}  placeholder='type your message......'     />
       <label> </label>
       <Button pl={20} pr={20}  bg="blue" onClick={sendEmail}    > Sent</Button>
       
