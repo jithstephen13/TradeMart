@@ -1,40 +1,43 @@
-import { Avatar, Box, Button, Card,   CardHeader, Flex, FormControl, Grid, Heading, Input, Stack, Text } from '@chakra-ui/react';
 import React, { useEffect, useState,useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { AddAdmin, AddUser, GetAllAdmin } from '../redux/Auth/auth.action';
+ 
+import { Avatar, Box, Button, Card,   CardHeader, Flex, FormControl, Grid, Heading, Input, Stack, Text } from '@chakra-ui/react';
 
-const AdminRegistration = () => {
-    const [cred,setCred]=useState({})
-    const form = useRef();
-    const {isLoading ,
-        isError ,
-        userData,
-        isAuth,
-        userlist,adminlist}=useSelector((store)=>store.auth)
+import { useDispatch, useSelector } from 'react-redux';
+import { AddAdmin,  GetAllAdmin } from '../../redux/Auth/auth.action';
+
+const AdminList = () => {
+  const [cred,setCred]=useState({})
+  const form = useRef();
+  const {isLoading ,
+      isError ,
+      userData,
+      isAuth,
+      userlist,adminlist}=useSelector((store)=>store.auth)
 const dispatch=useDispatch()
-    const handlechenge=(e)=>{
-        const { name, value } = e.target;
-        setCred({
-          ...cred,
-          [name]:value
-        })
-      }
-      useEffect(()=>{
-        dispatch(GetAllAdmin())
-      },[])
-     
-      const handleClick=async()=>{
-         dispatch(AddAdmin(cred))
-         if(!isLoading&&!isError){
-            dispatch(GetAllAdmin())
-            //  window.location.reload()
-            form.current.reset()
-         }
-    
+  const handlechenge=(e)=>{
+      const { name, value } = e.target;
+      setCred({
+        ...cred,
+        [name]:value
+      })
+    }
+    useEffect(()=>{
+      dispatch(GetAllAdmin())
+    },[])
+   
+    const handleClick=async()=>{
+       dispatch(AddAdmin(cred))
+       if(!isLoading&&!isError){
+          dispatch(GetAllAdmin())
+          //  window.location.reload()
+          form.current.reset()
        }
-    return (
-        <Stack align={"center"}>
-          < Card  w={"50%"}>
+  
+     }
+  return (
+    <div>
+      <Box w="84%" ml="16%" mt="50px" h="700px" p={10} bgColor="#f7f7f7 ">
+      < Card  w={"50%"}>
             < FormControl ref={form} align='center' >
             <Heading color={"blueviolet"}>Admin Registration form</Heading>
             <Input placeholder='First name...'  mt={4} name='name' onChange={handlechenge}></Input>
@@ -76,9 +79,9 @@ const dispatch=useDispatch()
                 }
                
             </Grid>
-            
-        </Stack>
-    );
-};
+        </Box>
+    </div>
+  )
+}
 
-export default AdminRegistration;
+export default AdminList

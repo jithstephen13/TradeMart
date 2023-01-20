@@ -9,10 +9,12 @@ import ProductDetails from './ProductDetails';
 
 import Block from '../pages/Block/index';
 import Product from '../pages/Product';
+import { setItem } from '../utility/localStorage';
 
  
 
 const Allroutes = () => {
+    setItem("admin",null)
     return (
         <Routes>
             <Route path='/' element={<Home/>}/>
@@ -22,7 +24,6 @@ const Allroutes = () => {
             <Route path='product' element={<Product />} />
 
             <Route path='/admin' element={<Admin/>} />
-            <Route path='/productdtls' element={<AdminRegistration/>} />
         </Routes>
     );
 };
