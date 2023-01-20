@@ -2,8 +2,9 @@
 .product{
     width: 90%;
     margin: auto;
-    display: block;
-    gap: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 .product__heading{
     display: flex;
@@ -29,7 +30,6 @@
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     display: flex;
     gap: 5px;
-    padding: 6px;
 }
 .product_nav_location{
  display: flex;
@@ -56,4 +56,33 @@
     gap: 5px;
     font-size: 20px;
     padding: 3px;
+}
+
+.product_nav_nearMe{
+    display: flex;
+    height: 100%;
+    gap:5px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.product_nav_iconPart{
+    display: flex;
+    gap: 10px;
+    padding: 6px 13px 6px 4px;
+    border-right: 1px solid #888888;
+}
+
+.tab{
+    height: 100%;
+    padding: 0px 10px 0px 15px;
+}
+
+.product_detail{
+    display: flex;
+}
+.product_detail_filter{
+    height: 100%;
+    width: 100px; 
 }
