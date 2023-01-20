@@ -153,56 +153,44 @@ dispatch(GetAllAdmin())
                           <PopoverHeader>
                               <Box align="center" >
 
-                              {tocken===null?<Button onClick={onOpen} fontSize={{base:"12px", md:"14px"}} colorScheme='teal' size='md' p="5px 40px" >
+                              {tocken===null?<Button onClick={onOpen} fontSize={{base:"12px", md:"14px"}} fontFamily= "arial" background= "-webkit-gradient(linear,left top,left bottom,from(#058b80),to(#02625a))" colorScheme= "#fff" size='md' p="5px 40px" >
                                   Login/siginup
                                   </Button>:
-                                  <Button onClick={handleLogout} fontSize={{base:"12px", md:"14px"}} colorScheme='teal' size='md' p="5px 40px" >
+                                  <Button onClick={handleLogout} fontSize={{base:"12px", md:"14px"}} fontFamily= "arial" background= "-webkit-gradient(linear,left top,left bottom,from(#058b80),to(#02625a))" colorScheme= "#fff" size='md' p="5px 40px" >
                                   Logout
                                   </Button>}
-                                  {!admin&& <Modal closeOnOverlayClick={false} isOpen={isOpen} onClose={onClose}>
-        <ModalOverlay />
-        <ModalContent>
-         
-          <ModalCloseButton />
-          <ModalBody  textAlign={"center"}  pb={6}>
-          {!Registarion&& <Flex mt={20} flexDirection={"column"} gap={2}>
-             <Heading  color={"blueviolet"}>Login</Heading>
-            <Input placeholder='User name...' name='email' onChange={handlechenge}></Input>
-            <Input placeholder='Password...' type={"password"} name='password' onChange={handlechenge}></Input>
-            <Button onClick={handleLogin} colorScheme='blue' mr={3}>
-             {isLoading? <Spinner/>:"Login"} 
-            </Button>
-             <Link onClick={()=>setRegistarion(true)}>Don't have an account? <span style={{color:"blue"}}>Create your new account</span></Link>
- 
-            </Flex>} 
+                                  {!admin&& 
+                                  <Modal closeOnOverlayClick={false} isOpen={isOpen} onClose={onClose}>
+                                    <ModalOverlay />
+                                    <ModalContent>
+                                      <ModalCloseButton />
+                                      <ModalBody  textAlign={"center"}  pb={6}>
+                                      {!Registarion&& <Flex mt={20} flexDirection={"column"} gap={2}>
+                                          <Heading  color={"#333"}>Login</Heading>
+                                          <Input placeholder='User name...' name='email' onChange={handlechenge}></Input>
+                                          <Input placeholder='Password...' type={"password"} name='password' onChange={handlechenge}></Input>
+                                          <Button onClick={handleLogin} fontFamily= "arial" background= "-webkit-gradient(linear,left top,left bottom,from(#058b80),to(#02625a))" colorScheme= "#fff" mr={3}>{isLoading? <Spinner/>:"Login"} </Button>
+                                          <Link onClick={()=>setRegistarion(true)}>Don't have an account? <span style={{color:"blue"}}>Create your new account</span></Link>
+                                        </Flex>} 
+                                                              
+                                        {Registarion&& 
+                                        <Flex flexDirection={"column"} gap={2}>
+                                          <Heading color={"#333"}>Registration</Heading>
+                                          <Input placeholder='First name...'  name='firstname' onChange={handlechenge}></Input>
+                                          <Input placeholder='Lastst name...'  name='laststname' onChange={handlechenge}></Input>
+                                          <Input placeholder='Email...'  name='email' onChange={handlechenge}></Input>
+                                          <Input placeholder='Password...' name='password' type={"password"} onChange={handlechenge}></Input>
 
-            {Registarion&& <Flex flexDirection={"column"} gap={2}>
-            <Heading color={"blueviolet"}>Registration</Heading>
-            <Input placeholder='First name...'  name='firstname' onChange={handlechenge}></Input>
-            <Input placeholder='Lastst name...'  name='laststname' onChange={handlechenge}></Input>
-            <Input placeholder='Email...'  name='email' onChange={handlechenge}></Input>
-            <Input placeholder='Password...' name='password' type={"password"} onChange={handlechenge}></Input>
-
-            <Input placeholder='conform Password...'  type={"password"}  onChange={(e)=>setConform(e.target.value)}></Input>
-            <p style={{color:'red'}} >{cred.password!==undefined &&conform!==cred.password ? "password is not matching":""   }</p>
-            <Button onClick= {handleClick} colorScheme='blue' mr={3}>
-            {isLoading? <Spinner/>:"Sign Up"} 
-            </Button>
-            <Link onClick={()=>setRegistarion(!Registarion)}> already have an account</Link>
-                      </Flex>} 
-            
-         
-          </ModalBody>
-        
-          <ModalFooter>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>}
-
-
-                            
-
-                                  <Text fontSize={{base:"11px", md:"12px"}} >New to TRADEMART <span style={{color:"blue"}} >Join Now</span></Text>
+                                          <Input placeholder='conform Password...'  type={"password"}  onChange={(e)=>setConform(e.target.value)}></Input>
+                                          <p style={{color:'red'}} >{cred.password!==undefined &&conform!==cred.password ? "password is not matching":""   }</p>
+                                          <Button onClick= {handleClick} fontFamily= "arial" background= "-webkit-gradient(linear,left top,left bottom,from(#058b80),to(#02625a))" colorScheme= "#fff" mr={3}>{isLoading? <Spinner/>:"Sign Up"} </Button>
+                                          <Link onClick={()=>setRegistarion(!Registarion)}> already have an account</Link>
+                                        </Flex>} 
+                                                              
+                                      </ModalBody>
+                                    </ModalContent>
+                                  </Modal>}
+                                <Text fontSize={{base:"11px", md:"12px"}} >New to TRADEMART <span style={{color:"blue"}} >Join Now</span></Text>
                               </Box>
                           </PopoverHeader>
                           <PopoverBody>
@@ -256,35 +244,25 @@ dispatch(GetAllAdmin())
                               </Box>
                               <Box align="center" >
                                 <Button onClick={()=>{setAdmin(!admin)
-                                  onOpen()}} m="5px 0px" fontSize={{base:"12px", md:"14px"}} colorScheme='teal' size='sm' >
+                                  onOpen()}} m="5px 0px" fontSize={{base:"12px", md:"14px"}} fontFamily= "arial" background= "-webkit-gradient(linear,left top,left bottom,from(#058b80),to(#02625a))" colorScheme= "#fff" size='sm' >
                                   Admin Login
                                 </Button>
-                               {admin&& <Modal closeOnOverlayClick={false} isOpen={isOpen} onClose={onClose}>
-        <ModalOverlay />
-        <ModalContent>
-         
-          <ModalCloseButton />
-          <ModalBody  textAlign={"center"}  pb={6}>
-         <Flex mt={20} flexDirection={"column"} gap={2}>
-             <Heading  color={"blueviolet"}>Login</Heading>
-            <Input placeholder='User name...' name='email' onChange={handlechenge}></Input>
-            <Input placeholder='Password...' type={"password"} name='password' onChange={handlechenge}></Input>
-            <Button onClick={handleAdminLogin} colorScheme='blue' mr={3}>
-             {isLoading? <Spinner/>:"Login"} 
-            </Button>
-            
- 
-            </Flex> 
-
-         
-            
-         
-          </ModalBody>
-        
-          <ModalFooter>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>}
+                               {admin&& 
+                               <Modal closeOnOverlayClick={false} isOpen={isOpen} onClose={onClose}>
+                                  <ModalOverlay />
+                                  <ModalContent>
+                                    <ModalCloseButton />
+                                    <ModalBody  textAlign={"center"}  pb={6}>
+                                      <Flex mt={20} flexDirection={"column"} gap={2}>
+                                        <Heading  color={"#333"}>Login</Heading>
+                                        <Input placeholder='User name...' name='email' onChange={handlechenge}></Input>
+                                        <Input placeholder='Password...' type={"password"} name='password' onChange={handlechenge}></Input>
+                                        <Button onClick={handleAdminLogin} fontFamily= "arial" background= "-webkit-gradient(linear,left top,left bottom,from(#058b80),to(#02625a))" colorScheme= "#fff" mr={3}>
+                                        {isLoading? <Spinner/>:"Login"}</Button>
+                                      </Flex> 
+                                    </ModalBody>
+                                  </ModalContent>
+                                </Modal>}
                               </Box>
                           </PopoverFooter>
                       </PopoverContent>

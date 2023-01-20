@@ -33,6 +33,7 @@ npm i redux react-redux redux-thunk
 
 npm i react-router-dom@6
 
+npm i recharts
 
 
 
