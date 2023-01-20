@@ -1,4 +1,4 @@
-import { Box, Flex, Text } from '@chakra-ui/react'
+import { Box, Flex, Text,TableContainer,Table,Td,TableCaption,Thead,Tr,Tfoot,Th,Tbody } from '@chakra-ui/react'
 import React from 'react'
 
 const Dashboard = () => {
@@ -26,6 +26,37 @@ const Dashboard = () => {
                     <Text p={3} textStyle="DashboardBoxes">TODAY'S INCOME</Text>
                 </Box>
                </Flex>
+            </Box>
+
+            <Box mt="60px">
+            <Text textStyle="DashboardHead">Order Details</Text>
+            <TableContainer>
+                <Table variant='striped' colorScheme='blue'>   
+                <Thead>
+                <Tr>
+                <Th>ORDER ID</Th>
+                <Th>PAYMENT METHOD</Th>
+                <Th>ORDER DATE</Th>
+                <Th>DELIVERY DATE</Th>
+                <Th>STATUS</Th>
+                <Th>TOTAL</Th>
+                </Tr>
+                </Thead>
+                <Tbody>
+                   <Tr>
+                        <Td>inches</Td>
+                        <Td>millimetres (mm)</Td>
+                        <Td>25.4</Td>
+                        <Td>inches</Td>
+                        <Td>millimetres (mm)</Td>
+                        <Td>25.4</Td>
+                    </Tr>
+                 
+        
+                </Tbody>
+    
+            </Table>
+            </TableContainer>
             </Box>
         </Box>
     </div>

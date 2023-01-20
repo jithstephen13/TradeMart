@@ -13,7 +13,7 @@ import { AiOutlineHome, AiOutlineSetting, AiOutlineTag } from "react-icons/ai";
 import {   Heading,    Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalOverlay, Spinner, useToast } from '@chakra-ui/react';
 
 //-----------***------------------------------------------------------------------
-import Logo from "../utility/Logo.png"
+import Logo from "../assets/logo.png"
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { AddUser, GetAllAdmin, LoginUser, LogOUT } from '../redux/Auth/auth.action';
