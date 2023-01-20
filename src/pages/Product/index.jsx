@@ -10,12 +10,11 @@ import axios from 'axios'
 
 export default  function Product() {
 
-  const getserver = async() => {
-   let res = await axios.get('https://trademart-data-2zur.vercel.app/medicines');
-  //  let data =await res.json()
-    console.log(res.data)
-  }
-  getserver()
+  // const getserver = async() => {
+  //  let res = await axios.get('https://trademart-data-2zur.vercel.app/medicines');
+  //   console.log(res.data)
+  // }
+  // getserver()
   return (
    <Box className='product'>
       <Box className='product__heading'>
