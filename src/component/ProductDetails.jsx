@@ -23,19 +23,10 @@ import {
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
-  Input,
   Text,
   Image,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
   ModalOverlay,
-  Spinner,
   useDisclosure,
-  useToast,
 } from "@chakra-ui/react";
 import { useDispatch } from "react-redux";
 
