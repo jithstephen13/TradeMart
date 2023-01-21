@@ -7,6 +7,8 @@ import {IoLocationSharp} from 'react-icons/io5'
 import {BiSearch} from 'react-icons/bi'
 import {AiOutlineAim} from 'react-icons/ai'
 import axios from 'axios'
+import Navbar from '../../component/Navbar'
+import Footer from '../../component/Footer'
 
 export default  function Product() {
 
@@ -16,7 +18,7 @@ export default  function Product() {
     console.log(res.data)
   }
   getserver()
-  return (
+  return (<><Navbar />
    <Box className='product'>
       <Box className='product__heading'>
         <Box>
@@ -81,6 +83,7 @@ export default  function Product() {
        </Box>
       </Box>
    </Box>
+   <Footer /></>
   )
 }
 
