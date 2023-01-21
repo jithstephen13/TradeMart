@@ -34,6 +34,7 @@ import app1 from "../assets/homepage-assets/app1.png"
 import app2 from "../assets/homepage-assets/app2.PNG"
 import Navbar from '../component/Navbar';
 import Footer from '../component/Footer';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
     let [Carousel, setCarousel] = useState(false)
@@ -91,6 +92,9 @@ const Home = () => {
         {img:"https://3.imimg.com/data3/YN/LI/MY-2/dsc_2766-125x125.jpg",title:"Food Processing Plants",d1:"Oil Free Air Compressor",d2:"Reciprocating Compressors",d3:"Refrigeration Compressors"}
     ]
     let state = [ "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh", "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jammu and Kashmir", "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Odisha", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana", "Tripura", "Uttarakhand", "Uttar Pradesh", "West Bengal", "Andaman and Nicobar Islands", "Chandigarh", "Dadra and Nagar Haveli", "Daman and Diu", "Delhi", "Lakshadweep", "Puducherry"]
+
+    const [query, setQuery]= useState("")
+    // console.log('query:', query)
     return (<><Navbar />
         <Box backgroundColor="#F3F3F3" align="center" >
 {/* --------------------------------Banner & Search---------------------------------- */}
@@ -101,8 +105,8 @@ const Home = () => {
                         <Select fontSize={{ base:"10px", sm:"12px",md:"13px"}} backgroundColor= "#ececec" color= "#333" width={{sm:"20%", md:"30%"}} height={{ base:"20px", sm:"30px",md:"50px"}} display={{base:"none",sm:"flex"}} borderRadius="0px" placeholder='All India'>
                             {state?.map((el)=><option style={{fontSize:"12px"}} value='option2'>{el}</option>)}
                         </Select>
-                        <Input fontSize={{ base:"12px", sm:"13px",md:"15px"}} variant='unstyled' placeholder=' Enter product/service name' bg="white" height={{ base:"20px", sm:"30px",md:"50px"}} borderRadius="0px" />
-                        <a href="/searchpage" ><Button fontSize={{ base:"12px", sm:"13px",md:"15px"}} borderRadius="0px" fontFamily= "arial" background= "-webkit-gradient(linear,left top,left bottom,from(#058b80),to(#02625a))" colorScheme= "#fff" p="5px 22px" border= "none" margin= "0" height={{ base:"20px", sm:"30px",md:"50px"}}  position= "relative" left= "-4px" top= "0" cursor= "pointer" width= "142px" fontWeight= "700" text-indent= "30px" >Search</Button></a>
+                        <Input onChange={(e)=>setQuery(e.target.value)} paddingLeft="10px" fontSize={{ base:"12px", sm:"13px",md:"15px"}} variant='unstyled' placeholder=' Enter product/service name' bg="white" height={{ base:"20px", sm:"30px",md:"50px"}} borderRadius="0px" />
+                        <Link to={`/searchpage/${query}`} ><Button fontSize={{ base:"12px", sm:"13px",md:"15px"}} borderRadius="0px" fontFamily= "arial" background= "-webkit-gradient(linear,left top,left bottom,from(#058b80),to(#02625a))" colorScheme= "#fff" p="5px 22px" border= "none" margin= "0" height={{ base:"20px", sm:"30px",md:"50px"}}  position= "relative" left= "-4px" top= "0" cursor= "pointer" width= "142px" fontWeight= "700" text-indent= "30px" >Search</Button></Link>
                     </Flex>
                 </Box>
             </Box>

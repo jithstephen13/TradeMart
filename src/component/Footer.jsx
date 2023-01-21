@@ -1,6 +1,6 @@
 import { Box, Container, Link, SimpleGrid, Stack, Text, Flex, Tag, Image,} from '@chakra-ui/react';
 import React from 'react';
-import Logo from "../assets/logo.png"
+import Logo from "../assets/logodark.png"
 
 const Footer = () => {
     return (
@@ -60,31 +60,3 @@ const Footer = () => {
 };
 
 export default Footer;
-
-// About Us
-// Join Sales
-// Success Stories
-// Press Section
-// Advertise with Us
-// Investor Section
-// Help
-// Feedback
-// Complaints
-// Customer Care
-// Jobs & Careers
-// Contact Us
-// Suppliers Tool Kit
-// Sell on IndiaMART
-// Latest BuyLead
-// Learning Centre
-// Ship With IndiaMART
-// Buyers Tool Kit
-// Post Your Requirement
-// Products You Buy
-// Search Products & Suppliers
-// Pay With IndiaMART
-// Accounting Solutions
-// Accounting Software
-// Tally on Mobile
-// GST e-Invoice
-// Terms of Use - Privacy Policy - Link to UsCopyright © 1996-2023 IndiaMART InterMESH Ltd. All rights reserved.
