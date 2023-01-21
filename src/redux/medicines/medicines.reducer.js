@@ -17,6 +17,7 @@ export const medicinesreducer = (state = initialState, { type, payload }) => {
       }
     } 
     case types.GET_medicines_SUCCESS:{
+      
       return {
         ...state,
         isLoading:false,
@@ -123,6 +124,22 @@ export const medicinesreducer = (state = initialState, { type, payload }) => {
 
       }
      }
+
+      case types.SORT_medicinesES: {
+      if (payload == "high") {
+    
+        let sorted = state.medicines.sort(
+          (a, b) => Number(a.price) - Number(b.price)
+        );
+    
+        return { ...state, medicines: [...sorted] };
+      } else if (payload == "low") {
+        let sorted = state.medicines.sort(
+          (a, b) => Number(b.price) - Number(a.price)
+        );
+        return { ...state, medicines: [...sorted] };
+      }
+    }
 
 
  

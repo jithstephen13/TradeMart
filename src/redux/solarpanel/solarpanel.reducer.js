@@ -123,21 +123,23 @@ export const solarpanelreducer = (state = initialState, { type, payload }) => {
 
       }
      }
-    //  case types.SORT_solarpanel: {
-    //   if (payload == "high") {
+     case types.SORT_solarpanel: {
+      if (payload == "high") {
     
-    //     let sorted = state.solarpanel.sort(
-    //       (a, b) => Number(a.price) - Number(b.price)
-    //     );
+        let sorted = state.solarpanel.sort(
+          (a, b) => Number(a.price) - Number(b.price)
+        );
+        console.log(sorted)
     
-    //     return { ...state, solarpanel: [...sorted] };
-    //   } else if (payload == "low") {
-    //     let sorted = state.solarpanel.sort(
-    //       (a, b) => Number(b.price) - Number(a.price)
-    //     );
-    //     return { ...state, solarpanel: [...sorted] };
-    //   }
-    // }
+        return { ...state, solarpanel: [...sorted] };
+      } else if (payload == "low") {
+        let sorted = state.solarpanel.sort(
+          (a, b) => Number(b.price) - Number(a.price)
+        );
+        console.log(sorted)
+        return { ...state, solarpanel: [...sorted] };
+      }
+    }
 
 
 

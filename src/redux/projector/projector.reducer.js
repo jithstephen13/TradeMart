@@ -123,6 +123,21 @@ export const projectorreducer = (state = initialState, { type, payload }) => {
 
       }
      }
+     case types.SORT_projectorES: {
+      if (payload == "high") {
+    
+        let sorted = state.projector.sort(
+          (a, b) => Number(a.price) - Number(b.price)
+        );
+    
+        return { ...state, projector: [...sorted] };
+      } else if (payload == "low") {
+        let sorted = state.projector.sort(
+          (a, b) => Number(b.price) - Number(a.price)
+        );
+        return { ...state, projector: [...sorted] };
+      }
+    }
 
 
 

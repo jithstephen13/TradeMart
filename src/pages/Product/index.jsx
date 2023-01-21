@@ -15,13 +15,13 @@ export default  function Product() {
   //  let data =await res.json()
     console.log(res.data)
   }
-  getserver()
+  // getserver()
   return (
-   <Box className='product'>
+   <Box display={{base:"none",sm:"none",md:"block"}} className='product'>
       <Box className='product__heading'>
         <Box>
         <Text className='product__heading__text'>
-              Plywoods
+              
         </Text>
         </Box>
          <Box className='product__heading__view'>
@@ -73,7 +73,7 @@ export default  function Product() {
       <Box className='product_detail'>
        <Box className='product_detail_filter'>
         <Box>
-          <Text>Filter Results</Text>
+          
         </Box>
        </Box>
        <Box>
