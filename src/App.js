@@ -7,9 +7,7 @@ import SearchPageDetails from "./component/SearchPageDetails";
 function App() {
   return (
     <div>
-      <Navbar />
       <Allroutes />
-      <Footer />
     </div>
   );
 }

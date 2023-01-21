@@ -10,7 +10,7 @@ export const ADD_medicines_ERROR = "medicines/add/error";
 // update  
 export const UPDATE_medicines_LOADING = "medicines/update/laoding";
 export const UPDATE_medicines_SUCCESS = "medicines/update/success";
-export const UPDATE_medicinesS_ERROR = "medicines/update/error";
+export const UPDATE_medicines_ERROR = "medicines/update/error";
 
 // REMOVE  
 export const REMOVE_medicines_LOADING = "medicines/remove/laoding";

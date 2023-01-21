@@ -1,8 +1,8 @@
-import { Button, CardHeader, Flex, Heading, Input, Link, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Spinner, useDisclosure, useToast } from '@chakra-ui/react';
+import { Button, Flex, Heading, Input, Link, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter,  ModalOverlay, Spinner, useDisclosure, useToast } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { AddUser,  GetAllAdmin,  LoginUser, LogOUT } from '../redux/Auth/auth.action';
+import {   GetAllAdmin } from '../redux/Auth/auth.action';
 import { getItem } from '../utility/localStorage';
 
 const AdninLogin = () => {
