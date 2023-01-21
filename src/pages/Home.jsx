@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Button, Flex, Heading, Image, Input, Select, Text } from '@chakra-ui/react';
+import { Box, Button, Flex, Heading, Image, Input, Select, SimpleGrid, Text } from '@chakra-ui/react';
 import MegaMenu from '../component/MegaMenu';
 import { BsCheckLg } from 'react-icons/bs';
 import banner1 from "../assets/homepage-banner1.jpg"
@@ -43,9 +43,10 @@ const Home = () => {
         }, 3000)
     },[Carousel])
 
+    
+
     let state = [ "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh", "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jammu and Kashmir", "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Odisha", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana", "Tripura", "Uttarakhand", "Uttar Pradesh", "West Bengal", "Andaman and Nicobar Islands", "Chandigarh", "Dadra and Nagar Haveli", "Daman and Diu", "Delhi", "Lakshadweep", "Puducherry"]
-    return (<>
-        <Navbar />
+    return (<><Navbar />
         <Box backgroundColor="#F3F3F3" align="center" >
 {/* ------------------------Banner & Search---------------------------------- */}
             <Box backgroundImage={banner1} backgroundPosition="center" display="flex" justifyContent="center" alignItems="center" position="relative" backgroundSize="cover" minHeight={{base:"120px",sm:"220px"}} >
@@ -65,8 +66,100 @@ const Home = () => {
                 <MegaMenu />
             </Box>
             <hr />
+{/* ------------------------------------------------------------------------- */}
+            <Box backgroundColor="white" marginTop="20px" w="96%">
+                <Heading align="left" p="5px 10px" fontSize={{base:"18px",sm:"22px", md:"28px"}} fontFamily ="Arial" color="#333" >Explore products from Premium Brands</Heading>
+                <Flex w="95%" m="auto" p="10px 0px" >
+                    <Box w="28%">
+                        <Image height="100%" p="0px 20px 0px 0px" objectFit="cover" src="https://hm.imimg.com/imhome_gifs/building-construction.jpg" />
+                    </Box>
+                    <SimpleGrid w="72%" columns={{base:2,md:3}} spacing={5}>
+                        <Flex p="10px" boxShadow="rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px" >
+                            <Box w="50%"><Image  src="https://3.imimg.com/data3/RS/UH/GLADMIN-5385/brick-making-machines-125x125.jpg" /></Box>
+                            <Box p="0px 10px" align="start">
+                                <Text fontSize={{base:"10px",sm:"12px", md:"13px" }} pb="5px" fontWeight="700">Brick Machines</Text>
+                                <Text fontSize={{base:"10px",sm:"12px" }} >Fly Ash Brick Machine</Text>
+                                <Text fontSize={{base:"10px",sm:"12px" }} >Clay Brick Machine</Text>
+                                <Text fontSize={{base:"10px",sm:"12px" }} >Cement Brick Machine</Text>
+                            </Box>
+                        </Flex>
+                        <Flex p="10px" boxShadow="rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px" >
+                            <Box w="50%"><Image  src="https://3.imimg.com/data3/RS/UH/GLADMIN-5385/brick-making-machines-125x125.jpg" /></Box>
+                            <Box p="0px 10px" align="start">
+                                <Text fontSize={{base:"10px",sm:"12px", md:"13px" }} pb="5px" fontWeight="700">Brick Machines</Text>
+                                <Text fontSize={{base:"10px",sm:"12px" }} >Fly Ash Brick Machine</Text>
+                                <Text fontSize={{base:"10px",sm:"12px" }} >Clay Brick Machine</Text>
+                                <Text fontSize={{base:"10px",sm:"12px" }} >Cement Brick Machine</Text>
+                            </Box>
+                        </Flex>
+                        <Flex p="10px" boxShadow="rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px" >
+                            <Box w="50%"><Image  src="https://3.imimg.com/data3/RS/UH/GLADMIN-5385/brick-making-machines-125x125.jpg" /></Box>
+                            <Box p="0px 10px" align="start">
+                                <Text fontSize={{base:"10px",sm:"12px", md:"13px" }} pb="5px" fontWeight="700">Brick Machines</Text>
+                                <Text fontSize={{base:"10px",sm:"12px" }} >Fly Ash Brick Machine</Text>
+                                <Text fontSize={{base:"10px",sm:"12px" }} >Clay Brick Machine</Text>
+                                <Text fontSize={{base:"10px",sm:"12px" }} >Cement Brick Machine</Text>
+                            </Box>
+                        </Flex>
+                        <Flex p="10px" boxShadow="rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px" >
+                            <Box w="50%"><Image  src="https://3.imimg.com/data3/RS/UH/GLADMIN-5385/brick-making-machines-125x125.jpg" /></Box>
+                            <Box p="0px 10px" align="start">
+                                <Text fontSize={{base:"10px",sm:"12px", md:"13px" }} pb="5px" fontWeight="700">Brick Machines</Text>
+                                <Text fontSize={{base:"10px",sm:"12px" }} >Fly Ash Brick Machine</Text>
+                                <Text fontSize={{base:"10px",sm:"12px" }} >Clay Brick Machine</Text>
+                                <Text fontSize={{base:"10px",sm:"12px" }} >Cement Brick Machine</Text>
+                            </Box>
+                        </Flex>
+                        <Flex p="10px" boxShadow="rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px" >
+                            <Box w="50%"><Image  src="https://3.imimg.com/data3/RS/UH/GLADMIN-5385/brick-making-machines-125x125.jpg" /></Box>
+                            <Box p="0px 10px" align="start">
+                                <Text fontSize={{base:"10px",sm:"12px", md:"13px" }} pb="5px" fontWeight="700">Brick Machines</Text>
+                                <Text fontSize={{base:"10px",sm:"12px" }} >Fly Ash Brick Machine</Text>
+                                <Text fontSize={{base:"10px",sm:"12px" }} >Clay Brick Machine</Text>
+                                <Text fontSize={{base:"10px",sm:"12px" }} >Cement Brick Machine</Text>
+                            </Box>
+                        </Flex>
+                        <Flex p="10px" boxShadow="rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px" >
+                            <Box w="50%"><Image  src="https://3.imimg.com/data3/RS/UH/GLADMIN-5385/brick-making-machines-125x125.jpg" /></Box>
+                            <Box p="0px 10px" align="start">
+                                <Text fontSize={{base:"10px",sm:"12px", md:"13px" }} pb="5px" fontWeight="700">Brick Machines</Text>
+                                <Text fontSize={{base:"10px",sm:"12px" }} >Fly Ash Brick Machine</Text>
+                                <Text fontSize={{base:"10px",sm:"12px" }} >Clay Brick Machine</Text>
+                                <Text fontSize={{base:"10px",sm:"12px" }} >Cement Brick Machine</Text>
+                            </Box>
+                        </Flex>
+                        <Flex p="10px" boxShadow="rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px" >
+                            <Box w="50%"><Image  src="https://3.imimg.com/data3/RS/UH/GLADMIN-5385/brick-making-machines-125x125.jpg" /></Box>
+                            <Box p="0px 10px" align="start">
+                                <Text fontSize={{base:"10px",sm:"12px", md:"13px" }} pb="5px" fontWeight="700">Brick Machines</Text>
+                                <Text fontSize={{base:"10px",sm:"12px" }} >Fly Ash Brick Machine</Text>
+                                <Text fontSize={{base:"10px",sm:"12px" }} >Clay Brick Machine</Text>
+                                <Text fontSize={{base:"10px",sm:"12px" }} >Cement Brick Machine</Text>
+                            </Box>
+                        </Flex>
+                        <Flex p="10px" boxShadow="rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px" >
+                            <Box w="50%"><Image  src="https://3.imimg.com/data3/RS/UH/GLADMIN-5385/brick-making-machines-125x125.jpg" /></Box>
+                            <Box p="0px 10px" align="start">
+                                <Text fontSize={{base:"10px",sm:"12px", md:"13px" }} pb="5px" fontWeight="700">Brick Machines</Text>
+                                <Text fontSize={{base:"10px",sm:"12px" }} >Fly Ash Brick Machine</Text>
+                                <Text fontSize={{base:"10px",sm:"12px" }} >Clay Brick Machine</Text>
+                                <Text fontSize={{base:"10px",sm:"12px" }} >Cement Brick Machine</Text>
+                            </Box>
+                        </Flex>
+                        <Flex p="10px" boxShadow="rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px" >
+                            <Box w="50%"><Image  src="https://3.imimg.com/data3/RS/UH/GLADMIN-5385/brick-making-machines-125x125.jpg" /></Box>
+                            <Box p="0px 10px" align="start">
+                                <Text fontSize={{base:"10px",sm:"12px", md:"13px" }} pb="5px" fontWeight="700">Brick Machines</Text>
+                                <Text fontSize={{base:"10px",sm:"12px" }} >Fly Ash Brick Machine</Text>
+                                <Text fontSize={{base:"10px",sm:"12px" }} >Clay Brick Machine</Text>
+                                <Text fontSize={{base:"10px",sm:"12px" }} >Cement Brick Machine</Text>
+                            </Box>
+                        </Flex>
+                    </SimpleGrid>
+                </Flex>
+            </Box>
 {/* -------------------------Carousel------------------------------------------ */}
-            {/* <Box backgroundColor="white">
+            <Box backgroundColor="white">
                 <Flex>
                     <Box w={{base:"0%", md:"35%"}} display={{base:"none", md:"flex"}} flexDirection="column" >
                         <Heading align="left" p={{base:"5px 5px 5px 5px", md:"40px 20px 10px 20px"}} fontSize={{base:"15px",sm:"18px", md:"22px", lg:"30px"}} fontFamily ="Arial" color="#333" >We connect</Heading>
@@ -97,9 +190,9 @@ const Home = () => {
                         </Box>
                     </Box>
                 </Flex>
-            </Box> */}
+            </Box>
 {/* ------------------------Cities------------------------------------- */}
-            {/* <Box backgroundColor="white" marginTop="20px" w="96%">
+            <Box backgroundColor="white" marginTop="20px" w="96%">
                 <Heading align="left" p="5px 10px" fontSize={{base:"18px",sm:"22px", md:"30px"}} fontFamily ="Arial" color="#333" >Find Suppliers from Top Cities</Heading>
                 <Flex justifyContent="space-around" >
                     <Box display="flex" flexDirection="column" p={{base:"10px 0px",md:"25px 0px"}} cursor="pointer" ><Image src={c1} pb="10px" w={{base:"40px", sm:"60px", md:"80px"}} /><Text fontSize={{base:"12px",sm:"15px", md:"18px" }} textAlign="center">Delhi</Text></Box>
@@ -115,9 +208,9 @@ const Home = () => {
                     <Box display="flex" flexDirection="column" p={{base:"10px 0px",md:"25px 0px"}} cursor="pointer" ><Image src={c9} pb="10px" w={{base:"40px", sm:"60px", md:"80px"}} /><Text fontSize={{base:"12px",sm:"15px", md:"18px" }} textAlign="center">Jaipur</Text></Box>
                     <Box display="flex" flexDirection="column" p={{base:"10px 0px",md:"25px 0px"}} cursor="pointer" ><Image src={c10} pb="10px" w={{base:"40px", sm:"60px", md:"80px"}} /><Text fontSize={{base:"12px",sm:"15px", md:"18px" }} textAlign="center">Hyderabad</Text></Box>
                 </Flex>
-            </Box> */}
+            </Box>
 {/* ------------------------Brands------------------------------------- */}
-            {/* <Box backgroundColor="white" marginTop="20px" w="96%">
+            <Box backgroundColor="white" marginTop="20px" w="96%">
                 <Heading align="left" p="5px 10px" fontSize={{base:"18px",sm:"22px", md:"30px"}} fontFamily ="Arial" color="#333" >Explore products from Premium Brands</Heading>
                 <Flex justifyContent="space-around" >
                     <Box w="20%" display="flex" justifyContent="center" p={{base:"10px", md:"20px 25px" }} alignItems="center" ><Image src={company1}  /></Box>
@@ -135,9 +228,9 @@ const Home = () => {
                     <Box w="20%" display="flex" justifyContent="center" p={{base:"10px", md:"20px 25px" }} alignItems="center" ><Image src={company12} /></Box>
                     <Box w="20%" display="flex" justifyContent="center" p={{base:"10px", md:"20px 25px" }} alignItems="center" ><Image src={company11} /></Box>
                 </Flex>
-            </Box> */}
+            </Box>
 {/* -------------------------------Software---------------------------------- */}
-            {/* <Flex backgroundColor="white" marginTop="20px" w="96%" >
+            <Flex backgroundColor="white" marginTop="20px" w="96%" >
                 <Box p={{base:"10px",md:"50px"}} align="start">
                     <Image w={{base:"20%",md:"50%"}}  src={software1} />
                     <Heading p={{base:"10px 0px 0px 0px", md:"20px 0px 0px 0px"}} fontSize={{base:"18px",sm:"20px", md:"30px"}} fontFamily ="Arial" color="#333" >Accounting Software</Heading>
@@ -163,9 +256,9 @@ const Home = () => {
                     <Image display={{base:"none", lg:"flex"}} w="50%" src={software2} />
                 </Box>
                 
-            </Flex> */}
+            </Flex>
 {/* -------------------------------Mobile App--------------------------------- */}
-            {/* <Flex backgroundColor="white" justifyContent="space-evenly" margin="20px" w="96%" >
+            <Flex backgroundColor="white" justifyContent="space-evenly" margin="20px" w="96%" >
                 <Box p={{base:"10px",md:"50px 0px 0px 0px"}} >
                     <Image w="70%" src={app1} />
                 </Box>
@@ -180,8 +273,8 @@ const Home = () => {
                     <Image w={{base:"20%",md:"50%"}}  src={app2} />
                 </Box>
                 
-            </Flex> */}
-{/* ------------------------------------------------------------------------- */}
+            </Flex>
+        
 {/* ------------------------------------------------------------------------- */}
         </Box>
         <Footer />
