@@ -67,7 +67,7 @@ const Home = () => {
             </Box>
             <hr />
 {/* ------------------------------------------------------------------------- */}
-            <Box backgroundColor="white" marginTop="20px" w="96%">
+<Box backgroundColor="white" marginTop="20px" w="96%">
                 <Heading align="left" p="5px 10px" fontSize={{base:"18px",sm:"22px", md:"28px"}} fontFamily ="Arial" color="#333" >Explore products from Premium Brands</Heading>
                 <Flex w="95%" m="auto" p="10px 0px" >
                     <Box w="28%">
@@ -83,78 +83,7 @@ const Home = () => {
                                 <Text fontSize={{base:"10px",sm:"12px" }} >Cement Brick Machine</Text>
                             </Box>
                         </Flex>
-                        <Flex p="10px" boxShadow="rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px" >
-                            <Box w="50%"><Image  src="https://3.imimg.com/data3/RS/UH/GLADMIN-5385/brick-making-machines-125x125.jpg" /></Box>
-                            <Box p="0px 10px" align="start">
-                                <Text fontSize={{base:"10px",sm:"12px", md:"13px" }} pb="5px" fontWeight="700">Brick Machines</Text>
-                                <Text fontSize={{base:"10px",sm:"12px" }} >Fly Ash Brick Machine</Text>
-                                <Text fontSize={{base:"10px",sm:"12px" }} >Clay Brick Machine</Text>
-                                <Text fontSize={{base:"10px",sm:"12px" }} >Cement Brick Machine</Text>
-                            </Box>
-                        </Flex>
-                        <Flex p="10px" boxShadow="rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px" >
-                            <Box w="50%"><Image  src="https://3.imimg.com/data3/RS/UH/GLADMIN-5385/brick-making-machines-125x125.jpg" /></Box>
-                            <Box p="0px 10px" align="start">
-                                <Text fontSize={{base:"10px",sm:"12px", md:"13px" }} pb="5px" fontWeight="700">Brick Machines</Text>
-                                <Text fontSize={{base:"10px",sm:"12px" }} >Fly Ash Brick Machine</Text>
-                                <Text fontSize={{base:"10px",sm:"12px" }} >Clay Brick Machine</Text>
-                                <Text fontSize={{base:"10px",sm:"12px" }} >Cement Brick Machine</Text>
-                            </Box>
-                        </Flex>
-                        <Flex p="10px" boxShadow="rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px" >
-                            <Box w="50%"><Image  src="https://3.imimg.com/data3/RS/UH/GLADMIN-5385/brick-making-machines-125x125.jpg" /></Box>
-                            <Box p="0px 10px" align="start">
-                                <Text fontSize={{base:"10px",sm:"12px", md:"13px" }} pb="5px" fontWeight="700">Brick Machines</Text>
-                                <Text fontSize={{base:"10px",sm:"12px" }} >Fly Ash Brick Machine</Text>
-                                <Text fontSize={{base:"10px",sm:"12px" }} >Clay Brick Machine</Text>
-                                <Text fontSize={{base:"10px",sm:"12px" }} >Cement Brick Machine</Text>
-                            </Box>
-                        </Flex>
-                        <Flex p="10px" boxShadow="rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px" >
-                            <Box w="50%"><Image  src="https://3.imimg.com/data3/RS/UH/GLADMIN-5385/brick-making-machines-125x125.jpg" /></Box>
-                            <Box p="0px 10px" align="start">
-                                <Text fontSize={{base:"10px",sm:"12px", md:"13px" }} pb="5px" fontWeight="700">Brick Machines</Text>
-                                <Text fontSize={{base:"10px",sm:"12px" }} >Fly Ash Brick Machine</Text>
-                                <Text fontSize={{base:"10px",sm:"12px" }} >Clay Brick Machine</Text>
-                                <Text fontSize={{base:"10px",sm:"12px" }} >Cement Brick Machine</Text>
-                            </Box>
-                        </Flex>
-                        <Flex p="10px" boxShadow="rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px" >
-                            <Box w="50%"><Image  src="https://3.imimg.com/data3/RS/UH/GLADMIN-5385/brick-making-machines-125x125.jpg" /></Box>
-                            <Box p="0px 10px" align="start">
-                                <Text fontSize={{base:"10px",sm:"12px", md:"13px" }} pb="5px" fontWeight="700">Brick Machines</Text>
-                                <Text fontSize={{base:"10px",sm:"12px" }} >Fly Ash Brick Machine</Text>
-                                <Text fontSize={{base:"10px",sm:"12px" }} >Clay Brick Machine</Text>
-                                <Text fontSize={{base:"10px",sm:"12px" }} >Cement Brick Machine</Text>
-                            </Box>
-                        </Flex>
-                        <Flex p="10px" boxShadow="rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px" >
-                            <Box w="50%"><Image  src="https://3.imimg.com/data3/RS/UH/GLADMIN-5385/brick-making-machines-125x125.jpg" /></Box>
-                            <Box p="0px 10px" align="start">
-                                <Text fontSize={{base:"10px",sm:"12px", md:"13px" }} pb="5px" fontWeight="700">Brick Machines</Text>
-                                <Text fontSize={{base:"10px",sm:"12px" }} >Fly Ash Brick Machine</Text>
-                                <Text fontSize={{base:"10px",sm:"12px" }} >Clay Brick Machine</Text>
-                                <Text fontSize={{base:"10px",sm:"12px" }} >Cement Brick Machine</Text>
-                            </Box>
-                        </Flex>
-                        <Flex p="10px" boxShadow="rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px" >
-                            <Box w="50%"><Image  src="https://3.imimg.com/data3/RS/UH/GLADMIN-5385/brick-making-machines-125x125.jpg" /></Box>
-                            <Box p="0px 10px" align="start">
-                                <Text fontSize={{base:"10px",sm:"12px", md:"13px" }} pb="5px" fontWeight="700">Brick Machines</Text>
-                                <Text fontSize={{base:"10px",sm:"12px" }} >Fly Ash Brick Machine</Text>
-                                <Text fontSize={{base:"10px",sm:"12px" }} >Clay Brick Machine</Text>
-                                <Text fontSize={{base:"10px",sm:"12px" }} >Cement Brick Machine</Text>
-                            </Box>
-                        </Flex>
-                        <Flex p="10px" boxShadow="rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px" >
-                            <Box w="50%"><Image  src="https://3.imimg.com/data3/RS/UH/GLADMIN-5385/brick-making-machines-125x125.jpg" /></Box>
-                            <Box p="0px 10px" align="start">
-                                <Text fontSize={{base:"10px",sm:"12px", md:"13px" }} pb="5px" fontWeight="700">Brick Machines</Text>
-                                <Text fontSize={{base:"10px",sm:"12px" }} >Fly Ash Brick Machine</Text>
-                                <Text fontSize={{base:"10px",sm:"12px" }} >Clay Brick Machine</Text>
-                                <Text fontSize={{base:"10px",sm:"12px" }} >Cement Brick Machine</Text>
-                            </Box>
-                        </Flex>
+                        
                     </SimpleGrid>
                 </Flex>
             </Box>
