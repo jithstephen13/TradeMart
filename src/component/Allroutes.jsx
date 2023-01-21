@@ -5,9 +5,9 @@ import Home from "../pages/Home";
 // import ProductPop from "../pages/ProductPop";
 import Admin from "./ADMIN/admin";
 import Cart from "./Cart";
-import ProductDetails from "./ProductDetails";
 import Block from "../pages/Block/index";
 import Product from "../pages/Product";
+import ProductDetails from "./ProductDetails";
 import SearchPageDetails from "./SearchPageDetails";
 
 const Allroutes = () => {
