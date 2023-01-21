@@ -86,7 +86,7 @@ export const medicinesreducer = (state = initialState, { type, payload }) => {
       }
      }
     
-     case types.UPDATE_medicinesS_ERROR:{
+     case types.UPDATE_medicines_ERROR:{
       return {
         ...state,
         isLoading:false,

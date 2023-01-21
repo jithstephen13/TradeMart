@@ -19,7 +19,7 @@ const Navbar = () => {
                     <Flex justifyContent="space-around">
                     <Text><BellIcon color={"white"} boxSize={6}/> </Text>
                     <Text><DragHandleIcon color={"white"} boxSize={6} /></Text>
-                    <Text textStyle="AdminNav">Hii,{addmin.name}</Text>
+                    <Text textStyle="AdminNav">Hii,swati</Text>
                     </Flex>
                 </Box>
             </Flex>
