@@ -12,14 +12,13 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.2.2",
+    "bootstrap": "^5.2.3",
     "firebase": "^9.16.0",
     "framer-motion": "^8.5.0",
+    "node-sass": "^8.0.0",
     "react": "^18.2.0",
+    "react-bootstrap": "^2.7.0",
     "react-dom": "^18.2.0",
-<<<<<<< HEAD
-    "react-elastic-carousel": "^0.11.5",
-=======
->>>>>>> ad03b1300431d5b39be6363fbc3119fec1557b4e
     "react-firebase-hooks": "^5.1.1",
     "react-icons": "^4.7.1",
     "react-redux": "^8.0.5",
@@ -29,6 +28,7 @@
     "recharts": "^2.3.2",
     "redux": "^4.2.0",
     "redux-thunk": "^2.4.2",
+    "sass": "^1.57.1",
     "swiper": "^8.4.6",
     "web-vitals": "^2.1.4"
   },
