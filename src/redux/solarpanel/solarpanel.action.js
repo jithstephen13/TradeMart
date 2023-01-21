@@ -5,7 +5,7 @@ export const Get_solarpanel_item=()=>async(dispatch)=>{
 
     dispatch({type:types.GET_solarpanel_LOADING})
     try {
-           let respnce=await axios.get(`https://next-backend-orpin.vercel.app/solarpanel`)
+           let respnce=await axios.get(`https://trademart-data-2zur.vercel.app/solarpanel`)
            dispatch({type:types.GET_solarpanel_SUCCESS,payload:respnce.data})
     } catch (error) {
         dispatch({type:types.GET_solarpanel_ERROR})
@@ -19,7 +19,7 @@ export const ADD_solarpanel_item=(cred)=>async(dispatch)=>{
 
     dispatch({type:types.ADD_solarpanel_LOADING})
     try {
-        let res=await axios.post('https://next-backend-orpin.vercel.app/solarpanel',cred)
+        let res=await axios.post('https://trademart-data-2zur.vercel.app/solarpanel',cred)
         console.log(res.data)
         dispatch({type:types.ADD_solarpanelT_SUCCESS,payload:res.data})
         
@@ -33,7 +33,7 @@ export const UPDATE_solarpanel_item=(id,chenge)=>async(dispatch)=>{
 
      dispatch({type:types.UPDATE_solarpanel_LOADING})
     try {
-        let res=await axios.patch( `https://next-backend-orpin.vercel.app/solarpanel/${id}`,chenge)
+        let res=await axios.patch( `https://trademart-data-2zur.vercel.app/solarpanel/${id}`,chenge)
         console.log(res.data)
         dispatch({type:types.UPDATE_solarpanel_SUCCESS,payload:res.data})
         
@@ -47,7 +47,7 @@ export const REMOVE_solarpanel_item=(id)=>async(dispatch)=>{
     console.log(id)
     dispatch({type:types.REMOVE_solarpanel_LOADING})
     try {
-        let res=await axios.delete( `https://next-backend-orpin.vercel.app/solarpanel/${id}`)
+        let res=await axios.delete( `https://trademart-data-2zur.vercel.app/solarpanel/${id}`)
         console.log(res.data)
         dispatch({type:types.REMOVE_solarpanel_SUCCESS,payload:id})
         
