@@ -38,7 +38,7 @@ export const UPDATE_medicines_item=(id,chenge)=>async(dispatch)=>{
         dispatch({type:types.UPDATE_medicines_SUCCESS,payload:res.data})
         
     } catch (error) {
-        dispatch({type:types.UPDATE_medicines_ERROR})        
+        dispatch({type:types.UPDATE_medicinesS_ERROR})        
     }
 
 }
@@ -57,4 +57,7 @@ export const REMOVE_medicines_item=(id)=>async(dispatch)=>{
 
     
 }
+export const sortMymedicines = (how) => (dispatch) => {
+    dispatch({ type: types.SORT_medicinesES, payload: how });
+  };
  
