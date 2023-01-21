@@ -57,3 +57,6 @@ export const REMOVE_projector_item=(id)=>async(dispatch)=>{
 
     
 }
+export const sortMyprojector = (how) => (dispatch) => {
+    dispatch({ type: types.SORT_projectorES, payload: how });
+  };

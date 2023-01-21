@@ -57,4 +57,7 @@ export const REMOVE_medicines_item=(id)=>async(dispatch)=>{
 
     
 }
+export const sortMymedicines = (how) => (dispatch) => {
+    dispatch({ type: types.SORT_medicinesES, payload: how });
+  };
  

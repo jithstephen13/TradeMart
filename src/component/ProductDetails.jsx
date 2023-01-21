@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import {
+  Badge,
   Box,
   Button,
   Grid,
@@ -16,6 +17,7 @@ import { MdLocationOn } from "react-icons/md";
 import { FaLocationArrow } from "react-icons/fa";
 import { CheckCircleIcon, PhoneIcon } from "@chakra-ui/icons";
 import { useParams } from "react-router-dom";
+import { Link as ItemLink } from "react-router-dom";
 
 const ProductDetails = () => {
   const [data, setData] = useState([]);
@@ -73,11 +75,19 @@ const ProductDetails = () => {
           justifyContext="space-around"
         >
           {/* Product-Image */}
-          <Box w={{ sm: "90%", md: "30%" }} textAlign="center" m="auto">
-            <img
+          <Box
+            w={{ sm: "90%", md: "30%" }}
+            h={{ sm: "180px", md: "300px" }}
+            textAlign="center"
+            m="auto"
+          >
+            <Image
               src={data.img_src}
               alt="medicine"
-              style={{ borderRadius: "18px", height: "350px", margin: "auto" }}
+              style={{
+                borderRadius: "18px",
+                marginTop: "20px",
+              }}
             />
           </Box>
 
@@ -93,8 +103,7 @@ const ProductDetails = () => {
               {data.name}
             </p>
             <p style={{ color: "blue", fontWeight: "bold" }}>
-              {" "}
-              {data.price}
+              Price: {data.price}
               <span style={{ fontWeight: "lighter" }}>/Pack</span>{" "}
             </p>
             <div style={{ marginTop: "22px" }}>
@@ -123,7 +132,7 @@ const ProductDetails = () => {
               We offers Bronchodilator & Expectorant {data.name}.
             </p>
             <Button
-              w={{ sm: "200px", md: "250px" }}
+              w={{ base: "100%", md: "70%" }}
               ml={{ sm: "20px", md: "50px" }}
               p="20px"
               color="white"
@@ -131,6 +140,7 @@ const ProductDetails = () => {
               fontWeight="bold"
               borderRadius="10px"
               fontSize="17px"
+              _hover={{ backgroundColor: "#1b9a84", color: "white" }}
             >
               Get Latest Price
             </Button>
@@ -189,8 +199,15 @@ const ProductDetails = () => {
 
         {/* Browse Related categories */}
         <Stack mb="25px">
-          <Text m="15px" fontSize="22px" fontWeight="bold" textAlign="center">
-            Browse related categories
+          <Text
+            m="5px"
+            mt="35px"
+            fontSize={{ base: "25", md: "32px" }}
+            fontWeight="bold"
+            textAlign="center"
+            textDecoration="underline"
+          >
+            Browse Related Categories
           </Text>
           <Grid
             templateColumns={{ sm: "repeat(1,1fr)", md: "repeat(4,1fr)" }}
@@ -199,22 +216,59 @@ const ProductDetails = () => {
             margin="10px"
           >
             {relatedData.map((el, id) => (
-              <GridItem>
-                <img
-                  src={el.img_src}
-                  alt="img"
-                  style={{
-                    borderRadius: "20px",
-                    backgroundColor: "white",
-                  }}
-                />
-                <Text fontWeight="bold" mt="15px">
-                  {el.name}
-                </Text>
-                <Text fontWeight="bold" color="blue">
-                  {el.price}
-                </Text>
-                <Text fontWeight="bold">{el.company}</Text>
+              <GridItem margin={"20px"}>
+                <Box
+                  padding="15px"
+                  maxW="sm"
+                  borderWidth="1px"
+                  borderRadius="lg"
+                  overflow="hidden"
+                >
+                  <Image
+                    style={{ width: "80%", margin: "12px" }}
+                    src={el.img_src}
+                    alt={el.name}
+                  />
+
+                  <Box>
+                    <Box mt="5px" display="flex" alignItems="baseline">
+                      <Badge borderRadius="full" px="2" colorScheme="teal">
+                        New
+                      </Badge>
+                    </Box>
+
+                    <Box
+                      mt="5px"
+                      fontWeight="semibold"
+                      as="h4"
+                      lineHeight="tight"
+                      noOfLines={1}
+                    >
+                      {el.name}
+                    </Box>
+
+                    <Box fontWeight="bold" mt="8px">
+                      Price: ₹ {el.price}
+                      <Box as="span" color="gray.600" fontSize="sm">
+                        / Piece
+                      </Box>
+                    </Box>
+
+                    <Text m="8px 0px">{el.desc}</Text>
+
+                    <ItemLink to={`/productdetails/${el.id}`}>
+                      <Button
+                        w="100%"
+                        margin="auto"
+                        color="white"
+                        bgColor="#25766a"
+                        _hover={{ backgroundColor: "#1b9a84", color: "white" }}
+                      >
+                        Add to Cart
+                      </Button>
+                    </ItemLink>
+                  </Box>
+                </Box>
               </GridItem>
             ))}
           </Grid>
