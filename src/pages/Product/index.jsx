@@ -84,7 +84,7 @@ export default  function Product() {
        </Box>
       </Box>
    </Box>
-   <Footer /></>
+  
   )
 }
 
