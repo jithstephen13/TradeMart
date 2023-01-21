@@ -55,7 +55,7 @@ const Products = () => {
           <YAxis />
           <Tooltip />
           <Legend />
-          <Bar dataKey="count" fill="#8884d8" />
+          <Bar dataKey="count" fill="#2e3192" />
           </BarChart>
        
             </Box>
@@ -72,11 +72,47 @@ const Products = () => {
           <YAxis type="number" domain={[0, 400]}/>
           <Tooltip />
           <Legend />
+          <Line type="monotone" dataKey="price" stroke="#2e3192" activeDot={{ r: 8 }} />
+          
+           </LineChart>
+            </Box>
+
+            {/* projector */}
+            <Box margin="auto" mt="40px">
+            <Box w="100%" bgColor="#e8ecef" mt={6} mb={6} p={3}>
+            <Text color={"red"}>Electronics : Projectors</Text>
+            </Box>
+            <LineChart width={1200} height={600} data={projector} margin={{ top: 5,right:30,left: 20,bottom: 5,
+          }}>
+          <CartesianGrid strokeDasharray="45 45" />
+          <XAxis dataKey="id" />
+          <YAxis type="number" domain={[1000, 60000]} />
+          <Tooltip />
+          <Legend />
+          <Line type="monotone" dataKey="price" stroke="#2e3192" activeDot={{ r: 8 }} />
+         
+        </LineChart>
+            
+            </Box>
+ 
+          {/* solarpanel */}
+          <Box margin="auto" mt="40px">
+            <Box w="100%" bgColor="#e8ecef" mt={6} mb={6} p={3}>
+            <Text color={"red"}>Electronics : Solar Panels</Text>
+            </Box>
+            <LineChart width={1200} height={500} data={solarpanel} margin={{top: 5,right: 30,left: 20,bottom: 5,}} >
+          <CartesianGrid strokeDasharray="50 50" />
+          <XAxis dataKey="id" />
+          <YAxis type='string' domain={[0,1000]}/>
+          <Tooltip />
+          <Legend />
           <Line type="monotone" dataKey="price" stroke="#8884d8" activeDot={{ r: 8 }} />
           
         </LineChart>
+            
             </Box>
  
+          
 
           
             
