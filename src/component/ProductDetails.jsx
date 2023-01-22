@@ -30,6 +30,8 @@ import { FaLocationArrow } from "react-icons/fa";
 import { CheckCircleIcon, PhoneIcon } from "@chakra-ui/icons";
 import { useParams } from "react-router-dom";
 import { Link as ItemLink } from "react-router-dom";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
 
 const ProductDetails = () => {
   const [data, setData] = useState([]);
@@ -133,6 +135,9 @@ const ProductDetails = () => {
 
   return (
     <>
+      {/* Navbar */}
+      <Navbar />
+
       {/* Body Part */}
       <div style={{ padding: "10px", backgroundColor: "#f9f8f7" }}>
         <Stack
@@ -460,6 +465,9 @@ const ProductDetails = () => {
           </Grid>
         </Stack>
       </div>
+
+      {/* Footer */}
+      <Footer />
     </>
   );
 };

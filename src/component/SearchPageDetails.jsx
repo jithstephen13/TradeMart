@@ -10,13 +10,13 @@ import {
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-
+import Footer from "./Footer";
+import Navbar from "./Navbar";
 const SearchPageDetails = () => {
   const [data, setData] = useState([]);
   const query = useParams();
   let final = query.query;
   // console.log('final:', final)
-
   const fetchData = (final) => {
     return axios.get("https://trademart-data-2zur.vercel.app/Allproducts", {
       params: {
@@ -24,7 +24,6 @@ const SearchPageDetails = () => {
       },
     });
   };
-
   useEffect(() => {
     fetchData(final)
       .then((res) => {
@@ -35,9 +34,11 @@ const SearchPageDetails = () => {
         console.log("Error: ", true);
       });
   }, []);
-
   return (
     <>
+      {/* Navbar */}
+      <Navbar />
+
       {/* Products */}
       <Grid
         templateColumns={{ sm: "repeat(1,1fr)", md: "repeat(4,1fr)" }}
@@ -99,6 +100,9 @@ const SearchPageDetails = () => {
           );
         })}
       </Grid>
+
+      {/* Footer */}
+      <Footer />
     </>
   );
 };
