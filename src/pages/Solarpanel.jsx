@@ -79,8 +79,7 @@ const Solarpanel = () => {
         width={"80%"}
         boxShadow={"rgba(0, 0, 0, 0.35) 0px 5px 15px;"}
       >
-        <Text
-          marginTop={2}
+        <Text marginTop={2}
           color={"teal"}
           id="medicinese"
           fontSize={35}
