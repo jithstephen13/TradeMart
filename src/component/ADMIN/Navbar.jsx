@@ -4,6 +4,7 @@ import { BellIcon ,DragHandleIcon} from '@chakra-ui/icons'
 import logo from "../../assets/logo.png"
 import Styles from "./Admin.module.css"
 import { getItem } from '../../utility/localStorage'
+import {Link} from "react-router-dom"
 
 
 const Navbar = () => {
@@ -17,7 +18,7 @@ const Navbar = () => {
         <Box w="100%" h="50px" bgColor="#2e3192">
             <Flex justifyContent="space-between">
                 <Box w="20%" p={3}>
-                    <Image w="50%" ml={6} src={logo} alt=""/>
+                    <Link to={"/"}><Image w="50%" ml={6} src={logo} alt=""/></Link>
                 </Box>
                 <Box w="20%" p={3}>
                     <Flex justifyContent="space-around">
