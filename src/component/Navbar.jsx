@@ -1,25 +1,6 @@
 import React, { useEffect, useState } from "react";
 //-----------Chakra UI Components-------
-import {
-  Box,
-  Flex,
-  HStack,
-  Link,
-  IconButton,
-  useDisclosure,
-  Stack,
-  Input,
-  Text,
-  Image,
-  Button,
-  PopoverFooter,
-  PopoverBody,
-  PopoverHeader,
-  PopoverCloseButton,
-  PopoverArrow,
-  PopoverContent,
-  Popover,
-  PopoverTrigger,
+import { Box, Flex, HStack, Link, IconButton, useDisclosure, Stack, Input, Text, Image, Button, PopoverFooter, PopoverBody, PopoverHeader, PopoverCloseButton, PopoverArrow, PopoverContent, Popover, PopoverTrigger,  Heading, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalOverlay, Spinner, useToast,
 } from "@chakra-ui/react";
 //-----------ICONS----------------------
 import { TiThSmall } from "react-icons/ti";
@@ -30,17 +11,7 @@ import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import { MdOutlineMessage, MdSendToMobile } from "react-icons/md";
 import { BiMessageDetail, BiMobile, BiUserCircle } from "react-icons/bi";
 import { AiOutlineHome, AiOutlineSetting, AiOutlineTag } from "react-icons/ai";
-import {
-  Heading,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalFooter,
-  ModalOverlay,
-  Spinner,
-  useToast,
-} from "@chakra-ui/react";
+import { Link } from 'react-router-dom';
 
 //-----------***------------------------------------------------------------------
 import Logo from "../assets/logo.png";
@@ -157,9 +128,9 @@ const Navbar = () => {
       <Box px={4} backgroundColor="#2E3192">
         <Flex h={14} alignItems={"center"} justifyContent={"space-between"}>
           <HStack spacing={{ base: 3, md: 8 }} alignItems={"center"}>
-            <Box w={["120px", "140px", "160px", "200px"]}>
+            <Link to="/" ><Box w={["120px", "140px", "160px", "200px"]}>
               <Image src={Logo} />
-            </Box>
+            </Box></Link>
             {/* <Input placeholder='search' display={{base:"none", md:"flex"}} /> */}
           </HStack>
           <Flex alignItems={"center"} w={{ md: "75%", md: "40%", lg: "30%" }}>
