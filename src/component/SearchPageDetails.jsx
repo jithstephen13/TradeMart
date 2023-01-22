@@ -4,18 +4,25 @@ import {
   Button,
   Grid,
   GridItem,
-  Heading,
-  HStack,
   Image,
-  Input,
   Text,
 } from "@chakra-ui/react";
 import axios from "axios";
+import React, { useEffect, useState } from "react";
 import React, { useState } from "react";
+
 import { Link, useParams } from "react-router-dom";
 
 const SearchPageDetails = () => {
   const [data, setData] = useState([]);
+  const query = useParams();
+  let final = query.query;
+  // console.log('final:', final)
+
+  const fetchData = (final) => {
+    return axios.get("https://trademart-data-2zur.vercel.app/Allproducts", {
+      params: {
+        q: final,
   const [query, setQuery] = useState("");
   const queryfirst = useParams()
   console.log('queryfirst:', queryfirst)
@@ -28,6 +35,8 @@ const SearchPageDetails = () => {
     });
   };
 
+  useEffect(() => {
+    fetchData(final)
   const handleSearch = () => {
     fetchData(queryfirst)
       .then((res) => {
@@ -35,40 +44,12 @@ const SearchPageDetails = () => {
         setData(res.data);
       })
       .catch((err) => {
-        console.log("Error: ", err);
+        console.log("Error: ", true);
       });
-  };
-
-  // useEffect(() => {
-  //   fetchData(query)
-  //     .then((res) => {
-  //       console.log(res.data);
-  //       setData(res.data);
-  //     })
-  //     .catch((err) => {
-  //       console.log("Error: ", true);
-  //     });
-  // }, []);
+  }, []);
 
   return (
     <>
-      {/* Search Body Part */}
-      <Heading textAlign="center" textDecoration="underline" margin="15px">
-        Search Page
-      </Heading>
-      <HStack w={{ base: "340px", md: "400px" }} m="auto">
-        <Input
-          type="text"
-          value={query}
-          onChange={(e) => {
-            setQuery(e.target.value);
-            handleSearch();
-          }}
-          placeholder="Search Product"
-        />
-        <Button onClick={handleSearch}>Search</Button>
-      </HStack>
-
       {/* Products */}
       <Grid
         templateColumns={{ sm: "repeat(1,1fr)", md: "repeat(4,1fr)" }}
@@ -91,14 +72,12 @@ const SearchPageDetails = () => {
                   src={el.img_src}
                   alt={el.name}
                 />
-
                 <Box>
                   <Box mt="5px" display="flex" alignItems="baseline">
                     <Badge borderRadius="full" px="2" colorScheme="teal">
                       New
                     </Badge>
                   </Box>
-
                   <Box
                     mt="5px"
                     fontWeight="semibold"
@@ -108,23 +87,20 @@ const SearchPageDetails = () => {
                   >
                     {el.name}
                   </Box>
-
                   <Box fontWeight="bold" mt="8px">
                     Price: ₹ {el.price}
                     <Box as="span" color="gray.600" fontSize="sm">
                       / Piece
                     </Box>
                   </Box>
-
                   <Text m="8px 0px">{el.desc}</Text>
-
-                  <Link to={`/productdetails/${el.id}`}>
+                  <Link to={`/productDetails/${el.id}`}>
                     <Button
                       w="100%"
                       margin="auto"
                       color="white"
-                      bgColor="#25766a"
-                      _hover={{ backgroundColor: "#1b9a84", color: "white" }}
+                      bgColor="#25766A"
+                      _hover={{ backgroundColor: "#1B9A84", color: "white" }}
                     >
                       Add to Cart
                     </Button>
@@ -138,5 +114,4 @@ const SearchPageDetails = () => {
     </>
   );
 };
-
 export default SearchPageDetails;

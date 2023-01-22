@@ -1,16 +1,28 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
+import emailjs from "@emailjs/browser";
+import { useDispatch } from "react-redux";
+import { ADD_Cart_item } from "../redux/Carts/Cart.action";
 import {
   Badge,
   Box,
   Button,
+  Drawer,
+  DrawerBody,
+  DrawerCloseButton,
+  DrawerContent,
+  DrawerHeader,
+  DrawerOverlay,
+  Flex,
   Grid,
   GridItem,
   HStack,
   Image,
   Link,
+  ModalOverlay,
   Stack,
   Text,
+  useDisclosure,
   VStack,
 } from "@chakra-ui/react";
 import { MdLocationOn } from "react-icons/md";
@@ -64,6 +76,60 @@ const ProductDetails = () => {
     getProduct(id);
     getRelatedProduct();
   }, [id]);
+
+  const OverlayOne = () => (
+    <ModalOverlay
+      bg="blackAlpha.300"
+      backdropFilter="blur(10px) hue-rotate(90deg)"
+    />
+  );
+
+  const [cred, setCred] = useState(data);
+  let newDate = new Date();
+  let date = newDate.getDate();
+  let month = newDate.getMonth() + 1;
+  let year = newDate.getFullYear();
+  const handlechenge = (e) => {
+    const { name, value } = e.target;
+    setCred({
+      ...cred,
+      [name]: value,
+      date: `${year}${"-"}${
+        month < 10 ? `0${month}` : `${month}`
+      }${"-"}${date}`,
+    });
+    // console.log(cred)
+  };
+
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [overlay, setOverlay] = useState(<OverlayOne />);
+
+  const form = useRef();
+  const dispatch = useDispatch();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    dispatch(ADD_Cart_item(cred));
+    emailjs
+      .sendForm(
+        "service_hakjw5z",
+        "template_p2zhnas",
+        form.current,
+        "pc7y9Dv2GAuWDsXZH"
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+          onClose();
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+
+    form.current.reset();
+  };
 
   return (
     <>
@@ -141,9 +207,129 @@ const ProductDetails = () => {
               borderRadius="10px"
               fontSize="17px"
               _hover={{ backgroundColor: "#1b9a84", color: "white" }}
+              onClick={() => {
+                onOpen();
+              }}
             >
               Get Latest Price
             </Button>
+
+            {/* Sidebar Pop-up */}
+            <Drawer onClose={onClose} isOpen={isOpen} size={"lg"}>
+              <DrawerOverlay />
+              <DrawerContent>
+                <DrawerCloseButton align={"center"} />
+                <DrawerHeader> </DrawerHeader>
+                <DrawerBody>
+                  <Flex gap={4}>
+                    <Box
+                      w={"50%"}
+                      pt={6}
+                      boxShadow={"rgba(0, 0, 0, 0.35) 0px 5px 15px;"}
+                      padding={6}
+                    >
+                      <Image h={{ base: "150px" }} src={data.img_src} />
+                      <Text>
+                        <span style={{ fontWeight: "bold" }}> Name :-</span>{" "}
+                        {data.name}
+                      </Text>
+                      <Text>
+                        <span style={{ fontWeight: "bold" }}> Price :-</span>{" "}
+                        {data.price}
+                      </Text>
+                      <Text>
+                        <span style={{ fontWeight: "bold" }}>Rating :-</span>{" "}
+                        {data.rating}
+                      </Text>
+                      <Text>
+                        <span style={{ fontWeight: "bold" }}> Discount :-</span>{" "}
+                        {data.discount}
+                      </Text>
+                    </Box>
+                    <Box w={"50%"}>
+                      <form
+                        ref={form}
+                        style={{
+                          display: "flex",
+                          flexDirection: "column",
+                          gap: "10px",
+                          border: "1px solid black",
+                          padding: "15px",
+                        }}
+                      >
+                        <label>Name</label>
+                        <input
+                          type="text"
+                          style={{ border: "1px solid black", padding: "3px" }}
+                          placeholder="Name"
+                          name="user_name"
+                          onChange={handlechenge}
+                        />
+                        <label>Email</label>
+                        <input
+                          type="email"
+                          style={{ border: "1px solid black", padding: "3px" }}
+                          placeholder="Email ..."
+                          name="user_email"
+                          onChange={handlechenge}
+                        />
+                        <label>Quantity</label>
+                        <input
+                          type="text"
+                          style={{ border: "1px solid black", padding: "3px" }}
+                          placeholder="Quantity"
+                          name="qty"
+                          onChange={handlechenge}
+                        />
+                        <label>Product Name</label>
+                        <select
+                          name="Product name"
+                          style={{ border: "1px solid black" }}
+                        >
+                          <option>Selectname</option>
+                          <option value={data.name}>{data.name}</option>
+                        </select>
+                        {/* <input type='text'  value={Item.name} name='product name' onChange={handlechenge}   /> */}
+                        <label>Price</label>
+                        {/* <input type='text'  value={Item.price} name='price' onChange={handlechenge}    /> */}
+                        <select
+                          name="Price"
+                          style={{ border: "1px solid black" }}
+                        >
+                          <option>Select price</option>
+                          <option value={data.price}>{data.price}</option>
+                        </select>
+                        <label> Message</label>
+                        <input
+                          type="text"
+                          name="message"
+                          style={{ border: "1px solid black", padding: "32px" }}
+                          placeholder="Type your message here......"
+                        />
+                        <Button
+                          pl={{ base: "10px", md: "20px" }}
+                          pr={{ base: "10px", md: "20px" }}
+                          color="white"
+                          cursor="pointer"
+                          bgColor="#25766a"
+                          onClick={sendEmail}
+                          _hover={{
+                            backgroundColor: "#1b9a84",
+                            color: "white",
+                          }}
+                        >
+                          {" "}
+                          Sent
+                        </Button>
+                      </form>
+                    </Box>
+                  </Flex>
+                </DrawerBody>
+                <Text margin={"auto"} mb="8px" fontWeight={"bold"}>
+                  Dealer will contacts you within 3 days
+                </Text>
+              </DrawerContent>
+            </Drawer>
           </Box>
 
           {/* Retailer Details */}
@@ -216,7 +402,7 @@ const ProductDetails = () => {
             margin="10px"
           >
             {relatedData.map((el, id) => (
-              <GridItem margin={"20px"}>
+              <GridItem margin={"10px"}>
                 <Box
                   padding="15px"
                   maxW="sm"
@@ -247,14 +433,14 @@ const ProductDetails = () => {
                       {el.name}
                     </Box>
 
-                    <Box fontWeight="bold" mt="8px">
+                    <Box fontWeight="bold" mt="8px" mb="8px">
                       Price: ₹ {el.price}
                       <Box as="span" color="gray.600" fontSize="sm">
                         / Piece
                       </Box>
                     </Box>
 
-                    <Text m="8px 0px">{el.desc}</Text>
+                    {/* <Text m="8px 0px">{el.desc}</Text> */}
 
                     <ItemLink to={`/productdetails/${el.id}`}>
                       <Button
