@@ -119,20 +119,21 @@ Glimpse and Screenshots of our cloned website:
 
 
 
-<img width="50%" src="">
+<img width="50%" src="./src/assets/prdt.png">
 
 
 ## Pdoduct Detailes Page:
 
  
 
-<img width="50%" src="">
+<img width="50%" src="./src/assets/product.png">
+<img width="50%" src="./src/assets/pdpopup.png">
 
 ## Admin:
 
 - 
 
-<img width="50%" src="">
+<img width="50%" src="./src/assets/Screenshot 2023-01-22 213046.png">
 
 - Technically Help is the last page developed for the best User Interface UI smooth Operations.
 
