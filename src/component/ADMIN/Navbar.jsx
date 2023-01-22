@@ -8,6 +8,7 @@ import { getItem } from '../../utility/localStorage'
 
 const Navbar = () => {
     let addmin=getItem("admin")
+    console.log(addmin,"adm")
   return (
     <div className={Styles.Navbar} >
         <Box w="100%" h="50px" bgColor="#2e3192">
@@ -19,7 +20,7 @@ const Navbar = () => {
                     <Flex justifyContent="space-around">
                     <Text><BellIcon color={"white"} boxSize={6}/> </Text>
                     <Text><DragHandleIcon color={"white"} boxSize={6} /></Text>
-                    <Text textStyle="AdminNav">Hii,swati</Text>
+                    <Text textStyle="AdminNav">Hii, {addmin.name}</Text>
                     </Flex>
                 </Box>
             </Flex>
