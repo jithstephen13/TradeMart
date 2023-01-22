@@ -38,72 +38,101 @@ const SearchPageDetails = () => {
       });
   }, []);
 
-  return (
-    <>
-      <Navbar />
-      {/* Products */}
-      <Grid
-        templateColumns={{ sm: "repeat(1,1fr)", md: "repeat(4,1fr)" }}
-        gap="6"
-        textAlign="center"
-        margin="10px"
-      >
-        {data.map((el) => {
-          return (
-            <GridItem margin={"20px"}>
-              <Box
-                padding="15px"
-                maxW="sm"
-                borderWidth="1px"
-                borderRadius="lg"
-                overflow="hidden"
-              >
-                <Image
-                  style={{ width: "80%", margin: "12px" }}
-                  src={el.img_src}
-                  alt={el.name}
-                />
-                <Box>
-                  <Box mt="5px" display="flex" alignItems="baseline">
-                    <Badge borderRadius="full" px="2" colorScheme="teal">
-                      New
-                    </Badge>
-                  </Box>
-                  <Box
-                    mt="5px"
-                    fontWeight="semibold"
-                    as="h4"
-                    lineHeight="tight"
-                    noOfLines={1}
-                  >
-                    {el.name}
-                  </Box>
-                  <Box fontWeight="bold" mt="8px">
-                    Price: ₹ {el.price}
-                    <Box as="span" color="gray.600" fontSize="sm">
-                      / Piece
+  if (data.length === 0) {
+    return (
+      <>
+        {/* Navbar */}
+        <Navbar />
+
+        <Text fontWeight="bold" textAlign="center" margin="7px">
+          No results for {final}
+        </Text>
+        <Text textAlign="center">Try to search something different</Text>
+        <Image
+          src="https://media.tenor.com/swTDQJ85dDEAAAAC/aaaa.gif"
+          alt="gif"
+          display="block"
+          margin="15px auto"
+          height={{ base: "200px", md: "350px" }}
+          width={{ base: "70%", md: "50%" }}
+        />
+
+        {/* Footer */}
+        <Footer />
+      </>
+    );
+  } else {
+    return (
+      <>
+        {/* Navbar */}
+        <Navbar />
+
+        {/* Products */}
+        <Grid
+          templateColumns={{ sm: "repeat(1,1fr)", md: "repeat(4,1fr)" }}
+          gap="6"
+          textAlign="center"
+          margin="10px"
+        >
+          {data.map((el) => {
+            return (
+              <GridItem margin={"20px"}>
+                <Box
+                  padding="15px"
+                  maxW="sm"
+                  borderWidth="1px"
+                  borderRadius="lg"
+                  overflow="hidden"
+                >
+                  <Image
+                    style={{ width: "80%", height: "200px", margin: "12px" }}
+                    src={el.img_src}
+                    alt={el.name}
+                  />
+                  <Box>
+                    <Box mt="5px" display="flex" alignItems="baseline">
+                      <Badge borderRadius="full" px="2" colorScheme="teal">
+                        New
+                      </Badge>
                     </Box>
-                  </Box>
-                  <Text m="8px 0px">{el.desc}</Text>
-                  <Link to={`/productDetails/${el.id}`}>
-                    <Button
-                      w="100%"
-                      margin="auto"
-                      color="white"
-                      bgColor="#25766A"
-                      _hover={{ backgroundColor: "#1B9A84", color: "white" }}
+                    <Box
+                      mt="5px"
+                      fontWeight="semibold"
+                      as="h4"
+                      lineHeight="tight"
+                      noOfLines={1}
                     >
-                      Add to Cart
-                    </Button>
-                  </Link>
+                      {el.name}
+                    </Box>
+                    <Box fontWeight="bold" m="8px">
+                      Price: ₹ {el.price}
+                      <Box as="span" color="gray.600" fontSize="sm">
+                        / Piece
+                      </Box>
+                    </Box>
+                    {/* <Text m="8px 0px">{el.desc}</Text> */}
+                    <Link to={`/productDetails/${el.id}`}>
+                      <Button
+                        w="100%"
+                        margin="auto"
+                        color="white"
+                        bgColor="#25766A"
+                        _hover={{ backgroundColor: "#1B9A84", color: "white" }}
+                      >
+                        See more details ...
+                      </Button>
+                    </Link>
+                  </Box>
                 </Box>
-              </Box>
-            </GridItem>
-          );
-        })}
-      </Grid>
-      <Footer />
-    </>
-  );
+              </GridItem>
+            );
+          })}
+        </Grid>
+
+        {/* Footer */}
+        <Footer />
+      </>
+    );
+  }
 };
 export default SearchPageDetails;

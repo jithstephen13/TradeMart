@@ -135,7 +135,9 @@ const ProductDetails = () => {
 
   return (
     <>
-    <Navbar /> 
+      {/* Navbar */}
+      <Navbar />
+
       {/* Body Part */}
       <div style={{ padding: "10px", backgroundColor: "#f9f8f7" }}>
         <Stack
@@ -214,7 +216,7 @@ const ProductDetails = () => {
                 onOpen();
               }}
             >
-              Get Latest Price
+              Buy now
             </Button>
 
             {/* Sidebar Pop-up */}
@@ -263,7 +265,7 @@ const ProductDetails = () => {
                         <label>Name</label>
                         <input
                           type="text"
-                          style={{ border: "1px solid black", padding: "3px" }}
+                          style={{ border: "1px solid black", padding: "5px" }}
                           placeholder="Name"
                           name="user_name"
                           onChange={handlechenge}
@@ -271,7 +273,7 @@ const ProductDetails = () => {
                         <label>Email</label>
                         <input
                           type="email"
-                          style={{ border: "1px solid black", padding: "3px" }}
+                          style={{ border: "1px solid black", padding: "5px" }}
                           placeholder="Email ..."
                           name="user_email"
                           onChange={handlechenge}
@@ -279,7 +281,7 @@ const ProductDetails = () => {
                         <label>Quantity</label>
                         <input
                           type="text"
-                          style={{ border: "1px solid black", padding: "3px" }}
+                          style={{ border: "1px solid black", padding: "5px" }}
                           placeholder="Quantity"
                           name="qty"
                           onChange={handlechenge}
@@ -322,7 +324,7 @@ const ProductDetails = () => {
                           }}
                         >
                           {" "}
-                          Sent
+                          Order Confirm
                         </Button>
                       </form>
                     </Box>
@@ -414,7 +416,7 @@ const ProductDetails = () => {
                   overflow="hidden"
                 >
                   <Image
-                    style={{ width: "80%", margin: "12px" }}
+                    style={{ width: "80%", height: "200px", margin: "12px" }}
                     src={el.img_src}
                     alt={el.name}
                   />
@@ -436,7 +438,7 @@ const ProductDetails = () => {
                       {el.name}
                     </Box>
 
-                    <Box fontWeight="bold" mt="8px" mb="8px">
+                    <Box fontWeight="bold" m="8px">
                       Price: ₹ {el.price}
                       <Box as="span" color="gray.600" fontSize="sm">
                         / Piece
@@ -453,7 +455,7 @@ const ProductDetails = () => {
                         bgColor="#25766a"
                         _hover={{ backgroundColor: "#1b9a84", color: "white" }}
                       >
-                        Add to Cart
+                        See more details ...
                       </Button>
                     </ItemLink>
                   </Box>
@@ -463,7 +465,9 @@ const ProductDetails = () => {
           </Grid>
         </Stack>
       </div>
-      <Footer /> 
+
+      {/* Footer */}
+      <Footer />
     </>
   );
 };
