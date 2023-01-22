@@ -1,11 +1,8 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import AdminRegistration from "../pages/AdminRegistration";
 import Home from "../pages/Home";
 import Admin from "./ADMIN/admin";
 import Cart from "./Cart";
-import Block from "../pages/Block/index";
-import Product from "../pages/Product";
 import ProductDetails from "./ProductDetails";
 import SearchPageDetails from "./SearchPageDetails";
 import Medicines from "../pages/Medicines";
@@ -19,7 +16,7 @@ const Allroutes = () => {
       <Route path="/" element={<Home />} />
       <Route path="/cart" element={<Cart />} />
       <Route path="/productdetails/:id" element={<ProductDetails />} />
-      <Route path="/searchpage" element={<SearchPageDetails />} />
+      <Route path="/searchProduct/:query" element={<SearchPageDetails />} />
       <Route path="/admin" element={<Admin />} />
       <Route path="/Medicines" element={<Medicines />} />
       <Route path="/solar" element={<Solarpanel />} />

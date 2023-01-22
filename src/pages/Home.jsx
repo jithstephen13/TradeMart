@@ -106,7 +106,7 @@ const Home = () => {
                             {state?.map((el)=><option style={{fontSize:"12px"}} value='option2'>{el}</option>)}
                         </Select>
                         <Input onChange={(e)=>setQuery(e.target.value)} paddingLeft="10px" fontSize={{ base:"12px", sm:"13px",md:"15px"}} variant='unstyled' placeholder=' Enter product/service name' bg="white" height={{ base:"20px", sm:"30px",md:"50px"}} borderRadius="0px" />
-                        <Link to={`/searchpage/${query}`} ><Button fontSize={{ base:"12px", sm:"13px",md:"15px"}} borderRadius="0px" fontFamily= "arial" background= "-webkit-gradient(linear,left top,left bottom,from(#058b80),to(#02625a))" colorScheme= "#fff" p="5px 22px" border= "none" margin= "0" height={{ base:"20px", sm:"30px",md:"50px"}}  position= "relative" left= "-4px" top= "0" cursor= "pointer" width= "142px" fontWeight= "700" text-indent= "30px" >Search</Button></Link>
+                        <Link to={`/searchProduct/${query}`} ><Button fontSize={{ base:"12px", sm:"13px",md:"15px"}} borderRadius="0px" fontFamily= "arial" background= "-webkit-gradient(linear,left top,left bottom,from(#058b80),to(#02625a))" colorScheme= "#fff" p="5px 22px" border= "none" margin= "0" height={{ base:"20px", sm:"30px",md:"50px"}}  position= "relative" left= "-4px" top= "0" cursor= "pointer" width= "142px" fontWeight= "700" text-indent= "30px" >Search</Button></Link>
                     </Flex>
                 </Box>
             </Box>
@@ -160,7 +160,7 @@ const Home = () => {
                     </Box>
                     <SimpleGrid height="100%" w={{base:"100%",xl:"72%"}} columns={{base:2,md:3}} spacing={5}>
                         {sec1.map((el)=>(
-                            <Flex key={el.title} p="10px" flexDirection={{base:"column", sm:"row"}} boxShadow="rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px" >
+                            <Flex  p="10px" flexDirection={{base:"column", sm:"row"}} boxShadow="rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px" >
                                 <Box w="50%"><Image  src={el.img} /></Box>
                                 <Box p="0px 10px" align="start">
                                     <Text fontSize={{base:"10px",sm:"12px", md:"13px" }} pb="5px" fontWeight="700">{el.title}</Text>
@@ -191,13 +191,13 @@ const Home = () => {
                 <Flex height="100%" w="95%" m="auto" p="10px 0px" >
                     <Box w={{base:"0%",xl:"28%"}} visibility={{base:"hidden",xl:"visible"}} >
                         <Box position="relative" backgroundImage="https://hm.imimg.com/imhome_gifs/electronics-electrical-goods.jpg" >
-                            <a href="/" ><Button top="360px" right="30%" position="absolute" fontSize={{ base:"12px", sm:"13px",md:"15px"}} borderRadius="0px" fontFamily= "arial" background= "teal" colorScheme= "white" p="5px 22px" border= "none" margin= "0" height={{ base:"20px", sm:"30px",md:"50px"}} cursor= "pointer" width= "142px" fontWeight= "700" text-indent= "30px" >View All</Button></a>
+                            <a href="/Projector" ><Button top="360px" right="30%" position="absolute" fontSize={{ base:"12px", sm:"13px",md:"15px"}} borderRadius="0px" fontFamily= "arial" background= "teal" colorScheme= "white" p="5px 22px" border= "none" margin= "0" height={{ base:"20px", sm:"30px",md:"50px"}} cursor= "pointer" width= "142px" fontWeight= "700" text-indent= "30px" >View All</Button></a>
                         </Box>
                         <Image height="100%" p="0px 20px 0px 0px" objectFit="cover" src="https://hm.imimg.com/imhome_gifs/electronics-electrical-goods.jpg" />
                     </Box>
                     <SimpleGrid height="100%" w={{base:"100%",xl:"72%"}} columns={{base:2,md:3}} spacing={5}>
                         {sec2.map((el)=>(
-                            <Flex key={el.title} p="10px" flexDirection={{base:"column", sm:"row"}} boxShadow="rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px" >
+                            <Flex  p="10px" flexDirection={{base:"column", sm:"row"}} boxShadow="rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px" >
                                 <Box w="50%"><Image  src={el.img} /></Box>
                                 <Box p="0px 10px" align="start">
                                     <Text fontSize={{base:"10px",sm:"12px", md:"13px" }} pb="5px" fontWeight="700">{el.title}</Text>
@@ -208,7 +208,7 @@ const Home = () => {
                             </Flex>
                         ))}
                         {hide2.map((el)=>(
-                            <Flex display={{base:"none",md:"flex"}} p="10px" flexDirection={{base:"column", sm:"row"}} boxShadow="rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px" >
+                            <a href="/solar"><Flex display={{base:"none",md:"flex"}} p="10px" flexDirection={{base:"column", sm:"row"}} boxShadow="rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px" >
                                 <Box w="50%"><Image  src={el.img} /></Box>
                                 <Box p="0px 10px" align="start">
                                     <Text fontSize={{base:"10px",sm:"12px", md:"13px" }} pb="5px" fontWeight="700">{el.title}</Text>
@@ -216,7 +216,7 @@ const Home = () => {
                                     <Text fontSize={{base:"10px",sm:"12px" }} >{el.d2}</Text>
                                     <Text fontSize={{base:"10px",sm:"12px" }} >{el.d3}</Text>
                                 </Box>
-                            </Flex>
+                            </Flex></a>
                         ))}
                     </SimpleGrid>
                 </Flex>
@@ -245,13 +245,13 @@ const Home = () => {
                 <Flex w="95%" m="auto" p="10px 0px 0px 0px" >
                     <Box w={{base:"0%",xl:"28%"}} visibility={{base:"hidden",xl:"visible"}} >
                         <Box position="relative" backgroundImage="https://hm.imimg.com/imhome_gifs/bigBn06.jpg" >
-                            <a href="/" ><Button top="350px" right="30%" position="absolute" fontSize={{ base:"12px", sm:"13px",md:"15px"}} borderRadius="0px" fontFamily= "arial" background= "teal" colorScheme= "white" p="5px 22px" border= "none" margin= "0" height={{ base:"20px", sm:"30px",md:"50px"}} cursor= "pointer" width= "142px" fontWeight= "700" text-indent= "30px" >View All</Button></a>
+                            <a href="/Medicines" ><Button top="350px" right="30%" position="absolute" fontSize={{ base:"12px", sm:"13px",md:"15px"}} borderRadius="0px" fontFamily= "arial" background= "teal" colorScheme= "white" p="5px 22px" border= "none" margin= "0" height={{ base:"20px", sm:"30px",md:"50px"}} cursor= "pointer" width= "142px" fontWeight= "700" text-indent= "30px" >View All</Button></a>
                         </Box>
                         <Image height="90%" objectFit="cover" src="https://hm.imimg.com/imhome_gifs/bigBn06.jpg" />
                     </Box>
                     <SimpleGrid w={{base:"100%",xl:"72%"}} height="100%" columns={{base:2,md:3}} spacing={5}>
                         {sec3.map((el)=>(
-                            <Flex key={el.title} p="10px" flexDirection={{base:"column", sm:"row"}} boxShadow="rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px" >
+                            <a href="/Medicines" ><Flex  p="10px" flexDirection={{base:"column", sm:"row"}} boxShadow="rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px" >
                                 <Box w="50%"><Image  src={el.img} /></Box>
                                 <Box p="0px 10px" align="start">
                                     <Text fontSize={{base:"10px",sm:"12px", md:"13px" }} pb="5px" fontWeight="700">{el.title}</Text>
@@ -260,7 +260,7 @@ const Home = () => {
                                     <Text fontSize={{base:"10px",sm:"12px" }} >{el.d3}</Text>
                                     <Text fontSize={{base:"10px",sm:"12px" }} >{el.d4}</Text>
                                 </Box>
-                            </Flex>
+                            </Flex></a>
                         ))}
                     </SimpleGrid>
                 </Flex>
@@ -297,7 +297,7 @@ const Home = () => {
                     </Box>
                     <SimpleGrid height="100%" w={{base:"100%",xl:"72%"}} columns={{base:2,md:3}} spacing={5}>
                         {sec4.map((el)=>(
-                            <Flex key={el.title} p="10px" flexDirection={{base:"column", sm:"row"}} boxShadow="rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px" >
+                            <Flex  p="10px" flexDirection={{base:"column", sm:"row"}} boxShadow="rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px" >
                                 <Box w="50%"><Image  src={el.img} /></Box>
                                 <Box p="0px 10px" align="start">
                                     <Text fontSize={{base:"10px",sm:"12px", md:"13px" }} pb="5px" fontWeight="700">{el.title}</Text>

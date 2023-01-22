@@ -4,71 +4,43 @@ import {
   Button,
   Grid,
   GridItem,
-  Heading,
-  HStack,
   Image,
-  Input,
   Text,
 } from "@chakra-ui/react";
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import Navbar from "./Navbar"
+import Footer from "./Footer"
 
 const SearchPageDetails = () => {
   const [data, setData] = useState([]);
-  const [query, setQuery] = useState("");
-  const queryfirst = useParams()
-  console.log('queryfirst:', queryfirst)
+  const query = useParams()
+  let final= query.query
+  // console.log('final:', final)
 
-  const fetchData = (queryfirst) => {
+  const fetchData = (final) => {
     return axios.get("https://trademart-data-2zur.vercel.app/Allproducts", {
       params: {
-        q: queryfirst,
+        q: final,
       },
     });
   };
 
-  const handleSearch = () => {
-    fetchData(queryfirst)
+  useEffect(() => {
+    fetchData(final)
       .then((res) => {
         console.log(res.data);
         setData(res.data);
       })
       .catch((err) => {
-        console.log("Error: ", err);
+        console.log("Error: ", true);
       });
-  };
-
-  // useEffect(() => {
-  //   fetchData(query)
-  //     .then((res) => {
-  //       console.log(res.data);
-  //       setData(res.data);
-  //     })
-  //     .catch((err) => {
-  //       console.log("Error: ", true);
-  //     });
-  // }, []);
+  }, []);
 
   return (
     <>
-      {/* Search Body Part */}
-      <Heading textAlign="center" textDecoration="underline" margin="15px">
-        Search Page
-      </Heading>
-      <HStack w={{ base: "340px", md: "400px" }} m="auto">
-        <Input
-          type="text"
-          value={query}
-          onChange={(e) => {
-            setQuery(e.target.value);
-            handleSearch();
-          }}
-          placeholder="Search Product"
-        />
-        <Button onClick={handleSearch}>Search</Button>
-      </HStack>
-
+      <Navbar />
       {/* Products */}
       <Grid
         templateColumns={{ sm: "repeat(1,1fr)", md: "repeat(4,1fr)" }}
@@ -135,6 +107,7 @@ const SearchPageDetails = () => {
           );
         })}
       </Grid>
+      <Footer />
     </>
   );
 };
