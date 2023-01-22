@@ -30,3 +30,6 @@ export const Get_Admin_LOADING = "Admin/Get/laoding";
 export const Get_Admin_SUCCESS = "Admin/Get/success";
 export const Get_Admin_ERROR = "Admin/Get/error";
 
+//delete Admin
+export const DELETE_ADMIN = "admin/delete";
+

@@ -7,6 +7,8 @@ import {IoLocationSharp} from 'react-icons/io5'
 import {BiSearch} from 'react-icons/bi'
 import {AiOutlineAim} from 'react-icons/ai'
 import axios from 'axios'
+import Navbar from '../../component/Navbar'
+import Footer from '../../component/Footer'
 
 export default  function Product() {
 
@@ -15,13 +17,14 @@ export default  function Product() {
   //  let data =await res.json()
     console.log(res.data)
   }
-  getserver()
+
   return (
-   <Box className='product'>
+   <Box display={{base:"none",sm:"none",md:"block"}} className='product'>
+
       <Box className='product__heading'>
         <Box>
         <Text className='product__heading__text'>
-              Plywoods
+              
         </Text>
         </Box>
          <Box className='product__heading__view'>
@@ -73,7 +76,7 @@ export default  function Product() {
       <Box className='product_detail'>
        <Box className='product_detail_filter'>
         <Box>
-          <Text>Filter Results</Text>
+          
         </Box>
        </Box>
        <Box>
@@ -81,6 +84,7 @@ export default  function Product() {
        </Box>
       </Box>
    </Box>
+  
   )
 }
 

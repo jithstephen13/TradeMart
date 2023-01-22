@@ -61,3 +61,7 @@ export const GetAllAdminAPI=async()=>{
   console.log(res.docs)
   return res.docs
 }
+
+export const DeleteAdmin = async()=>{
+  
+}

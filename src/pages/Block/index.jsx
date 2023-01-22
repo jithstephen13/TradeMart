@@ -2,8 +2,11 @@
 import React from 'react'
 import {Box,Text,Flex,Grid,Image, Button} from '@chakra-ui/react'
 import './style.css'
+import Navbar from '../../component/Navbar'
+import Footer from '../../component/Footer'
 export default function Block() {
-  return (
+  return (<>
+    <Navbar />
     <Box width={'85%'} margin='auto' gap={'10px'} display='grid'>
        <Flex>
         <Text fontSize={'25px'} fontWeight={'bold'} borderBottom={'2px solid black'}>Plywood</Text>
@@ -215,5 +218,7 @@ export default function Block() {
        </Flex>
        </Flex>
     </Box>
+    <Footer />
+    </>
   )
 }

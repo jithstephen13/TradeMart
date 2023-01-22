@@ -1,6 +1,6 @@
 import React, { useEffect, useState,useRef } from 'react';
  
-import { Avatar, Box, Button, Card,   CardHeader, Flex, FormControl, Grid, Heading, Input, Stack, Text } from '@chakra-ui/react';
+import { Avatar, Box, Button, Card,   CardFooter,   CardHeader, Flex, FormControl, Grid, Heading, Input, Stack, Text, VStack } from '@chakra-ui/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { AddAdmin,  GetAllAdmin } from '../../redux/Auth/auth.action';
@@ -30,28 +30,43 @@ const dispatch=useDispatch()
        if(!isLoading&&!isError){
           dispatch(GetAllAdmin())
           //  window.location.reload()
-          form.current.reset()
+         // form.current.reset()
        }
-  
+       
      }
   return (
     <div>
-      <Box w="84%" ml="16%" mt="50px" h="700px" p={10} bgColor="#f7f7f7 ">
-      < Card  w={"50%"}>
-            < FormControl ref={form} align='center' >
-            <Heading color={"blueviolet"}>Admin Registration form</Heading>
-            <Input placeholder='First name...'  mt={4} name='name' onChange={handlechenge}></Input>
-            <Input placeholder='Email...'  name='email'  mt={4} onChange={handlechenge}></Input>
-            <Input placeholder='Password...' name='password'  mt={4} type={"password"} onChange={handlechenge}></Input>
+      <Box w="84%" ml="16%" mt="50px" h="auto" p={10} bgColor="#f7f7f7 ">
+          < Card  bgColor="#f7f7f7" w={"50%"} margin="auto" p={6} border="1px solid #2e3192 " borderRadius={8}>
+            <FormControl ref={form} textAlign='center' >
+            <VStack spacing={5}>
+            <Text textStyle="DashboardHead">Admin Registration form</Text>
+            <Input placeholder='First name'  mt={4} name='name' onChange={handlechenge}></Input>
+            <Input placeholder='Email'  name='email'  mt={4} onChange={handlechenge}></Input>
+            <Input placeholder='Password' name='password'  mt={4} type={"password"} onChange={handlechenge}></Input>
 
             <Input placeholder='designation'  type={"string"}  mt={4} name="designation" onChange={handlechenge}></Input>
             
-            <Button onClick= {handleClick}  colorScheme='blue'  mt={4} mr={3}>
+            <Button onClick= {handleClick} bgColor="#19a598" color="white" _hover={{backgroundColor:"#2e3192"}}>
              Add new Admin
             </Button>
-           
+            </VStack>
             </FormControl>
             </ Card>
+
+            {/* <Box w="50%" margin="auto" border="1px solid #2e3192 " borderRadius={8} h="400px" p={6}>
+               <FormControl ref={form} textAlign="center">
+               <VStack spacing={5}>
+               <Text textStyle="DashboardHead">Admin Register</Text>
+               <Input placeholder='First Name' name='name' onChange={handlechenge}/>
+               <Input placeholder='Email Address' name='email' onChange={handlechenge}/>
+               <Input placeholder='Password' type="password" name='password' onChange={handlechenge}/>
+               <Input placeholder='Designation' type="string" name='email' onChange={handlechenge}/>
+               <Button onClick={handleClick} bgColor="#19a598" color="white" _hover={{backgroundColor:"#2e3192"}}>Add New Admin</Button>
+
+               </VStack>
+               </FormControl>
+            </Box> */}
             <Grid templateColumns='repeat(3, 1fr)' gap={6}>
                 {
                     adminlist.map((user)=>{return(<Flex key={user.id} p="10" gap="2">
@@ -72,7 +87,7 @@ const dispatch=useDispatch()
                           
                          </Flex>
                        </CardHeader>
-                       
+                      
                        
                          </Card>                                    
             </Flex>)})
