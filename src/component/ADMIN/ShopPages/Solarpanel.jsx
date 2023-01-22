@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import { Box ,Text,Table,Thead,TableContainer,Th,Tr,Td,Tbody,Image, Button,useDisclosure,Modal,ModalBody,ModalContent,ModalOverlay,ModalHeader,ModalCloseButton,ModalFooter, Input, VStack} from '@chakra-ui/react'
 import {Get_solarpanel_item,UPDATE_solarpanel_item,REMOVE_solarpanel_item} from "../../../redux/solarpanel/solarpanel.action"
 import {useDispatch,useSelector} from "react-redux"
@@ -12,23 +12,28 @@ const Solarpanel = () => {
     const dispatch = useDispatch()
     const { isOpen, onOpen, onClose } = useDisclosure()
 
-    function handleUpdate(){
-      const changes = {
-          price:price
-      }
-      onClose()
-      dispatch(UPDATE_solarpanel_item(id,changes))
+    useEffect(()=>{
       dispatch(Get_solarpanel_item())
-  }
-
-  function handleRemove(id){
-    dispatch(REMOVE_solarpanel_item(id));
-    dispatch(Get_solarpanel_item())
-  }
-
-    React.useEffect(()=>{
-     dispatch(Get_solarpanel_item())
-    },[])
+      console.log("hiii")
+     },[dispatch])
+     
+     const newprom=async()=>{
+       setTimeout(() => {
+         dispatch(Get_solarpanel_item())
+       }, 2000);
+     }
+     function handleUpdate(){
+         const changes = {
+             price:price
+         }
+         dispatch(UPDATE_solarpanel_item(id,changes))
+         newprom()
+         onClose()
+     }
+     function handleRemove(id){
+       dispatch(UPDATE_solarpanel_item(id));
+       newprom()
+     }
   return (
     <div>
         <Box w="100%" h="auto" p={10} bgColor="#f7f7f7 ">
