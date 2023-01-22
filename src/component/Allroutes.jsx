@@ -8,6 +8,7 @@ import Admin from "./ADMIN/admin";
 import Cart from "./Cart";
 import ProductDetails from "./ProductDetails";
 import SearchPageDetails from "./SearchPageDetails";
+import PrivateRoute from "../HOC/PrivateRoute";
 
 const Allroutes = () => {
   return (
@@ -17,9 +18,9 @@ const Allroutes = () => {
       <Route path="/admin" element={<Admin />} />
       <Route path="/productDetails/:id" element={<ProductDetails />} />
       <Route path="/searchProduct/:query" element={<SearchPageDetails />} />
-      <Route path="/Medicines" element={<Medicines />} />
-      <Route path="/solar" element={<Solarpanel />} />
-      <Route path="/Projector" element={<Projector />} />
+      <Route path="/Medicines" element={<PrivateRoute><Medicines /></PrivateRoute>} />
+      <Route path="/solar" element={<PrivateRoute><Solarpanel /></PrivateRoute>} />
+      <Route path="/Projector" element={<PrivateRoute><Projector /></PrivateRoute>} />
     </Routes>
   );
 };
