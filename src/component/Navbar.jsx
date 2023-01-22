@@ -66,57 +66,62 @@ const Navbar = () => {
   useEffect(() => {
     dispatch(GetAllAdmin());
   }, []);
-  const handleClick = async () => {
+  const handleClick=async()=>{
     try {
-      dispatch(AddUser(cred));
-      if (getItem("userData") != null) {
-        toast({
-          title: "successfully sign in ",
-          description: "",
-          status: "success",
-          duration: 6000,
-          isClosable: true,
-        });
-        onClose();
-        navigate("/");
-      } else {
+       dispatch(AddUser(cred))
+       setTimeout(() => {
+         if(getItem("userData")!=null){
+       toast({
+        title: "successfully sign in ",
+        description: "",
+        status: "success",
+        duration: 6000,
+        isClosable: true,
+      });
+      onClose()
+      navigate("/")}
+      else{
         toast({
           title: "invalid username or password ",
           description: "",
           status: "error",
           duration: 6000,
           isClosable: true,
-          backgroundColor: "red",
-        });
-      }
-    } catch (error) {}
-  };
-
-  const handleLogin = async () => {
+          backgroundColor:"red"
+        })}
+       },3000);
+    }
+    catch (error) {
+    }
+  }
+  const handleLogin=async()=>{
     try {
-      dispatch(LoginUser(cred));
-      if (getItem("userData") != null) {
+      dispatch(LoginUser(cred))
+      setTimeout(() => {
+         if(getItem("userData")!=null){
         toast({
-          title: "successfully sign in ",
-          description: "",
-          status: "success",
-          duration: 6000,
-          isClosable: true,
-        });
-        onClose();
-        navigate("/");
-      } else {
+         title: "successfully sign in ",
+         description: "",
+         status: "success",
+         duration: 6000,
+         isClosable: true,
+       });
+       onClose()
+       navigate("/")}
+       else{
         toast({
           title: "wrong username or password ",
           description: "",
           status: "error",
           duration: 6000,
           isClosable: true,
-          backgroundColor: "red",
+          backgroundColor:"red"
         });
-      }
-    } catch (error) {}
-  };
+       }
+      },3000);
+    } catch (error) {
+    }
+  }
   let tocken = getItem("userData");
 
   const handleLogout = () => {
