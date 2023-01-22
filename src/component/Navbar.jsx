@@ -127,10 +127,18 @@ const Navbar = () => {
   const handleLogout = () => {
     dispatch(LogOUT());
   };
-
+  let styleNev={
+    backgroundColor: "#2e3192",
+    position: "-webkit-sticky",
+    position: "fixed",
+    top: "0",
+    left: "0",
+    width: "100%",
+    zIndex : "1",
+}
   return (
     <>
-      <Box px={4} backgroundColor="#2E3192">
+      <Box px={4} backgroundColor="#2E3192" style={styleNev} >
         <Flex h={14} alignItems={"center"} justifyContent={"space-between"}>
           <HStack spacing={{ base: 3, md: 8 }} alignItems={"center"}>
             <Link to="/" ><Box w={["120px", "140px", "160px", "200px"]}>
