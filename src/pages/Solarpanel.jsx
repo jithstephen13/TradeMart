@@ -9,6 +9,8 @@ import Loading from "./Loading";
 import Product from "./Product";
 import { Get_solarpanel_item, sortMysolarpanel } from "../redux/solarpanel/solarpanel.action";
 import { sortMymedicines } from "../redux/medicines/medicines.action";
+import Navbar from "../component/Navbar";
+import Footer from "../component/Footer";
 
 // import Loading from "./Loading";
 const Solarpanel = () => {
@@ -46,6 +48,9 @@ const Solarpanel = () => {
   if (isLoading) return <Loading />
   
   return (
+    <>
+    <Navbar/>
+    
     <div style={{ alignContent:"center" ,display:"flex",flexDirection:"column" }}>
       <Product />
       <VStack display={{ md:"none"}} margin={"auto"} padding={"20px"} width={"80%"} boxShadow={"rgba(0, 0, 0, 0.35) 0px 5px 15px;"}>
@@ -166,6 +171,8 @@ const Solarpanel = () => {
 
 
     </div>
+    <Footer/>
+    </>
   );
 
 

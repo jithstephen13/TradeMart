@@ -8,6 +8,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { Get_medicines_item, sortMymedicines } from "../redux/medicines/medicines.action";
 import Loading from "./Loading";
 import Product from "./Product";
+import Navbar from "../component/Navbar";
+import Footer from "../component/Footer";
 
 // import Loading from "./Loading";
 const Medicines = () => {
@@ -45,6 +47,8 @@ const Medicines = () => {
   if (isLoading) return <Loading />
   
   return (
+    <>
+    <Navbar/>
     <div style={{ alignContent:"center" ,display:"flex",flexDirection:"column" }}>
       <Product />
       <VStack display={{ md:"none"}} margin={"auto"} padding={"20px"} width={"80%"} boxShadow={"rgba(0, 0, 0, 0.35) 0px 5px 15px;"}>
@@ -166,6 +170,8 @@ const Medicines = () => {
 
 
     </div>
+    <Footer/>
+    </>
   );
 
 
