@@ -290,10 +290,10 @@ const Home = () => {
                 <Heading align="left" p="5px 10px" fontSize={{base:"18px",sm:"22px", md:"28px"}} fontFamily ="Arial" color="#333" >Industrial Plants, Machinery & Equipment</Heading>
                 <Flex height="100%" w="95%" m="auto" p="10px 0px" >
                     <Box w={{base:"0%",xl:"28%"}} visibility={{base:"hidden",xl:"visible"}} >
-                        <Box position="relative" backgroundImage="https://hm.imimg.com/imhome_gifs/building-construction.jpg" >
+                        <Box position="relative" backgroundImage="https://hm.imimg.com/imhome_gifs/industrial-plants-machinery.jpg" >
                             <a href="/" ><Button top="400px" right="30%" position="absolute" fontSize={{ base:"12px", sm:"13px",md:"15px"}} borderRadius="0px" fontFamily= "arial" background= "teal" colorScheme= "white" p="5px 22px" border= "none" margin= "0" height={{ base:"20px", sm:"30px",md:"50px"}} cursor= "pointer" width= "142px" fontWeight= "700" text-indent= "30px" >View All</Button></a>
                         </Box>
-                        <Image height="100%" p="0px 20px 0px 0px" objectFit="cover" src="https://hm.imimg.com/imhome_gifs/building-construction.jpg" />
+                        <Image height="100%" p="0px 20px 0px 0px" objectFit="cover" src="https://hm.imimg.com/imhome_gifs/industrial-plants-machinery.jpg" />
                     </Box>
                     <SimpleGrid height="100%" w={{base:"100%",xl:"72%"}} columns={{base:2,md:3}} spacing={5}>
                         {sec4.map((el)=>(

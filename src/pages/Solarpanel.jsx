@@ -25,12 +25,20 @@ import {
   sortMysolarpanel,
 } from "../redux/solarpanel/solarpanel.action";
 import { sortMymedicines } from "../redux/medicines/medicines.action";
+import Navbar from "../component/Navbar";
+import Footer from "../component/Footer";
 
 // import Loading from "./Loading";
 const Solarpanel = () => {
+<<<<<<< HEAD
   const [reset, setReset] = useState(false);
 
   const dispatch = useDispatch();
+=======
+  const [reset,setReset ]=useState(false)
+
+  const dispatch = useDispatch()
+>>>>>>> d2c89e388dcb0874b356c4aa7ec22d76336b5371
 
   const navigate = useNavigate();
 
@@ -58,6 +66,7 @@ const Solarpanel = () => {
 
   if (isLoading) return <Loading />;
 
+<<<<<<< HEAD
   return (
     <div
       style={{
@@ -66,6 +75,16 @@ const Solarpanel = () => {
         flexDirection: "column",
       }}
     >
+=======
+  if (isLoading) return <Loading />
+  
+
+  return (<>
+  <Navbar />
+
+ 
+    <div style={{ alignContent:"center" ,display:"flex",flexDirection:"column" }}>
+>>>>>>> d2c89e388dcb0874b356c4aa7ec22d76336b5371
       <Product />
       <VStack
         display={{ md: "none" }}
@@ -256,6 +275,9 @@ const Solarpanel = () => {
         </Grid>
       </Flex>
     </div>
+
+    <Footer /></>
+ 
   );
 };
 

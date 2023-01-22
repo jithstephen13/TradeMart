@@ -38,6 +38,7 @@ const SearchPageDetails = () => {
       });
   }, []);
 
+  // Search Product Page
   if (data.length === 0) {
     return (
       <>
