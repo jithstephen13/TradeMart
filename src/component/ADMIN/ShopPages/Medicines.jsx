@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import { Box ,Text,Table,Thead,TableContainer,Th,Tr,Td,Tbody,Image, Button,useDisclosure,Modal,ModalBody,ModalContent,ModalOverlay,ModalHeader,ModalCloseButton,ModalFooter, Input, VStack} from '@chakra-ui/react'
 import {Get_medicines_item,UPDATE_medicines_item,REMOVE_medicines_item} from "../../../redux/medicines/medicines.action"
 import {useDispatch,useSelector} from "react-redux"
@@ -13,24 +13,30 @@ const Medicines = () => {
     const dispatch = useDispatch()
     const { isOpen, onOpen, onClose } = useDisclosure()
 
-    function handleUpdate(){
-        const changes = {
-            price:price
-        }
-         onClose()
-        dispatch(UPDATE_medicines_item(id,changes))
-        dispatch(Get_medicines_item())
-    }
-
-    function handleRemove(id){
-      dispatch(REMOVE_medicines_item(id));
+    useEffect(()=>{
       dispatch(Get_medicines_item())
-    }
+      console.log("hiii")
+     },[dispatch])
 
-    
-    React.useEffect(()=>{
-     dispatch(Get_medicines_item())
-    },[])
+     const newprom=async()=>{
+       setTimeout(() => {
+         dispatch(Get_medicines_item())
+       }, 2000);
+     }
+
+     function handleUpdate(){
+         const changes = {
+             price:price
+         }
+         dispatch(UPDATE_medicines_item(id,changes))
+         newprom()
+         onClose()
+     }
+
+     function handleRemove(id){
+       dispatch(REMOVE_medicines_item(id));
+       newprom()
+     }
   return (
     <div>
         <Box w="100%" h="auto" p={10} bgColor="#f7f7f7 ">

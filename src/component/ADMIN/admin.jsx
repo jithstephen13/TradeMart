@@ -14,6 +14,7 @@ import Categories from './Categories'
 import Products from './Products'
 import Users from './Users'
 import AdminList from './AdminList'
+import Location from './Location'
 
 const Admin = () => {
   const[dashboard,setDashboard]=React.useState(true);
@@ -146,6 +147,7 @@ const Admin = () => {
       {products && <Products />}
       {users && <Users />}
       {adminPage && <AdminList />}
+      {location && <Location />}
     </div>
   )
 }

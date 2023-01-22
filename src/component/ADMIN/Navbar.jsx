@@ -8,6 +8,7 @@ import { getItem } from '../../utility/localStorage'
 
 const Navbar = () => {
     let addmin=getItem("admin")
+    console.log(addmin,"ad")
   return (
     <div className={Styles.Navbar} >
         <Box w="100%" h="50px" bgColor="#2e3192">

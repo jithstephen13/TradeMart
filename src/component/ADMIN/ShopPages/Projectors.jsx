@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import { Box ,Text,Table,Thead,TableContainer,Th,Tr,Td,Tbody,Image, Button,useDisclosure,Modal,ModalBody,ModalContent,ModalOverlay,ModalHeader,ModalCloseButton,ModalFooter, Input, VStack} from '@chakra-ui/react'
 import {Get_projector_item,UPDATE_projector_item,REMOVE_projector_item} from "../../../redux/projector/projector.action"
 import {useDispatch,useSelector} from "react-redux"
@@ -12,24 +12,27 @@ const Projectors = () => {
     const dispatch = useDispatch()
     const { isOpen, onOpen, onClose } = useDisclosure()
 
-    function handleUpdate(){
-      const changes = {
-          price:price
-      }
-      onClose()
-      dispatch(UPDATE_projector_item(id,changes))
+    useEffect(()=>{
       dispatch(Get_projector_item())
-  }
-
-  function handleRemove(id){
-    dispatch(REMOVE_projector_item(id));
-    dispatch(Get_projector_item())
-  }
-
-
-    React.useEffect(()=>{
-     dispatch(Get_projector_item())
-    },[])
+      console.log("hiii")
+     },[dispatch])
+     const newprom=async()=>{
+       setTimeout(() => {
+         dispatch(Get_projector_item())
+       }, 2000);
+     }
+     function handleUpdate(){
+         const changes = {
+             price:price
+         }
+         dispatch(UPDATE_projector_item(id,changes))
+         newprom()
+         onClose()
+     }
+     function handleRemove(id){
+       dispatch(REMOVE_projector_item(id));
+       newprom()
+     }
   return (
     <div>
         <Box w="100%" h="auto" mt={10} bgColor="#f7f7f7 ">
