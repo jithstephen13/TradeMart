@@ -15,11 +15,11 @@ const Allroutes = () => {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/cart" element={<Cart />} />
+      <Route path="/admin" element={<Admin />} />
       <Route path="/block" element={<Block />} />
       <Route path="product" element={<Product />} />
-      <Route path="/productdetails/:id" element={<ProductDetails />} />
-      <Route path="/searchpage" element={<SearchPageDetails />} />
-      <Route path="/admin" element={<Admin />} />
+      <Route path="/productDetails/:id" element={<ProductDetails />} />
+      <Route path="/searchProduct/:query" element={<SearchPageDetails />} />
       <Route path="/productdtls" element={<AdminRegistration />} />
     </Routes>
   );
