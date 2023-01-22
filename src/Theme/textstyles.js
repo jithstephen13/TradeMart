@@ -31,4 +31,9 @@ export const textStyles={
     fontWeight:{sm:"400",md:"500",lg:"500"},
     
   },
+  userHead:{
+    fontSize:{sm:"14px",md:"16px",lg:"18px"},
+    fontWeight:{sm:"400",md:"500",lg:"600"},
+    fontFamily:"cambria",
+  },
 }

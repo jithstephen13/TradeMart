@@ -12,7 +12,7 @@ import { Button, Box, Flex,
 import { useDispatch } from 'react-redux';
  
 import { ADD_Cart_item } from '../redux/Carts/Cart.action';
-const Item  ={
+const data  ={
   id:"sp47",
   img_src: "https://m.media-amazon.com/images/I/614umzFKhOL._AC_UL320_.jpg",
   name: "UTL Solar 200 Watt 12 Volt Mono PERC Solar Panel 200W-12V (Pack of 2)",
@@ -31,7 +31,7 @@ const ProductPop = () => {
       )
     
       
-      const [cred,setCred]=useState(Item)
+      const [cred,setCred]=useState(data)
       const handlechenge=(e)=>{
         const { name, value } = e.target;
         setCred({
@@ -79,12 +79,12 @@ const ProductPop = () => {
           <DrawerHeader> </DrawerHeader>
           <DrawerBody>
                  <Flex gap={4}>
-                     <Box w={"50%"}  pt={6}>
-                        <Image  src={Item.img_src}/>
-                         <Text>Name :- {Item.name}</Text>
-                         <Text>Price :- {Item.price}</Text>
-                         <Text>Rating :- {Item.rating}</Text>
-                         <Text>Discount :- {Item.discount}</Text>
+                     <Box w={"50%"}  pt={6} boxShadow={"rgba(0, 0, 0, 0.35) 0px 5px 15px;"} padding={6} >
+                        <Image   src={data.img_src}/>
+                         <Text><span style={{fontWeight:"bold"}}> Name :-</span> {data.name}</Text>
+                         <Text><span style={{fontWeight:"bold"}}> Price :-</span> {data.price}</Text>
+                         <Text><span style={{fontWeight:"bold"}}>Rating :-</span> {data.rating}</Text>
+                         <Text><span style={{fontWeight:"bold"}}> Discount :-</span> {data.discount}</Text>
                      </Box>
                      <Box  w={"50%"}>
                      <form  ref={form} style={{display:"flex", flexDirection:"column" , gap:"10px", border:"1px solid black", padding:"15px"}} >
@@ -97,19 +97,19 @@ const ProductPop = () => {
       <label>Product Name</label>
       <select name='product name' style={{border:"1px solid black"}}  >
         <option>selectname</option>
-        <option value={Item.name}>{Item.name}</option>
+        <option value={data.name}>{data.name}</option>
       </select>
       {/* <input type='text'  value={Item.name} name='product name' onChange={handlechenge}   /> */}
       <label>Price</label>
       {/* <input type='text'  value={Item.price} name='price' onChange={handlechenge}    /> */}
       <select name='price' style={{border:"1px solid black"}}  >
         <option>select price</option>
-        <option value={Item.price}>{Item.price}</option>
+        <option value={data.price}>{data.price}</option>
       </select>
       <label> Message</label>
       <input type='text' name='message' style={{border:"1px solid black",padding:"32px"}}  placeholder='type your message......'     />
       <label> </label>
-      <Button pl={20} pr={20}  bg="blue" onClick={sendEmail}    > Sent</Button>
+      <Button pl={20} pr={20} bg={"rgb(6,128,128)"} onClick={sendEmail}    > Sent</Button>
       
     
         

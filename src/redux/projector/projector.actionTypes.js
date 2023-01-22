@@ -16,3 +16,5 @@ export const UPDATE_projector_ERROR = "projector/update/error";
 export const REMOVE_projector_LOADING = "projector/remove/laoding";
 export const REMOVE_projector_SUCCESS = "projector/remove/success";
 export const REMOVE_projector_ERROR = "projector/remove/error";
+
+export const SORT_projectorES="projectorES/sort"

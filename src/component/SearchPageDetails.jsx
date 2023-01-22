@@ -9,6 +9,8 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+
 import { Link, useParams } from "react-router-dom";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
@@ -21,11 +23,21 @@ const SearchPageDetails = () => {
     return axios.get("https://trademart-data-2zur.vercel.app/Allproducts", {
       params: {
         q: final,
+  const [query, setQuery] = useState("");
+  const queryfirst = useParams()
+  console.log('queryfirst:', queryfirst)
+
+  const fetchData = (queryfirst) => {
+    return axios.get("https://trademart-data-2zur.vercel.app/Allproducts", {
+      params: {
+        q: queryfirst,
       },
     });
   };
   useEffect(() => {
     fetchData(final)
+  const handleSearch = () => {
+    fetchData(queryfirst)
       .then((res) => {
         console.log(res.data);
         setData(res.data);

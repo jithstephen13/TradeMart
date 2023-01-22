@@ -69,6 +69,7 @@ dispatch(GetAllAdmin())
     const handleClick=async()=>{
       try {
          dispatch(AddUser(cred))
+         if(getItem("userData")!=null){
          toast({
           title: "successfully sign in ",
           description: "",
@@ -77,8 +78,18 @@ dispatch(GetAllAdmin())
           isClosable: true,
         });
         onClose()
-        navigate("/")
-      } catch (error) {
+        navigate("/")}
+        else{
+          toast({
+            title: "invalid username or password ",
+            description: "",
+            status: "error",
+            duration: 6000,
+            isClosable: true,
+            backgroundColor:"red"
+          })}
+      } 
+      catch (error) {
         
       }
     
@@ -87,15 +98,27 @@ dispatch(GetAllAdmin())
     const handleLogin=async()=>{
       try {
         dispatch(LoginUser(cred))
-        toast({
-          title: "successfully sign in ",
-          description: "",
-          status: "success",
-          duration: 6000,
-          isClosable: true,
-        });
-        onClose()
-        navigate("/")
+        if(getItem("userData")!=null){
+          toast({
+           title: "successfully sign in ",
+           description: "",
+           status: "success",
+           duration: 6000,
+           isClosable: true,
+         });
+         onClose()
+         navigate("/")}
+         else{
+          toast({
+            title: "wrong username or password ",
+            description: "",
+            status: "error",
+            duration: 6000,
+            isClosable: true,
+            backgroundColor:"red"
+          });
+
+         }
 
       } catch (error) {
         
