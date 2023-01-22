@@ -139,7 +139,7 @@ const ProductDetails = () => {
       <Navbar />
 
       {/* Body Part */}
-      <div style={{ padding: "10px", backgroundColor: "#f9f8f7" }}>
+      <div style={{ padding: "10px", backgroundColor: "#f9f8f7",marginTop:"70px" }}>
         <Stack
           w="100%"
           flexDirection={{ base: "column", md: "row" }}
@@ -383,7 +383,7 @@ const ProductDetails = () => {
             </HStack>
             <hr />
             <Link href="" style={{ color: "#1b9a84", fontWeight: "bold" }}>
-              View More Sellers >
+              View More Sellers {">"}
             </Link>
           </Stack>
         </Stack>

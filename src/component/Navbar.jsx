@@ -128,13 +128,13 @@ const Navbar = () => {
     dispatch(LogOUT());
   };
   let styleNev={
-    backgroundColor: "#2e3192",
     position: "-webkit-sticky",
     position: "fixed",
     top: "0",
     left: "0",
     width: "100%",
     zIndex : "1",
+    
 }
   return (
     <>

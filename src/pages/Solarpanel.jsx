@@ -69,7 +69,7 @@ const Solarpanel = () => {
   <Navbar />
 
  
-    <div style={{ alignContent:"center" ,display:"flex",flexDirection:"column" }}>
+    <div style={{ alignContent:"center" ,display:"flex",flexDirection:"column" ,marginTop:"70px"}}>
  
       <Product />
       <VStack
@@ -205,7 +205,7 @@ const Solarpanel = () => {
         >
           {solarpanel.map((el) => {
             return (
-              <Box id="probox" key={el.id}>
+              <Box id="probox" key={el.id} >
                 <VStack
                   textAlign={"center"}
                   boxShadow={"rgba(0, 0, 0, 0.35) 0px 5px 15px;"}
