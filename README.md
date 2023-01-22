@@ -58,9 +58,9 @@ I got given a task to make a functional clone website of The World's 1st Meat-Fr
 I tried my best to clone the website from scratch based on the knowledge gained till unit-4 of Journey at Masai School.
 
 - Original LOGO :
-   <img width="25%" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-XcqCeZcs1sSMvzurZQWzF9IEA1rmyz_zaQ&usqp=CAU">     
-- My LOGO :
-   <img width="15%" src="./src/assets/logodark.png">
+   <img width="30%" src="http://www.customerservicecontacts.com/wp-content/uploads/2018/01/indiamart-logo.jpg">     
+- Our LOGO :
+   <img width="40%" src="./src/assets/logodark.png">
 <br />
 
 
