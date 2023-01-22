@@ -36,31 +36,28 @@ npm i react-router-dom@6
 npm i recharts
 
 
-# Project KindMeal.my-Clone
-Individual Project KindMeal.my
-
-Hello everyone, this is a Readme for my construct week project that has been completed successfully within the duration of 5 days. It was really greate experience for me. Below I have described the Features of my project.
+# Project TredeMart 
 
 
-## The Journey:
+Hello everyone, this is a Readme for my construct week project that has been completed successfully within the duration of 5 days. It was really greate experience for us. Below  described the Features of my project.
 
-The Journey so far has been challenging and fun. this was my second individual project and the deadline was just a week, it all felt like I was working on a real product, and also I tried to enact the overall activity as the real working climate where I used git commands & React project Structure. The planning and other doubt solving activities with IA were done via zoom meetings.
+
+
+ 
 
 ### Deployed Links:
-- https://quack-building-4956.vercel.app/
-- https://kindmeal9.netlify.app/
-### Download ZIP:
-- https://github.com/swarup-1/quack-building-4956/archive/refs/heads/main.zip 
+- https://trademart.netlify.app/
+ 
+ 
 
 ## Project Details:
 
-I got given a task to make a functional clone website of The World's 1st Meat-Free Lifestyle Platform KindMeal.my. KindMeal.my is a Malaysia startup Founded by Andy K oh in 2008, PetFinder.my has been working hard with nationwide animal shelters, rescuers, and pet lovers to improve Malaysia's animal welfare. Much of our focus was centered upon pets - specifically, dogs and cats (alright, we have rabbits, hamsters, birds, fishes, turtles-, and chickens too). The website some pages such as Login, signup, Landing-page, Meal Deals, Help, etc.
-I tried my best to clone the website from scratch based on the knowledge gained till unit-4 of Journey at Masai School.
+I got given a task to make a functional clone website of IndiaMart. IndiaMart Indian e-commerce company that provides B2B and customer to customer sales services via its web portal. The website some pages such as Login, signup, Landing-page, Meal Deals, Help, etc.we tried my best to clone the website from scratch based on the knowledge gained till unit-4 of Journey at Masai School.
 
 - Original LOGO :
    <img width="30%" src="http://www.customerservicecontacts.com/wp-content/uploads/2018/01/indiamart-logo.jpg">     
 - Our LOGO :
-   <img width="40%" src="./src/assets/logodark.png">
+   <img width="40%" src="./src/assets/logo.png">
 <br />
 
 
@@ -68,48 +65,46 @@ I tried my best to clone the website from scratch based on the knowledge gained 
 
 - React.js
 - React Routing
-- node js
+- React Redux
+- React Redux Thunk
 - CSS
 - HTML
 - Chakra UI Library
-- Advance Javascript (ES6)
+- Firebase
+
 
 Glimpse and Screenshots of our cloned website:
 
 ## Navbar:
 
 - This is the landing page of my website. Clicking an option on the Navbar will redirect to the respective page.
+<img width="50%" src="./src/assets/Screenshot 2023-01-22 212059.png">
 - 
-<img width="50%" src="">
+<img width="50%" src="./src/assets/Screenshot 2023-01-22 212140.png">
 
 ## Home Page:
 
 - The images on the home page are linked to all Pages. Hence clicking on it will ensure successful redirection to the next Page.
 
-- This project have a feature like Slideshows of food Images along with Hotel Image. & can be accessable by clicking on below small previews.
-
-- Recent Facebook posts by KindMeal.my, Yummylicious Moments, Discover Restaurants, etc.
-
-- Content page with KindMeal.my official social media link, contacts, policies, information, account, and address.
 - 
-<img width="50%" src="">
+<img width="50%" src="./src/assets/home.png">
 
 ## Footer bar:
-- Here we have functions such as KindMeal.my official social media link, contacts, policies, and information. account, and address.
+- Here we have functions such as Indiamart official social media link, contacts, policies, and information. account, and address.
 
-- KindMeal.my official social media link, contacts, policies, and information. account, and address.
+ 
 - 
-<img width="50%" src="">
+<img width="50%" src="./src/assets/footer.png">
 
 ## Signup:
 
-- Here we have a Modal Function on any page when users click on signup they get a popup on the screen with two options like FoodLover & Restaurant / Shop Owner.
+- Here we have a Modal Function on any page when users click on signup they get a popup on the screen  .
 - User can Create account ny filling Signup Form
 - 
 <br />
 
-<img width="50%" src="">
-<img width="50%" src="">
+<img width="50%" src="./src/assets/Register.png">
+
 
 ## Login page:
 
@@ -117,35 +112,25 @@ Glimpse and Screenshots of our cloned website:
 - User can Login with regestered email ID
 - 
 <br />
-<img width="50%" src="">
+<img width="50%" src="./src/assets/login.png">
 
 
-## Meal Deals:
+## Product Page:
 
-- Users get a Button for the Next & Previous Page to get Deals.
 
-- Users can Paginate on any meals pages by clicking on numbers
-
-- Users can access MealDeals by All categories by selecting input.
-
-- Users can access MealDeals by All Location by selecting input.
 
 <img width="50%" src="">
 
 
-## Kind Moment:
+## Pdoduct Detailes Page:
 
-- Users can access Moments by All Location by selecting input.
-
-- Users can Paginate on any Moments pages by clicking on numbers
-
-- Users get a Button for the Next & Previous Page to get Moments.
+ 
 
 <img width="50%" src="">
 
-## Help:
+## Admin:
 
-- On the Help Section, users get multiple options for help just like advertising help, General Help, Contact Us, etc.
+- 
 
 <img width="50%" src="">
 
