@@ -1,5 +1,5 @@
 
-import React from 'react'
+import React,{useEffect} from 'react'
 import { Box, Button, Flex, Text ,useDisclosure,Modal,ModalOverlay,ModalContent,ModalHeader,ModalCloseButton,ModalBody,ModalFooter, Input, VStack,Menu,MenuButton,MenuList,MenuItem, Select} from '@chakra-ui/react'
 import {useDispatch,useSelector} from "react-redux";
 import {ADD_medicines_item,Get_medicines_item} from "../../redux/medicines/medicines.action";
@@ -43,7 +43,28 @@ const Shops = () => {
    
   const dispatch=useDispatch()
 
-  
+  useEffect(()=>{
+    dispatch(Get_medicines_item())
+    dispatch(Get_projector_item());
+    dispatch(Get_solarpanel_item())
+   },[dispatch])
+
+   const newprom=async()=>{
+     setTimeout(() => {
+       dispatch(Get_medicines_item())
+     }, 2000);
+   }
+   const newpromProj=async()=>{
+    setTimeout(() => {
+      dispatch(Get_projector_item())
+    }, 2000);
+  }
+  const newpromSolarPanel=async()=>{
+    setTimeout(() => {
+      dispatch(Get_solarpanel_item())
+    }, 2000);
+  }
+   
   
 
   function handlePost(){
@@ -57,17 +78,20 @@ const Shops = () => {
       company:company
     }
     if(ProductObj.category==="medicines"){
+        onClose()
         dispatch(ADD_medicines_item(ProductObj))
-        dispatch(Get_medicines_item())
+        newprom()
 
     }
     else if(ProductObj.category==="projectors"){
+      onClose()
        dispatch(ADD_projector_item(ProductObj))
-       dispatch(Get_projector_item())
+      newpromProj()
     }
     else if(ProductObj.category==="solarpanel"){
+      onClose()
        dispatch(ADD_solarpanel_item(ProductObj))
-       dispatch(Get_solarpanel_item())
+      newpromSolarPanel()
     }
 
   }
