@@ -96,7 +96,7 @@ const Home = () => {
     const [query, setQuery]= useState("")
     // console.log('query:', query)
     return (<><Navbar />
-        <Box backgroundColor="#F3F3F3" align="center" >
+        <Box backgroundColor="#F3F3F3" align="center" marginTop="50px" >
 {/* --------------------------------Banner & Search---------------------------------- */}
             <Box backgroundImage={banner1} backgroundPosition="center" display="flex" justifyContent="center" alignItems="center" position="relative" backgroundSize="cover" minHeight={{base:"120px",sm:"220px"}} >
                 <Box position="absolute" w={["90%","85%","75%","65%","60%"]} >

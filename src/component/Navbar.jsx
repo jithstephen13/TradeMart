@@ -133,6 +133,7 @@ const Navbar = () => {
     top: "0",
     left: "0",
     zIndex : "1",
+    
 }
   return (
     <>

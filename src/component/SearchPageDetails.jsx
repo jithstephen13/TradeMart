@@ -45,7 +45,7 @@ const SearchPageDetails = () => {
         {/* Navbar */}
         <Navbar />
 
-        <Text fontWeight="bold" textAlign="center" margin="7px">
+        <Text fontWeight="bold" textAlign="center" margin="70px 7px 7px 7px">
           No results for {final}
         </Text>
         <Text textAlign="center">Try to search something different</Text>
@@ -73,7 +73,7 @@ const SearchPageDetails = () => {
           templateColumns={{ sm: "repeat(1,1fr)", md: "repeat(4,1fr)" }}
           gap="6"
           textAlign="center"
-          margin="10px"
+          margin="70px 10px 10px 10px"
         >
           {data.map((el) => {
             return (

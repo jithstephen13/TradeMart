@@ -69,7 +69,7 @@ const Solarpanel = () => {
   <Navbar />
 
  
-    <div style={{ alignContent:"center" ,display:"flex",flexDirection:"column" }}>
+    <div style={{ alignContent:"center" ,display:"flex",flexDirection:"column" ,marginTop:"70px"}}>
  
       <Product />
       <VStack
@@ -79,8 +79,7 @@ const Solarpanel = () => {
         width={"80%"}
         boxShadow={"rgba(0, 0, 0, 0.35) 0px 5px 15px;"}
       >
-        <Text
-          marginTop={2}
+        <Text marginTop={2}
           color={"teal"}
           id="medicinese"
           fontSize={35}
@@ -205,7 +204,7 @@ const Solarpanel = () => {
         >
           {solarpanel.map((el) => {
             return (
-              <Box id="probox" key={el.id}>
+              <Box id="probox" key={el.id} >
                 <VStack
                   textAlign={"center"}
                   boxShadow={"rgba(0, 0, 0, 0.35) 0px 5px 15px;"}
