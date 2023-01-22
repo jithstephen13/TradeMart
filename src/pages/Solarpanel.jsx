@@ -30,15 +30,11 @@ import Footer from "../component/Footer";
 
 // import Loading from "./Loading";
 const Solarpanel = () => {
-<<<<<<< HEAD
-  const [reset, setReset] = useState(false);
-
-  const dispatch = useDispatch();
-=======
+ 
   const [reset,setReset ]=useState(false)
 
   const dispatch = useDispatch()
->>>>>>> d2c89e388dcb0874b356c4aa7ec22d76336b5371
+ 
 
   const navigate = useNavigate();
 
@@ -63,19 +59,9 @@ const Solarpanel = () => {
   useEffect(() => {
     dispatch(Get_solarpanel_item());
   }, [reset]);
+ 
 
-  if (isLoading) return <Loading />;
-
-<<<<<<< HEAD
-  return (
-    <div
-      style={{
-        alignContent: "center",
-        display: "flex",
-        flexDirection: "column",
-      }}
-    >
-=======
+ 
   if (isLoading) return <Loading />
   
 
@@ -84,7 +70,7 @@ const Solarpanel = () => {
 
  
     <div style={{ alignContent:"center" ,display:"flex",flexDirection:"column" }}>
->>>>>>> d2c89e388dcb0874b356c4aa7ec22d76336b5371
+ 
       <Product />
       <VStack
         display={{ md: "none" }}
