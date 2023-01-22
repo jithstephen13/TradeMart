@@ -133,11 +133,11 @@ const Navbar = () => {
     top: "0",
     left: "0",
     zIndex : "1",
-    
+    width: "100%"
 }
   return (
     <>
-      <Box p={4} backgroundColor="#2E3192" style={styleNev} >
+      <Box backgroundColor="#2E3192" style={styleNev} >
         <Flex h={14} alignItems={"center"} justifyContent={"space-between"}>
           <HStack spacing={{ base: 3, md: 8 }} alignItems={"center"}>
             <Link to="/" ><Box w={["120px", "140px", "160px", "200px"]}>
