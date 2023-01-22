@@ -29,11 +29,11 @@ export const ADD_medicines_item=(cred)=>async(dispatch)=>{
 
 }
 
-export const UPDATE_medicines_item=(id,chenge)=>async(dispatch)=>{
+export const UPDATE_medicines_item=(id,change)=>async(dispatch)=>{
 
      dispatch({type:types.UPDATE_medicines_LOADING})
     try {
-        let res=await axios.patch( `https://trademart-data-2zur.vercel.app/medicines/${id}`,chenge)
+        let res=await axios.patch( `https://trademart-data-2zur.vercel.app/medicines/${id}`,change)
         console.log(res.data)
         dispatch({type:types.UPDATE_medicines_SUCCESS,payload:res.data})
         

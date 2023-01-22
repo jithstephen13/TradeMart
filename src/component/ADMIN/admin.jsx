@@ -122,9 +122,9 @@ const Admin = () => {
             {/* <hr/>
            <Text textStyle="SidebarHead" m="15px">PRODUCT LIST</Text>
             <hr/> */}
-           <Button textAlign="initial" bgColor="white" fontFamily="Cambria" w="100%" size={"md"} _hover={{bgColor:"#2e3192",color:"white"}} onClick={handleShops} leftIcon={<BsShop/>}>Shops</Button>
-
            <Button bgColor="white" fontFamily="Cambria" w="100%" size={"md"} _hover={{bgColor:"#2e3192",color:"white"}} onClick={handleProducts} leftIcon={<BsBoxSeam/>}>Products</Button>
+
+           <Button textAlign="initial" bgColor="white" fontFamily="Cambria" w="100%" size={"md"} _hover={{bgColor:"#2e3192",color:"white"}} onClick={handleShops} leftIcon={<BsShop/>}>Shops</Button>
 
            <Button bgColor="white" fontFamily="Cambria" w="100%" size={"md"} _hover={{bgColor:"#2e3192",color:"white"}} onClick={handleCategories} leftIcon={<HamburgerIcon/>}>Categories</Button>
 

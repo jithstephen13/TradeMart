@@ -12,22 +12,24 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const SearchPageDetails = () => {
   const [data, setData] = useState([]);
   const [query, setQuery] = useState("");
+  const queryfirst = useParams()
+  console.log('queryfirst:', queryfirst)
 
-  const fetchData = (query) => {
+  const fetchData = (queryfirst) => {
     return axios.get("https://trademart-data-2zur.vercel.app/Allproducts", {
       params: {
-        q: query,
+        q: queryfirst,
       },
     });
   };
 
   const handleSearch = () => {
-    fetchData(query)
+    fetchData(queryfirst)
       .then((res) => {
         console.log(res.data);
         setData(res.data);
