@@ -137,7 +137,10 @@ const Navbar = () => {
 }
   return (
     <>
+
       <Box backgroundColor="#2E3192" style={styleNev} >
+
+     
         <Flex h={14} alignItems={"center"} justifyContent={"space-between"}>
           <HStack spacing={{ base: 3, md: 8 }} alignItems={"center"}>
             <Link to="/" ><Box w={["120px", "140px", "160px", "200px"]}>
