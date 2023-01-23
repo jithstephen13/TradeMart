@@ -1,6 +1,33 @@
 import React, { useEffect, useState } from "react";
 //-----------Chakra UI Components-------
-import { Box, Flex, HStack, IconButton, useDisclosure, Stack, Input, Text, Image, Button, PopoverFooter, PopoverBody, PopoverHeader, PopoverCloseButton, PopoverArrow, PopoverContent, Popover, PopoverTrigger,  Heading, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalOverlay, Spinner, useToast,
+import {
+  Box,
+  Flex,
+  HStack,
+  IconButton,
+  useDisclosure,
+  Stack,
+  Input,
+  Text,
+  Image,
+  Button,
+  PopoverFooter,
+  PopoverBody,
+  PopoverHeader,
+  PopoverCloseButton,
+  PopoverArrow,
+  PopoverContent,
+  Popover,
+  PopoverTrigger,
+  Heading,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalOverlay,
+  Spinner,
+  useToast,
 } from "@chakra-ui/react";
 //-----------ICONS----------------------
 import { TiThSmall } from "react-icons/ti";
@@ -11,7 +38,7 @@ import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import { MdOutlineMessage, MdSendToMobile } from "react-icons/md";
 import { BiMessageDetail, BiMobile, BiUserCircle } from "react-icons/bi";
 import { AiOutlineHome, AiOutlineSetting, AiOutlineTag } from "react-icons/ai";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 //-----------***------------------------------------------------------------------
 import Logo from "../assets/logo.png";
@@ -66,86 +93,83 @@ const Navbar = () => {
   useEffect(() => {
     dispatch(GetAllAdmin());
   }, []);
-  const handleClick=async()=>{
+  const handleClick = async () => {
     try {
-       dispatch(AddUser(cred))
-       setTimeout(() => {
-         if(getItem("userData")!=null){
-       toast({
-        title: "successfully sign in ",
-        description: "",
-        status: "success",
-        duration: 6000,
-        isClosable: true,
-      });
-      onClose()
-      navigate("/")}
-      else{
-        toast({
-          title: "invalid username or password ",
-          description: "",
-          status: "error",
-          duration: 6000,
-          isClosable: true,
-          backgroundColor:"red"
-        })}
-       },3000);
-    }
-    catch (error) {
-    }
-  }
-  const handleLogin=async()=>{
-    try {
-      dispatch(LoginUser(cred))
+      dispatch(AddUser(cred));
       setTimeout(() => {
-         if(getItem("userData")!=null){
-        toast({
-         title: "successfully sign in ",
-         description: "",
-         status: "success",
-         duration: 6000,
-         isClosable: true,
-       });
-       onClose()
-       navigate("/")}
-       else{
-        toast({
-          title: "wrong username or password ",
-          description: "",
-          status: "error",
-          duration: 6000,
-          isClosable: true,
-          backgroundColor:"red"
-        });
-       }
-      },3000);
-    } catch (error) {
-    }
-  }
+        if (getItem("userData") != null) {
+          toast({
+            title: "successfully sign in ",
+            description: "",
+            status: "success",
+            duration: 6000,
+            isClosable: true,
+          });
+          onClose();
+          navigate("/");
+        } else {
+          toast({
+            title: "invalid username or password ",
+            description: "",
+            status: "error",
+            duration: 6000,
+            isClosable: true,
+            backgroundColor: "red",
+          });
+        }
+      }, 3000);
+    } catch (error) {}
+  };
+  const handleLogin = async () => {
+    try {
+      dispatch(LoginUser(cred));
+      setTimeout(() => {
+        if (getItem("userData") != null) {
+          toast({
+            title: "successfully sign in ",
+            description: "",
+            status: "success",
+            duration: 6000,
+            isClosable: true,
+          });
+          onClose();
+          navigate("/");
+        } else {
+          toast({
+            title: "wrong username or password ",
+            description: "",
+            status: "error",
+            duration: 6000,
+            isClosable: true,
+            backgroundColor: "red",
+          });
+        }
+      }, 3000);
+    } catch (error) {}
+  };
   let tocken = getItem("userData");
 
   const handleLogout = () => {
     dispatch(LogOUT());
   };
-  let styleNev={
+  let styleNev = {
     position: "-webkit-sticky",
     position: "fixed",
     top: "0",
     left: "0",
-    zIndex : "1",
-    width: "100%"
-}
+    zIndex: "1",
+    width: "100%",
+  };
   return (
     <>
-
-      <Box backgroundColor="#2E3192" style={styleNev} >
-
-     
+      <Box backgroundColor="#2E3192" style={styleNev}>
         <Flex h={14} alignItems={"center"} justifyContent={"space-between"}>
           <HStack spacing={{ base: 3, md: 8 }} alignItems={"center"}>
-            <Link to="/" ><Box w={["120px", "140px", "160px", "200px"]}>
-              <Image src={Logo} />
-            </Box></Link>
+            <Link to="/">
+              <Box w={["120px", "140px", "160px", "200px"]}>
+                <Image ml={{ sm: "10px", md: "20px", lg: "30px" }} src={Logo} />
+              </Box>
+            </Link>
             {/* <Input placeholder='search' display={{base:"none", md:"flex"}} /> */}
           </HStack>
           <Flex alignItems={"center"} w={{ md: "75%", md: "40%", lg: "30%" }}>
