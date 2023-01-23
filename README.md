@@ -39,7 +39,7 @@ npm i recharts
 # Project TredeMart 
 
 
-Hello everyone, this is a Readme for my construct week project that has been completed successfully within the duration of 5 days. It was really greate experience for us. Below  described the Features of my project.
+Hello everyone, this is a Readme for our construct week project that has been completed successfully within the duration of 5 days. It was really greate experience for us. Below  described the Features of our project.
 
 
 
@@ -52,7 +52,7 @@ Hello everyone, this is a Readme for my construct week project that has been com
 
 ## Project Details:
 
-I got given a task to make a functional clone website of IndiaMart. IndiaMart Indian e-commerce company that provides B2B and customer to customer sales services via its web portal. The website some pages such as Login, signup, Landing-page, Meal Deals, Help, etc.we tried my best to clone the website from scratch based on the knowledge gained till unit-4 of Journey at Masai School.
+We got given a task to make a functional clone website of IndiaMart. IndiaMart Indian e-commerce company that provides B2B and customer to customer sales services via its web portal. The website some pages such as Login, signup, Landing-page, Meal Deals, Help, etc.we tried my best to clone the website from scratch based on the knowledge gained till unit-5 of Journey at Masai School.
 
 - Original LOGO :
    <img width="30%" src="http://www.customerservicecontacts.com/wp-content/uploads/2018/01/indiamart-logo.jpg">     
@@ -77,7 +77,7 @@ Glimpse and Screenshots of our cloned website:
 
 ## Navbar:
 
-- This is the landing page of my website. Clicking an option on the Navbar will redirect to the respective page.
+- This is the landing page of our website. Clicking an option on the Navbar will redirect to the respective page.
 <img width="50%" src="./src/assets/Screenshot 2023-01-22 212059.png">
 - 
 <img width="50%" src="./src/assets/Screenshot 2023-01-22 212140.png">
