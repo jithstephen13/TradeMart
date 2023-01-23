@@ -139,7 +139,13 @@ const ProductDetails = () => {
       <Navbar />
 
       {/* Body Part */}
-      <div style={{ padding: "10px", backgroundColor: "#f9f8f7",marginTop:"70px" }}>
+      <div
+        style={{
+          padding: "10px",
+          backgroundColor: "#f9f8f7",
+          marginTop: "70px",
+        }}
+      >
         <Stack
           w="100%"
           flexDirection={{ base: "column", md: "row" }}

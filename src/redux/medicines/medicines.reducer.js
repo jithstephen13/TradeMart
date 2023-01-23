@@ -4,134 +4,113 @@ import * as types from "./medicines.actionTypes";
 const initialState = {
   isLoading: false,
   isError: false,
-  medicines:[]
+  medicines: [],
 };
 
 export const medicinesreducer = (state = initialState, { type, payload }) => {
   switch (type) {
-    case types.GET_medicines_LOADING:{
+    case types.GET_medicines_LOADING: {
       return {
         ...state,
-        isLoading:true
-
-      }
-    } 
-    case types.GET_medicines_SUCCESS:{
-      
+        isLoading: true,
+      };
+    }
+    case types.GET_medicines_SUCCESS: {
       return {
         ...state,
-        isLoading:false,
-        medicines:payload
-
-      }
-    }    
-    case types.GET_medicines_ERROR:{
+        isLoading: false,
+        medicines: payload,
+      };
+    }
+    case types.GET_medicines_ERROR: {
       return {
         ...state,
-        isLoading:false,
-        isError:true
-
-      }
-    } 
-    case types.ADD_medicines_LOADING:{
+        isLoading: false,
+        isError: true,
+      };
+    }
+    case types.ADD_medicines_LOADING: {
       return {
         ...state,
-        isLoading:true
-        
-      }
-     } 
+        isLoading: true,
+      };
+    }
 
-    
-     case types.ADD_medicinesT_SUCCESS:{
+    case types.ADD_medicinesT_SUCCESS: {
       return {
         ...state,
-        isLoading:false,
-        medicines:[...state.medicines,payload]
+        isLoading: false,
+        medicines: [...state.medicines, payload],
+      };
+    }
 
-
-      }
-     }
-    
-     case types.ADD_medicines_ERROR:{
+    case types.ADD_medicines_ERROR: {
       return {
         ...state,
-        isLoading:false,
-        isError:true
+        isLoading: false,
+        isError: true,
+      };
+    }
 
-
-
-      }
-     }
-    
-     case types.UPDATE_medicines_LOADING:{
+    case types.UPDATE_medicines_LOADING: {
       return {
         ...state,
-        isLoading:true
+        isLoading: true,
+      };
+    }
 
-      }
-     }
-    
-     case types.UPDATE_medicines_SUCCESS:{
-
-      let Updated=state.medicines.map((medicines)=>{
-          if(medicines.id==payload.id){
-           return {...medicines,payload}
-          }
-          return medicines
-      })
+    case types.UPDATE_medicines_SUCCESS: {
+      let Updated = state.medicines.map((medicines) => {
+        if (medicines.id == payload.id) {
+          return { ...medicines, payload };
+        }
+        return medicines;
+      });
       return {
         ...state,
-        medicines:Updated
+        medicines: Updated,
+      };
+    }
 
-
-      }
-     }
-    
-     case types.UPDATE_medicines_ERROR:{
+    case types.UPDATE_medicines_ERROR: {
       return {
         ...state,
-        isLoading:false,
-        isError:true
+        isLoading: false,
+        isError: true,
+      };
+    }
 
-
-      }
-     }
-    
-     case types.REMOVE_medicines_LOADING:{
+    case types.REMOVE_medicines_LOADING: {
       return {
         ...state,
-        isLoading:true
+        isLoading: true,
+      };
+    }
 
-
-      }
-     }
-    
-     case types.REMOVE_medicines_SUCCESS:{
-      let removed=state.medicines.filter((medicines)=>medicines.id!=payload)
+    case types.REMOVE_medicines_SUCCESS: {
+      let removed = state.medicines.filter(
+        (medicines) => medicines.id != payload
+      );
 
       return {
         ...state,
-        medicines:removed
-
-
-      }
-     }
-     case types.REMOVE_medicines_ERROR:{
+        medicines: removed,
+      };
+    }
+    case types.REMOVE_medicines_ERROR: {
       return {
         ...state,
-        isLoading:false,
-        isError:true
+        isLoading: false,
+        isError: true,
+      };
+    }
 
-      }
-     }
-
-      case types.SORT_medicinesES: {
+    case types.SORT_medicinesES: {
       if (payload == "high") {
-    
         let sorted = state.medicines.sort(
           (a, b) => Number(a.price) - Number(b.price)
         );
-    
+
         return { ...state, medicines: [...sorted] };
       } else if (payload == "low") {
         let sorted = state.medicines.sort(
@@ -141,13 +120,8 @@ export const medicinesreducer = (state = initialState, { type, payload }) => {
       }
     }
 
-
- 
-
-
-    default:{
-       return state;
+    default: {
+      return state;
     }
-     
   }
 };

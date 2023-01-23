@@ -21,7 +21,7 @@ export const LOGOut_USER_LOADING = "logOut/userdata/laoding";
 export const LOGOut_USER_SUCCESS = "logOut/userdata/success";
 export const LOGOut_USER_ERROR = "logOut/userdata/error";
 
- // Admin add
+// Admin add
 export const ADD_Admin_LOADING = "Admin/add/laoding";
 export const ADD_Admin_SUCCESS = "Admin/add/success";
 export const ADD_Admin_ERROR = "Admin/add/error";
@@ -32,4 +32,3 @@ export const Get_Admin_ERROR = "Admin/Get/error";
 
 //delete Admin
 export const DELETE_ADMIN = "admin/delete";
-
