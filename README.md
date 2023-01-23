@@ -52,7 +52,7 @@ Hello everyone, this is a Readme for our construct week project that has been co
 
 ## Project Details:
 
-We got given a task to make a functional clone website of IndiaMart. IndiaMart Indian e-commerce company that provides B2B and customer to customer sales services via its web portal. The website some pages such as Login, signup, Landing-page, Meal Deals, Help, etc.we tried my best to clone the website from scratch based on the knowledge gained till unit-5 of Journey at Masai School.
+We got given a task to make a functional clone website of IndiaMart. IndiaMart Indian e-commerce company that provides B2B and customer to customer sales services via its web portal. The website some pages such as Login, signup, Landing-page, product,product detailes ,admin etc.we tried my best to clone the website from scratch based on the knowledge gained till unit-5 of Journey at Masai School.
 
 - Original LOGO :
    <img width="30%" src="http://www.customerservicecontacts.com/wp-content/uploads/2018/01/indiamart-logo.jpg">     
