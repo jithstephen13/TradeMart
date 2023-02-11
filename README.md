@@ -112,7 +112,8 @@ Glimpse and Screenshots of our cloned website:
  
 
 <img width="50%" src="./src/assets/product.png">
-<img width="50%" src="./src/assets/pdpopup.png">
+<img width="50%" src="./src/assets/popup.png">
+<img width="50%" src="./src/assets/mail.png">
 
 ## Admin:
 
