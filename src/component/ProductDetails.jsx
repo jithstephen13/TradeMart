@@ -36,12 +36,10 @@ import Footer from "./Footer";
 const ProductDetails = () => {
   const [data, setData] = useState([]);
   const [relatedData, setRelatedData] = useState([]);
+  const [loading,setLoading] = useState(false)
   const { id } = useParams();
   let productType = "";
-  // console.log(id);
-  // console.log(typeof id);
-  // console.log(id.length);
-  // console.log(id[0]);
+  
 
   // Chack and Set the Product Types
   if (id[0] === "m") {
@@ -52,15 +50,23 @@ const ProductDetails = () => {
     productType = "solarpanel";
   }
 
-  console.log(productType);
+  // console.log(productType);
 
   // Fetch the Related Products
   const getRelatedProduct = async () => {
+
     const product = await axios.get(
       `https://trademart-data-2zur.vercel.app/${productType}`
-    );
-    setRelatedData(product.data);
+    ).then((res) => {
+      setLoading(true);
+      console.log(loading)
+      setRelatedData(res.data)
+    }).catch((err) => {
+      console.log(err.message);
+    })
   };
+
+  
 
   const data1 = relatedData.splice(4, relatedData.length); // Show only 4 Related Products
 
@@ -77,6 +83,7 @@ const ProductDetails = () => {
   useEffect(() => {
     getProduct(id);
     getRelatedProduct();
+    
   }, [id]);
 
   const OverlayOne = () => (
@@ -105,6 +112,7 @@ const ProductDetails = () => {
 
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [overlay, setOverlay] = useState(<OverlayOne />);
+ 
 
   const form = useRef();
   const dispatch = useDispatch();
@@ -412,7 +420,7 @@ const ProductDetails = () => {
             textAlign="center"
             margin="10px"
           >
-            {relatedData.map((el, id) => (
+            { relatedData && relatedData.map((el, id) => (
               <GridItem margin={"10px"}>
                 <Box
                   padding="15px"
