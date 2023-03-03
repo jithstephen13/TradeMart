@@ -37,6 +37,8 @@ const AdninLogin = () => {
     useSelector((store) => store.auth);
   const dispatch = useDispatch();
 
+                                        //  This is the component that we are using for the Admin login         
+
   const handleLogin = () => {
     adminlist.forEach((element) => {
       if (element.email === cred.email && element.password === cred.password) {
@@ -55,8 +57,7 @@ const AdninLogin = () => {
   useEffect(() => {
     dispatch(GetAllAdmin());
   }, []);
-  //  let tocken=getItem("userData")
-  //  console.log(tocken===null)
+
 
   return (
     <>

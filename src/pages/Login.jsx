@@ -19,7 +19,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { AddUser, LoginUser, LogOUT } from "../redux/Auth/auth.action";
 import { getItem } from "../utility/localStorage";
-
+                                            //  Component Model for Login Pop Up 
 const Login = () => {
   const [Registarion, setRegistarion] = useState(false);
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -60,8 +60,7 @@ const Login = () => {
       navigate("/cart");
     }
   }, [tocken, dispatch]);
-  //  let tocken=getItem("userData")
-  //  console.log(tocken===null)
+
 
   const handleLogout = () => {
     dispatch(LogOUT());

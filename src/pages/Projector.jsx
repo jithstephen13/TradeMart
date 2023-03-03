@@ -7,9 +7,10 @@ import {
   Button,
   Icon,
   VStack,
+  Image,
   Checkbox,
   HStack,
-  Image,
+  Stack,
 } from "@chakra-ui/react";
 import { AiFillStar } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
@@ -19,7 +20,7 @@ import {
   Get_projector_item,
   sortMyprojector,
 } from "../redux/projector/projector.action";
-import Loading from "./Loading";
+import ProductpageLoading from "./ProductpageLoading";
 import Product from "./Product";
 import Navbar from "../component/Navbar";
 import Footer from "../component/Footer";
@@ -31,18 +32,24 @@ const Projector = () => {
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
-
-  // const [data,setData] = useState([])
-
+  const [order, setOrder] = useState("");
+  const [company, setCompany] = useState( []);
+  
+                                        // ----------------  geting detailed from redux-----------------
   const { isLoading, projector, isError } = useSelector(
     (store) => store.projector
   );
+
+
   const handleClick = (el) => {
     navigate(`/productdetails/${el.id}`);
   };
+
+
+
   const handleChange = (e) => {
     const { value } = e.target;
-    console.log(value);
+ 
     if (value == "reset") {
       setReset((previous) => !previous);
       return;
@@ -50,11 +57,31 @@ const Projector = () => {
     dispatch(sortMyprojector(value));
   };
 
-  useEffect(() => {
-    dispatch(Get_projector_item());
-  }, [reset]);
 
-  if (isLoading) return <Loading />;
+
+
+  const handleSort = (e) => {
+    setOrder(e.target.value);
+}
+
+
+  useEffect(() => {
+  
+    dispatch(Get_projector_item(order,company));
+  }, [order,company]);
+
+  const handleFilter = ({ currentTarget: input }) => {
+    if (input.checked) {
+  const state = [...company, input.value];
+  setCompany(state);
+        
+} else {
+  const state = company.filter((val) => val !== input.value);
+  setCompany(state);
+}
+}
+                                // -------------- product page loadinggg-------------------
+  if (isLoading) return <ProductpageLoading />;
 
   return (
     <>
@@ -69,149 +96,250 @@ const Projector = () => {
         }}
       >
         <Product />
-        <VStack
+               {/* ---------------------  side baar of product page */}
+        <Stack
+          mt={4}
           display={{ md: "none" }}
           margin={"auto"}
           padding={"20px"}
           width={"80%"}
           boxShadow={"rgba(0, 0, 0, 0.35) 0px 5px 15px;"}
-        >
-          <Text
-            marginTop={2}
-            color={"teal"}
-            id="medicinese"
-            fontSize={35}
-            fontWeight={"bold"}
-          >
-            Medicines
-          </Text>
-          <select
-            name=""
-            id=""
-            style={{ width: "80%" }}
-            onChange={(e) => handleChange(e)}
-          >
-            <option value="reset">Sort-By-Price</option>
-            <option value="high">High to Low </option>
-            <option value="low">Low to High</option>
-          </select>
-        </VStack>
-
-        <Flex position={"relative"} justify={"center"} gap={2}>
-          <VStack
-            id="maindiv"
-            align={"center"}
-            display={{ base: "none", sm: "none", md: "block" }}
-            paddingLeft={"5px"}
-            textAlign={"center"}
-            alignItems={"center"}
-            width={"15%"}
-            pb={10}
-          >
-            <Box
-              id="filter"
-              p={2}
-              boxShadow={"rgba(0, 0, 0, 0.35) 0px 5px 15px;"}
-              textAlign={"center"}
-              width={"100%"}
-            >
-              <Text
-                marginTop={2}
-                color={"teal"}
-                id="medicinese"
-                fontSize={35}
-                fontWeight={"bold"}
-              >
-                Projector
-              </Text>
-              <select
-                style={{ width: "100%" }}
-                name=""
-                id=""
-                onChange={(e) => handleChange(e)}
-              >
-                <option value="reset">Sort-By-Price</option>
-                <option value="high">High to Low </option>
-                <option value="low">Low to High</option>
-              </select>
-            </Box>
-
-            <VStack
-              id="add"
-              p={2}
-              boxShadow={"rgba(0, 0, 0, 0.35) 0px 5px 15px;"}
-              align={"start"}
-              width={"100%"}
-              marginLeft={"0px"}
-              textAlign={"left"}
-              marginTop={"20px"}
-            >
-              <Text fontWeight={"extrabold"}>Filter Results</Text>
-              <HStack>
-                <Checkbox /> <Text>Video</Text>
-              </HStack>
-              <HStack>
-                <Checkbox /> <Text>Shop Now</Text>
-              </HStack>
-            </VStack>
-            <VStack
-              id="add"
-              p={2}
-              width={"100%"}
-              boxShadow={"rgba(0, 0, 0, 0.35) 0px 5px 15px;"}
-              marginLeft={"0px"}
-              align={"start"}
-              marginTop={"20px"}
-            >
-              <Text fontWeight={"extrabold"}>Related Category</Text>
-              <Text>l Installation</Text>
-              <Text>Services</Text>
-            </VStack>
-            <VStack
-              id="add"
-              p={2}
-              width={"100%"}
-              boxShadow={"rgba(0, 0, 0, 0.35) 0px 5px 15px;"}
-              marginLeft={"0px"}
-              align={"start"}
-              marginTop={"20px"}
-            >
-              <Text fontWeight={"extrabold"}> Related Brands</Text>
-              <Text>Waaree Projector</Text>
-              <Text>TATA Projector</Text>
-              <Text>Waaree Projector</Text>
-              <Text>Vikram Projector</Text>
-              <Text>Waaree Projector</Text>
-              <Text>Adani Projector</Text>
-              <Text>Waaree Projector</Text>
-              <Text>Luminous Projector</Text>
-              <Text>Loom Projector</Text>
-              <Text>Renewsys Projector</Text>
-              <Text>Panasonic Projector</Text>
-              <Text>Canadian Projector</Text>
-              <Text>Eastman Projector</Text>
-            </VStack>
-          </VStack>
-
-          <Grid
-            m={"10px"}
-            p={"5px"}
-            width={"80%"}
-            templateColumns={{
+        >     
+          <Grid templateColumns={{
               base: "repeat(1 1fr)",
               sm: "repeat(2, 1fr)",
               md: "repeat(3, 1fr)",
-            }}
-            gap={6}
+            }}><VStack >
+          <Text
+            marginTop={6}
+            color={"teal"}
+            id="projectore"
+            fontSize={35}
+            fontWeight={"bold"}
           >
-            {projector.map((el) => {
+            projector
+          </Text>
+                           {/* ------------------     sorting based on rating   -------------------- */}
+          <div onChange={handleSort}>
+            <Text>Sort by Rating</Text>
+                    <input
+                        type="radio"
+                        name="sort_by_rating"
+                        value={"asc"}
+                        defaultChecked={order === "asc"}
+                    />
+                    <label>low</label>
+                    <br />
+                    <input
+                        type="radio"
+                        name="sort_by_rating"
+                        value={"desc"}
+                        defaultChecked={order === "desc"}
+                    />
+                    <label>high</label>
+                </div>
+                </VStack>
+                <Stack align={"center"} mt={16}>
+                                      {/*--------------- filtering part based on part--------------------- */}
+            <Text fontWeight={"extrabold"}> Filter Based on Brands</Text>
+                <Grid m={"auto"} templateColumns={{
+              base: "repeat(2 1fr)",
+              sm: "repeat(4, 1fr)",
+              md: "repeat(3, 1fr)",
+            }} >
+
+
+
+                                      { projector.companys && <div>
+                                                  <input
+                                                      type="checkbox"
+                                                      value={projector.companys[0]}
+                                                      onChange={handleFilter}
+                                                      checked={company.includes(projector.companys[0])}
+                                                  />
+                                                  <label>{projector.companys[0]}</label>
+                                              </div>}
+                                              { projector.companys &&  <div>
+                                                  <input
+                                                      type="checkbox"
+                                                      value={projector.companys[1]}
+                                                      onChange={handleFilter}
+                                                      checked={company.includes(projector.companys[1])}
+                                                  />
+                                                  <label>{projector.companys[1]}</label>
+                                              </div>}
+                                              { projector.companys && <div>
+                                                  <input
+                                                      type="checkbox"
+                                                      value={projector.companys[2]}
+                                                      onChange={handleFilter}
+                                                      checked={company.includes(projector.companys[2])}
+                                                  />
+                                                  <label>{projector.companys[2]}</label>
+                                              </div>}
+                                              { projector.companys &&  <div>
+                                                  <input
+                                                      type="checkbox"
+                                                      value={projector.companys[3]}
+                                                      onChange={handleFilter}
+                                                      checked={company.includes(projector.companys[3])}
+                                                  />
+                                                  <label>{projector.companys[3]}</label>
+                                              </div>}
+                                          </Grid>
+                                          </Stack>
+                                          </Grid>
+                                          </Stack>
+
+                                      <Flex position={"relative"} justify={"center"} gap={2}>
+                                        <VStack
+                                          id="maindiv"
+                                          align={"center"}
+                                          display={{ base: "none", sm: "none", md: "block" }}
+                                          paddingLeft={"5px"}
+                                          textAlign={"center"}
+                                          alignItems={"center"}
+                                          width={"15%"}
+                                          pb={10}
+                                        >
+                                          <Box
+                                            id="filter"
+                                            p={2}
+                                            boxShadow={"rgba(0, 0, 0, 0.35) 0px 5px 15px;"}
+                                            textAlign={"center"}
+                                            width={"100%"}
+                                          >
+                                            <Text
+                                              marginTop={2}
+                                              color={"teal"}
+                                              id="projectore"
+                                              fontSize={35}
+                                              fontWeight={"bold"}
+                                            >
+                                              projector
+                                            </Text>
+                                            <div onChange={handleSort}>
+                                                  <input
+                                                      type="radio"
+                                                      name="sort_by_rating"
+                                                      value={"asc"}
+                                                      defaultChecked={order === "asc"}
+                                                  />
+                                                  <label>low</label>
+                                                  <br />
+                                                  <input
+                                                      type="radio"
+                                                      name="sort_by_rating"
+                                                      value={"desc"}
+                                                      defaultChecked={order === "desc"}
+                                                  />
+                                                  <label>high</label>
+                                              </div>
+                                            
+                                          </Box>
+
+                                          <VStack
+                                            id="add"
+                                            p={2}
+                                            boxShadow={"rgba(0, 0, 0, 0.35) 0px 5px 15px;"}
+                                            align={"start"}
+                                            width={"100%"}
+                                            marginLeft={"0px"}
+                                            textAlign={"left"}
+                                            marginTop={"20px"}
+                                          >
+                                            <Text fontWeight={"extrabold"}>Filter Results</Text>
+                                            <HStack>
+                                              <Checkbox /> <Text>Video</Text>
+                                            </HStack>
+                                            <HStack>
+                                              <Checkbox /> <Text>Shop Now</Text>
+                                            </HStack>
+                                          </VStack>
+                                          <VStack
+                                            id="add"
+                                            p={2}
+                                            width={"100%"}
+                                            boxShadow={"rgba(0, 0, 0, 0.35) 0px 5px 15px;"}
+                                            marginLeft={"0px"}
+                                            align={"start"}
+                                            marginTop={"20px"}
+                                          >
+                                            <Text fontWeight={"extrabold"}>Related Category</Text>
+                                            <Text>projector Usege</Text>
+                                            <Text>projector Services</Text>
+                                          </VStack>
+                                          <VStack
+                                            id="add"
+                                            p={2}
+                                            width={"100%"}
+                                            boxShadow={"rgba(0, 0, 0, 0.35) 0px 5px 15px;"}
+                                            marginLeft={"0px"}
+                                            align={"start"}
+                                            marginTop={"20px"}
+                                          >
+                                            <Text fontWeight={"extrabold"}> Filter Based on Brands</Text>
+                                                       {/* --------------------diltering based on company ------------------- */}
+                                  { projector.companys && <div>
+                                                  <input
+                                                      type="checkbox"
+                                                      value={projector.companys[0]}
+                                                      onChange={handleFilter}
+                                                      checked={company.includes(projector.companys[0])}
+                                                  />
+                                                  <label>{projector.companys[0]}</label>
+                                              </div>}
+                                              { projector.companys &&  <div>
+                                                  <input
+                                                      type="checkbox"
+                                                      value={projector.companys[1]}
+                                                      onChange={handleFilter}
+                                                      checked={company.includes(projector.companys[1])}
+                                                  />
+                                                  <label>{projector.companys[1]}</label>
+                                              </div>}
+                                              { projector.companys && <div>
+                                                  <input
+                                                      type="checkbox"
+                                                      value={projector.companys[2]}
+                                                      onChange={handleFilter}
+                                                      checked={company.includes(projector.companys[2])}
+                                                  />
+                                                  <label>{projector.companys[2]}</label>
+                                              </div>}
+                                            { projector.companys &&  <div>
+                                                  <input
+                                                      type="checkbox"
+                                                      value={projector.companys[3]}
+                                                      onChange={handleFilter}
+                                                      checked={company.includes(projector.companys[3])}
+                                                  />
+                                                  <label>{projector.companys[3]}</label>
+                                              </div>}
+                                          </VStack>
+                                        </VStack>
+
+                                          <Grid
+                                            m={"10px"}
+                                            p={"5px"}
+                                            width={"80%"}
+                                            templateColumns={{
+                                              base: "repeat(1 1fr)",
+                                              sm: "repeat(2, 1fr)",
+                                              md: "repeat(3, 1fr)",
+                                            }}
+                                            gap={6}
+                                          >
+            {projector.projector&&projector.projector.map((el) => {
               return (
-                <Box id="probox" key={el.id} m="5px">
+                <Box id="probox" key={el._id} m="5px">
                   <VStack
                     textAlign={"center"}
                     boxShadow={"rgba(0, 0, 0, 0.35) 0px 5px 15px;"}
                     h="auto"
                     p="5"
+                    borderRadius={16}
+                 
                   >
                     <Image
                       id="hov"
@@ -219,10 +347,9 @@ const Projector = () => {
                       h={{ sm: "125px", md: "185px", lg: "225px" }}
                       alt="product-image"
                     />
-                    <Text fontSize={17}>{el.title}</Text>
-
+                    <Text fontSize={17}>{el.name}</Text>
                     <Text fontWeight={"bold"}>₹ {el.price}</Text>
-                    <Box mb="8px">
+                    <Box m="8px">
                       {Array(5)
                         .fill("")
                         .map((_, i) => {
@@ -247,7 +374,7 @@ const Projector = () => {
                       bg={"rgb(6,128,128)"}
                       padding={"10px"}
                       borderRadius={2}
-                      width={"70%"}
+                      width={"90%"}
                     >
                       {"Contact Supplier >"}
                     </Button>

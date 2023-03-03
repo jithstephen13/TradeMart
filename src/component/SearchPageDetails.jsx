@@ -17,7 +17,7 @@ const SearchPageDetails = () => {
   const [data, setData] = useState([]);
   const query = useParams();
   let final = query.query;
-  // console.log('final:', final)
+
 
   const fetchData = (final) => {
     return axios.get("https://trademart-data-2zur.vercel.app/Allproducts", {
@@ -30,7 +30,7 @@ const SearchPageDetails = () => {
   useEffect(() => {
     fetchData(final)
       .then((res) => {
-        console.log(res.data);
+       
         setData(res.data);
       })
       .catch((err) => {

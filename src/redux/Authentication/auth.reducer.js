@@ -20,7 +20,7 @@ export const Authreducer = (state = initialState, { type, payload }) => {
       };
     }
     case types.ADD_USER_SUCCESS: {
-      setItem("userData", payload);
+      setItem("signuserData", payload)
       return {
         ...state,
         isLoading: false,
@@ -46,6 +46,7 @@ export const Authreducer = (state = initialState, { type, payload }) => {
     }
     case types.LOGIN_USER_SUCCESS: {
       setItem("userData", payload);
+     
       return {
         ...state,
         isLoading: false,
@@ -94,7 +95,6 @@ export const Authreducer = (state = initialState, { type, payload }) => {
 
     case types.GET_USER_SUCCESS: {
       let data = payload.map((doc) => ({ ...doc.data(), id: doc.id }));
-      console.log(data);
       return {
         ...state,
         isLoading: false,
@@ -166,7 +166,7 @@ export const Authreducer = (state = initialState, { type, payload }) => {
 
     case types.Get_Admin_SUCCESS: {
       let data = payload.map((doc) => ({ ...doc.data(), id: doc.id }));
-      console.log(data);
+      
       return {
         ...state,
         isLoading: false,

@@ -16,11 +16,13 @@ import { Get_medicines_item } from "../../redux/medicines/medicines.action";
 import { Get_projector_item } from "../../redux/projector/projector.action";
 import { Get_solarpanel_item } from "../../redux/solarpanel/solarpanel.action";
 
+
+
+                                    //  This is Acomponet that we are created to show case the product Cout and  we are creating graphs with that
+
 const Products = () => {
   const { medicines } = useSelector((state) => state.medicines);
-  console.log(medicines.length);
   const { projector } = useSelector((state) => state.projector);
-  console.log(projector);
   const { solarpanel } = useSelector((state) => state.solarpanel);
 
   const dispatch = useDispatch();
@@ -28,25 +30,25 @@ const Products = () => {
   const data = [
     {
       name: "Drugs",
-      count: medicines.length,
+      count:medicines.medins ?medicines.medins.length:0,
       color: "blue",
     },
     {
       name: "Projector",
-      count: projector.length,
+      count: projector.projector ? projector.projector.length:0,
       color: "green",
     },
     {
       name: "Solar Panels",
-      count: solarpanel.length,
+      count: solarpanel.solarpanel ?solarpanel.solarpanel.length:0,
       color: "red",
     },
   ];
 
   React.useEffect(() => {
-    dispatch(Get_medicines_item());
-    dispatch(Get_projector_item());
-    dispatch(Get_solarpanel_item());
+    dispatch(Get_medicines_item("asc",[]));
+    dispatch(Get_projector_item("asc",[]));
+    dispatch(Get_solarpanel_item("asc",[]));
   }, []);
   return (
     <div>

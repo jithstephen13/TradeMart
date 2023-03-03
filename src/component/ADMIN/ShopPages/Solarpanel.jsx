@@ -31,23 +31,25 @@ import { useDispatch, useSelector } from "react-redux";
 import { RiDeleteBin5Fill } from "react-icons/ri";
 
 const Solarpanel = () => {
+
+        // admin page solar compnet   
   const [id, SetId] = React.useState("");
   const [price, SetPrice] = React.useState("");
   const { solarpanel } = useSelector((state) => state.solarpanel);
-  console.log(solarpanel, "p");
+
   const dispatch = useDispatch();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   useEffect(() => {
-    dispatch(Get_solarpanel_item());
-    console.log("hiii");
+    dispatch(Get_solarpanel_item("",[]));
   }, [dispatch]);
 
   const newprom = async () => {
     setTimeout(() => {
-      dispatch(Get_solarpanel_item());
+      dispatch(Get_solarpanel_item("",[]));
     }, 2000);
-  };
+  };               
+  // ----------------------------function handleUpdate-------------------
   function handleUpdate() {
     const changes = {
       price: price,
@@ -56,6 +58,7 @@ const Solarpanel = () => {
     newprom();
     onClose();
   }
+  // ---------------------------function handleRemove----------------------
   function handleRemove(id) {
     dispatch(UPDATE_solarpanel_item(id));
     newprom();
@@ -79,7 +82,8 @@ const Solarpanel = () => {
                 </Tr>
               </Thead>
               <Tbody>
-                {solarpanel.map((el) => (
+                                             {/* ----------------------------- Product Page-------------------- */}
+                {solarpanel.solarpanel&&solarpanel.solarpanel.map((el) => (
                   <Tr key={el.id}>
                     <Td>{el.id}</Td>
                     <Td>{el.name}</Td>
@@ -89,9 +93,11 @@ const Solarpanel = () => {
                       <Image src={el.img_src} alt={el.id} />
                     </Td>
                     <Td>
-                      <Button onClick={onOpen}>Update</Button>
+                      <Button onClick={()=>{onOpen()
+                      SetId(el._id)
+                      }}>Update</Button>
                     </Td>
-                    <Td onClick={() => handleRemove(el.id)}>
+                    <Td onClick={() => handleRemove(el._id)}>
                       <RiDeleteBin5Fill />
                     </Td>
                   </Tr>
@@ -108,11 +114,7 @@ const Solarpanel = () => {
             <ModalCloseButton />
             <ModalBody>
               <VStack spacing={5}>
-                <Input
-                  placeholder="Enter Product Id"
-                  value={id}
-                  onChange={(e) => SetId(e.target.value)}
-                />
+              
                 <Input
                   placeholder="Enter New Price"
                   value={price}

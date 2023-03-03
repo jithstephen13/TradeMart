@@ -38,11 +38,7 @@ const ProductDetails = () => {
   const [relatedData, setRelatedData] = useState([]);
   const { id } = useParams();
   let productType = "";
-  // console.log(id);
-  // console.log(typeof id);
-  // console.log(id.length);
-  // console.log(id[0]);
-
+ 
   // Chack and Set the Product Types
   if (id[0] === "m") {
     productType = "medicines";
@@ -52,8 +48,7 @@ const ProductDetails = () => {
     productType = "solarpanel";
   }
 
-  console.log(productType);
-
+ 
   // Fetch the Related Products
   const getRelatedProduct = async () => {
     const product = await axios.get(
@@ -66,14 +61,12 @@ const ProductDetails = () => {
 
   // Fetch the Particular Product according to id
   const getProduct = async (id) => {
-    // console.log(id);
-    const product = await axios.get(
+     const product = await axios.get(
       `https://trademart-data-2zur.vercel.app/Allproducts/${id}`
     );
     setData(product.data);
   };
-  console.log("Data:", data);
-
+ 
   useEffect(() => {
     getProduct(id);
     getRelatedProduct();

@@ -30,26 +30,24 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { RiDeleteBin5Fill } from "react-icons/ri";
 import MedItems from "./medItems";
-
+                                //  Admin page medicn componets
 const Medicines = () => {
   const [id, SetId] = React.useState("");
   const [price, SetPrice] = React.useState("");
   const { medicines } = useSelector((state) => state.medicines);
-  console.log(medicines, "m");
   const dispatch = useDispatch();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   useEffect(() => {
-    dispatch(Get_medicines_item());
-    console.log("hiii");
+    dispatch(Get_medicines_item("",[]));
   }, [dispatch]);
 
   const newprom = async () => {
     setTimeout(() => {
-      dispatch(Get_medicines_item());
+      dispatch(Get_medicines_item("",[]));
     }, 2000);
   };
-
+                  //  update functionality
   function handleUpdate() {
     const changes = {
       price: price,
@@ -58,7 +56,7 @@ const Medicines = () => {
     newprom();
     onClose();
   }
-
+                                // ---------------------delete function  ----------
   function handleRemove(id) {
     dispatch(REMOVE_medicines_item(id));
     newprom();
@@ -82,8 +80,9 @@ const Medicines = () => {
                 </Tr>
               </Thead>
               <Tbody>
-                {medicines.map((el) => (
-                  <Tr key={el.id}>
+                                     {/* Product mapping */}
+                {medicines.medins&& medicines.medins.map((el) => (
+                  <Tr key={el._id}>
                     <Td>{el.id}</Td>
                     <Td>{el.name}</Td>
                     <Td>₹{el.price}</Td>
@@ -92,9 +91,11 @@ const Medicines = () => {
                       <Image src={el.img_src} alt={el.id} />
                     </Td>
                     <Td>
-                      <Button onClick={onOpen}>Update</Button>
+                      <Button onClick={()=>{onOpen()
+                      SetId(el._id)
+                      }}>Update</Button>
                     </Td>
-                    <Td onClick={() => handleRemove(el.id)}>
+                    <Td onClick={() => handleRemove(el._id)}>
                       <RiDeleteBin5Fill />
                     </Td>
                   </Tr>
@@ -110,11 +111,7 @@ const Medicines = () => {
             <ModalCloseButton />
             <ModalBody>
               <VStack spacing={5}>
-                <Input
-                  placeholder="Enter Product Id"
-                  value={id}
-                  onChange={(e) => SetId(e.target.value)}
-                />
+                 
                 <Input
                   placeholder="Enter New Price"
                   value={price}

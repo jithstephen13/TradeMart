@@ -29,7 +29,7 @@ const Admin = () => {
   const [Customers, setCustomers] = React.useState(false);
   const [users, setUsers] = React.useState(false);
   const [adminPage, setAdmin] = React.useState(false);
-
+                                  //  function   to manage the show difrent addmin sections
   function handleDashboard() {
     setDashboard(true);
     setShops(false);
@@ -119,6 +119,8 @@ const Admin = () => {
   return (
     <div>
       <Navbar />
+
+                                     {/* Admin Dash bord with Side bar */}
       <div className={Styles.Sidebar}>
         <Box mt={6} h="700px" bgColor="white">
           <VStack spacing={10}>
@@ -133,9 +135,7 @@ const Admin = () => {
             >
               Dashboard
             </Button>
-            {/* <hr/>
-           <Text textStyle="SidebarHead" m="15px">PRODUCT LIST</Text>
-            <hr/> */}
+          
             <Button
               bgColor="white"
               fontFamily="Cambria"
@@ -184,19 +184,6 @@ const Admin = () => {
             >
               Location
             </Button>
-
-            <Button
-              bgColor="white"
-              fontFamily="Cambria"
-              w="100%"
-              size={"md"}
-              _hover={{ bgColor: "#2e3192", color: "white" }}
-              onClick={handleCustomers}
-              leftIcon={<BsFillPeopleFill />}
-            >
-              Customers
-            </Button>
-
             <Button
               bgColor="white"
               fontFamily="Cambria"
