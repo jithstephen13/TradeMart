@@ -7,7 +7,10 @@ export const Get_solarpanel_item = () => async (dispatch) => {
     let respnce = await axios.get(
       `https://trademart-data-2zur.vercel.app/solarpanel`
     );
-    dispatch({ type: types.GET_solarpanel_SUCCESS, payload: respnce.data });
+    setTimeout(function(){
+      return dispatch({ type: types.GET_solarpanel_SUCCESS, payload: respnce.data });
+    },3000)
+    
   } catch (error) {
     dispatch({ type: types.GET_solarpanel_ERROR });
   }

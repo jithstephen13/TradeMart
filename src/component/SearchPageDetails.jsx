@@ -24,18 +24,18 @@ const SearchPageDetails = () => {
       params: {
         q: final,
       },
-    });
+    }).then((res) => {
+      console.log(res.data);
+      setData(res.data);
+    })
+    .catch((err) => {
+      console.log("Error: ", true);
+    });;
   };
 
   useEffect(() => {
     fetchData(final)
-      .then((res) => {
-        console.log(res.data);
-        setData(res.data);
-      })
-      .catch((err) => {
-        console.log("Error: ", true);
-      });
+      
   }, []);
 
   // Search Product Page
@@ -75,7 +75,7 @@ const SearchPageDetails = () => {
           textAlign="center"
           margin="70px 10px 10px 10px"
         >
-          {data.map((el) => {
+          { data && data.map((el) => {
             return (
               <GridItem margin={"20px"}>
                 <Box

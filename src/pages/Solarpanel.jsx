@@ -48,11 +48,16 @@ const Solarpanel = () => {
       return;
     }
     dispatch(sortMysolarpanel(value));
+   
   };
+  
+  
 
   useEffect(() => {
     dispatch(Get_solarpanel_item());
   }, [reset]);
+
+  console.log(Loading)
 
   if (isLoading) return <Loading />;
 
@@ -66,13 +71,14 @@ const Solarpanel = () => {
           display: "flex",
           flexDirection: "column",
           marginTop: "70px",
+          
         }}
       >
         <Product />
         <VStack
           display={{ md: "none" }}
           margin={"auto"}
-          padding={"20px"}
+          padding={"30px 20px"}
           width={"80%"}
           boxShadow={"rgba(0, 0, 0, 0.35) 0px 5px 15px;"}
         >
@@ -114,7 +120,7 @@ const Solarpanel = () => {
                 marginTop={2}
                 color={"teal"}
                 id="medicinese"
-                fontSize={35}
+                fontSize={33}
                 fontWeight={"bold"}
               >
                 Solarpanel
@@ -199,7 +205,7 @@ const Solarpanel = () => {
             }}
             gap={6}
           >
-            {solarpanel.map((el) => {
+            { solarpanel && solarpanel.map((el) => {
               return (
                 <Box id="probox" key={el.id} m="5px">
                   <VStack
