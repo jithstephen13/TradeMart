@@ -48,7 +48,6 @@ export const LogOUT = () => async (dispatch) => {
   }
 };
 
-// dispatch(GetAllUseres())
 export const GetAllUseres = () => async (dispatch) => {
   dispatch({ type: types.GET_USER_LOADING });
   try {
@@ -58,7 +57,6 @@ export const GetAllUseres = () => async (dispatch) => {
     dispatch({ type: types.GET_USER_ERROR });
   }
 };
-// dispatch(DeleteUser(id))
 export const DeleteUser = (id) => async (dispatch) => {
   dispatch({ type: types.REMOVE_USER_LOADING });
   try {

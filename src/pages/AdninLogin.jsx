@@ -55,8 +55,7 @@ const AdninLogin = () => {
   useEffect(() => {
     dispatch(GetAllAdmin());
   }, []);
-  //  let tocken=getItem("userData")
-  //  console.log(tocken===null)
+ 
 
   return (
     <>

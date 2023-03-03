@@ -60,8 +60,7 @@ const Login = () => {
       navigate("/cart");
     }
   }, [tocken, dispatch]);
-  //  let tocken=getItem("userData")
-  //  console.log(tocken===null)
+
 
   const handleLogout = () => {
     dispatch(LogOUT());
