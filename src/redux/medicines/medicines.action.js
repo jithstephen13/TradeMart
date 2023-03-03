@@ -7,7 +7,10 @@ export const Get_medicines_item = () => async (dispatch) => {
     let respnce = await axios.get(
       `https://trademart-data-2zur.vercel.app/medicines`
     );
-    dispatch({ type: types.GET_medicines_SUCCESS, payload: respnce.data });
+    setTimeout(function(){
+         return dispatch({ type: types.GET_medicines_SUCCESS, payload: respnce.data });
+    },3000)
+    
   } catch (error) {
     dispatch({ type: types.GET_medicines_ERROR });
   }
@@ -34,7 +37,7 @@ export const UPDATE_medicines_item = (id, change) => async (dispatch) => {
       `https://trademart-data-2zur.vercel.app/medicines/${id}`,
       change
     );
-    console.log(res.data);
+    // console.log(res.data);
     dispatch({ type: types.UPDATE_medicines_SUCCESS, payload: res.data });
   } catch (error) {
     dispatch({ type: types.UPDATE_medicines_ERROR });

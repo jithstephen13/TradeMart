@@ -49,12 +49,13 @@ const Medicines = () => {
     }
     dispatch(sortMymedicines(value));
   };
+  
 
   useEffect(() => {
-    dispatch(Get_medicines_item());
+     dispatch(Get_medicines_item());
   }, [reset]);
 
-  if (isLoading) return <Loading />;
+  if (isLoading) return <Loading/>;
 
   return (
     <>
@@ -199,7 +200,7 @@ const Medicines = () => {
             }}
             gap={6}
           >
-            {medicines.map((el) => {
+            { medicines && medicines.map((el) => {
               return (
                 <Box id="probox" key={el.id} m="5px">
                   <VStack

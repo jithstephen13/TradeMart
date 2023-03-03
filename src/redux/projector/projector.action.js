@@ -7,7 +7,10 @@ export const Get_projector_item = () => async (dispatch) => {
     let respnce = await axios.get(
       `https://trademart-data-2zur.vercel.app/projector`
     );
-    dispatch({ type: types.GET_projector_SUCCESS, payload: respnce.data });
+    setTimeout(function(){
+      return dispatch({ type: types.GET_projector_SUCCESS, payload: respnce.data });
+    },3000)
+    
   } catch (error) {
     dispatch({ type: types.GET_projector_ERROR });
   }

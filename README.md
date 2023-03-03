@@ -11,7 +11,6 @@
  
  Shivam Kumar.
 
- Sejal Jaiswal.
  
  
 ##  Steps to follow
