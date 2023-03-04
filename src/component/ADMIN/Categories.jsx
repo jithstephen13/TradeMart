@@ -1,3 +1,6 @@
+
+                                              //  Admin categery page 
+                                              //  and we are showing the difrent categery of brands that we are using for the products
 import React from "react";
 import { Box, Flex, Text } from "@chakra-ui/react";
 import { Get_medicines_item } from "../../redux/medicines/medicines.action";
@@ -12,9 +15,9 @@ const Categories = () => {
   const dispatch = useDispatch();
 
   React.useEffect(() => {
-    dispatch(Get_medicines_item());
-    dispatch(Get_projector_item());
-    dispatch(Get_solarpanel_item());
+    dispatch(Get_medicines_item("",[]));
+    dispatch(Get_projector_item("",[]));
+    dispatch(Get_solarpanel_item("",[]));
   }, []);
 
   return (
@@ -23,27 +26,27 @@ const Categories = () => {
         <Flex justifyContent="space-around">
           <Box w="25%" h="auto" bgColor="#2bbbe3" p={6}>
             <Text textStyle="DashboardHead">MEDICINES</Text>
-            {medicines.map((el) => (
-              <Box key={el.id} mt="5px" mb={5} bgColor="#2bbbe3">
-                <Text textStyle="AdminNav">{el.company}</Text>
+            {medicines.companys&&medicines.companys.map((el) => (
+              <Box key={Math.random()} mt="5px" mb={5} bgColor="#2bbbe3">
+                <Text textStyle="AdminNav">{el}</Text>
               </Box>
             ))}
           </Box>
 
           <Box w="25%" h="auto" bgColor="#ff2941" p={6}>
             <Text textStyle="DashboardHead">PROJECTORS</Text>
-            {projector.map((el) => (
-              <Box key={el.id} mt="5px" mb={5} bgColor="#ff2941">
-                <Text textStyle="AdminNav">{el.company}</Text>
+            {projector.companys&&projector.companys.map((el) => (
+              <Box  key={Math.random()} mt="5px" mb={5} bgColor="#ff2941">
+                <Text textStyle="AdminNav">{el}</Text>
               </Box>
             ))}
           </Box>
 
           <Box w="25%" h="auto" bgColor="#59d243" p={6}>
             <Text textStyle="DashboardHead">SOLAR PANEL</Text>
-            {solarpanel.map((el) => (
-              <Box key={el.id} mt="5px" mb={5} bgColor="#59d243">
-                <Text textStyle="AdminNav">{el.company}</Text>
+            {solarpanel.companys&&solarpanel.companys.map((el) => (
+              <Box key={Math.random()} mt="5px" mb={5} bgColor="#59d243">
+                <Text textStyle="AdminNav">{el}</Text>
               </Box>
             ))}
           </Box>

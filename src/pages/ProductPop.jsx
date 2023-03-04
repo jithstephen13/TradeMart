@@ -28,6 +28,11 @@ const data = {
   price: "₹19,499",
   delear_name: "Cillian_Murphy",
 };
+
+
+  // ============================ Single page Pop up to senting Detaile to Delere throgh Mail ========================
+
+
 const ProductPop = () => {
   const OverlayOne = () => (
     <ModalOverlay
@@ -63,11 +68,11 @@ const ProductPop = () => {
       )
       .then(
         (result) => {
-          console.log(result.text);
+         
           onClose();
         },
         (error) => {
-          console.log(error.text);
+         
         }
       );
 
@@ -158,7 +163,10 @@ const ProductPop = () => {
                     <option>selectname</option>
                     <option value={data.name}>{data.name}</option>
                   </select>
+
+                
                   <label>Price</label>
+
                   <select name="price" style={{ border: "1px solid black" }}>
                     <option>select price</option>
                     <option value={data.price}>{data.price}</option>

@@ -16,7 +16,6 @@ import { useSelector, useDispatch } from "react-redux";
 
 const Dashboard = () => {
   const { Cart } = useSelector((state) => state.Cart);
-  console.log(Cart);
   const dispatch = useDispatch();
 
   function getCurrentDate(separator = "-") {
@@ -36,8 +35,13 @@ const Dashboard = () => {
   };
 
   React.useEffect(() => {
-    dispatch(Get_Cart_item());
+    // dispatch(Get_Cart_item());
   }, []);
+
+
+                                      // ----- Admin Dashboard with graphs and all 
+                                      //  we are just jusing 3 types of graph that showing the oroduct cout 
+                                      //  and we are  making product price range also -------
   return (
     <div>
       <Box w="84%" ml="16%" mt="50px" h="700px" p={10} bgColor="#f7f7f7 ">

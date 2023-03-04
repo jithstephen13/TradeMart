@@ -18,7 +18,7 @@ export const AddUser =
     try {
       let data = await AddUserApi(cred);
 
-      dispatch({ type: types.ADD_USER_SUCCESS, payload: data.localId });
+      dispatch({ type: types.ADD_USER_SUCCESS, payload: data });
     } catch (error) {
       dispatch({ type: types.ADD_USER_ERROR });
     }
@@ -31,7 +31,7 @@ export const LoginUser =
 
     try {
       let data = await LoginApi(cred);
-      dispatch({ type: types.LOGIN_USER_SUCCESS, payload: data.localId });
+      dispatch({ type: types.LOGIN_USER_SUCCESS, payload: data });
     } catch (error) {
       dispatch({ type: types.LOGIN_USER_ERROR });
     }

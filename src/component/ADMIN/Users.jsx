@@ -9,13 +9,12 @@ import {
   CardFooter,
   Button,
 } from "@chakra-ui/react";
-import { GetAllUseres, DeleteUser } from "../../redux/Auth/auth.action";
+import { GetAllUseres, DeleteUser } from "../../redux/Authentication/auth.action";
 import { useSelector, useDispatch } from "react-redux";
 
 const Users = () => {
   const { userlist } = useSelector((state) => state.auth);
-  console.log(userlist, "state");
-  const dispatch = useDispatch();
+   const dispatch = useDispatch();
   React.useEffect(() => {
     dispatch(GetAllUseres());
   }, []);

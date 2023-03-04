@@ -39,7 +39,6 @@ const ProductDetails = () => {
   const [loading,setLoading] = useState(false)
   const { id } = useParams();
   let productType = "";
-  
 
   // Chack and Set the Product Types
   if (id[0] === "m") {
@@ -71,14 +70,12 @@ const ProductDetails = () => {
 
   // Fetch the Particular Product according to id
   const getProduct = async (id) => {
-    // console.log(id);
-    const product = await axios.get(
+     const product = await axios.get(
       `https://trademart-data-2zur.vercel.app/Allproducts/${id}`
     );
     setData(product.data);
   };
-  console.log("Data:", data);
-
+ 
   useEffect(() => {
     getProduct(id);
     getRelatedProduct();

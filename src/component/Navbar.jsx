@@ -1,33 +1,6 @@
 import React, { useEffect, useState } from "react";
 //-----------Chakra UI Components-------
-import {
-  Box,
-  Flex,
-  HStack,
-  IconButton,
-  useDisclosure,
-  Stack,
-  Input,
-  Text,
-  Image,
-  Button,
-  PopoverFooter,
-  PopoverBody,
-  PopoverHeader,
-  PopoverCloseButton,
-  PopoverArrow,
-  PopoverContent,
-  Popover,
-  PopoverTrigger,
-  Heading,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalFooter,
-  ModalOverlay,
-  Spinner,
-  useToast,
+import { Box, Flex, HStack, IconButton, useDisclosure, Stack, Input, Text, Image, Button, PopoverFooter, PopoverBody, PopoverHeader, PopoverCloseButton, PopoverArrow, PopoverContent, Popover, PopoverTrigger,  Heading, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalOverlay, Spinner, useToast,
 } from "@chakra-ui/react";
 //-----------ICONS----------------------
 import { TiThSmall } from "react-icons/ti";
@@ -38,7 +11,7 @@ import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import { MdOutlineMessage, MdSendToMobile } from "react-icons/md";
 import { BiMessageDetail, BiMobile, BiUserCircle } from "react-icons/bi";
 import { AiOutlineHome, AiOutlineSetting, AiOutlineTag } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 //-----------***------------------------------------------------------------------
 import Logo from "../assets/logo.png";
@@ -49,14 +22,16 @@ import {
   GetAllAdmin,
   LoginUser,
   LogOUT,
-} from "../redux/Auth/auth.action";
+} from "../redux/Authentication/auth.action";
 import { getItem, setItem } from "../utility/localStorage";
+import AdminLogin from "./Login/AdminLogin";
+import userLogin from './Login/userLogin'
+import UserLogin from "./Login/userLogin";
 
 const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [Registarion, setRegistarion] = useState(false);
   const [admin, setAdmin] = useState(false);
-  // const { isOpen, onOpen, onClose } = useDisclosure()
   const [cred, setCred] = useState({});
   const [conform, setConform] = useState("");
   const navigate = useNavigate();
@@ -92,84 +67,53 @@ const Navbar = () => {
 
   useEffect(() => {
     dispatch(GetAllAdmin());
+
+    
   }, []);
-  const handleClick = async () => {
+  const handleClick=async()=>{
     try {
-      dispatch(AddUser(cred));
-      setTimeout(() => {
-        if (getItem("userData") != null) {
-          toast({
-            title: "successfully sign in ",
-            description: "",
-            status: "success",
-            duration: 6000,
-            isClosable: true,
-          });
-          onClose();
-          navigate("/");
-        } else {
-          toast({
-            title: "invalid username or password ",
-            description: "",
-            status: "error",
-            duration: 6000,
-            isClosable: true,
-            backgroundColor: "red",
-          });
-        }
-      }, 3000);
-    } catch (error) {}
-  };
-  const handleLogin = async () => {
+       dispatch(AddUser(cred))
+     
+    }
+    catch (error) {
+    }
+  }
+  const handleLogin=async()=>{
     try {
-      dispatch(LoginUser(cred));
-      setTimeout(() => {
-        if (getItem("userData") != null) {
-          toast({
-            title: "successfully sign in ",
-            description: "",
-            status: "success",
-            duration: 6000,
-            isClosable: true,
-          });
-          onClose();
-          navigate("/");
-        } else {
-          toast({
-            title: "wrong username or password ",
-            description: "",
-            status: "error",
-            duration: 6000,
-            isClosable: true,
-            backgroundColor: "red",
-          });
-        }
-      }, 3000);
-    } catch (error) {}
-  };
-  let tocken = getItem("userData");
+      dispatch(LoginUser(cred))
+      
+    } catch (error) {
+    }
+  }
+
+  
+
 
   const handleLogout = () => {
     dispatch(LogOUT());
   };
-  let styleNev = {
+  let styleNev={
     position: "-webkit-sticky",
     position: "fixed",
     top: "0",
     left: "0",
-    zIndex: "1",
-    width: "100%",
-  };
+    zIndex : "1",
+    width: "100%"
+}
+let tocken = getItem("userData");
   return (
     <>
-      <Box backgroundColor="#2E3192" style={styleNev}>
+
+      <Box backgroundColor="#2E3192" style={styleNev} >
+
+     
         <Flex h={14} alignItems={"center"} justifyContent={"space-between"}>
           <HStack spacing={{ base: 3, md: 8 }} alignItems={"center"}>
-            <Link to="/">
-              <Box w={["120px", "140px", "160px", "200px"]}>
-                <Image ml={{ sm: "10px", md: "20px", lg: "30px" }} src={Logo} />
-              </Box>
-            </Link>
+
+            <Link to="/" ><Box w={["120px", "140px", "160px", "200px"]}>
+              <Image src={Logo} />
+            </Box></Link>
+
           </HStack>
           <Flex alignItems={"center"} w={{ md: "75%", md: "40%", lg: "30%" }}>
             <Box
@@ -222,7 +166,7 @@ const Navbar = () => {
                       cursor="pointer"
                     />
                     <Text cursor="pointer" fontSize="12px" color="white">
-                      Sign In
+                     {  tocken ? "user":"Sign In"}
                     </Text>
                   </Box>
                 </PopoverTrigger>
@@ -235,130 +179,11 @@ const Navbar = () => {
                   <PopoverCloseButton />
                   <PopoverHeader>
                     <Box align="center">
-                      {tocken === null ? (
-                        <Button
-                          onClick={onOpen}
-                          fontSize={{ base: "12px", md: "14px" }}
-                          fontFamily="arial"
-                          background="-webkit-gradient(linear,left top,left bottom,from(#058b80),to(#02625a))"
-                          colorScheme="#fff"
-                          size="md"
-                          p="5px 40px"
-                        >
-                          Login/siginup
-                        </Button>
-                      ) : (
-                        <Button
-                          onClick={handleLogout}
-                          fontSize={{ base: "12px", md: "14px" }}
-                          fontFamily="arial"
-                          background="-webkit-gradient(linear,left top,left bottom,from(#058b80),to(#02625a))"
-                          colorScheme="#fff"
-                          size="md"
-                          p="5px 40px"
-                        >
-                          Logout
-                        </Button>
-                      )}
-                      {!admin && (
-                        <Modal
-                          closeOnOverlayClick={false}
-                          isOpen={isOpen}
-                          onClose={onClose}
-                        >
-                          <ModalOverlay />
-                          <ModalContent>
-                            <ModalCloseButton />
-                            <ModalBody textAlign={"center"} pb={6}>
-                              {!Registarion && (
-                                <Flex mt={20} flexDirection={"column"} gap={2}>
-                                  <Heading color={"#333"}>Login</Heading>
-                                  <Input
-                                    placeholder="User name..."
-                                    name="email"
-                                    onChange={handlechenge}
-                                  ></Input>
-                                  <Input
-                                    placeholder="Password..."
-                                    type={"password"}
-                                    name="password"
-                                    onChange={handlechenge}
-                                  ></Input>
-                                  <Button
-                                    onClick={handleLogin}
-                                    fontFamily="arial"
-                                    background="-webkit-gradient(linear,left top,left bottom,from(#058b80),to(#02625a))"
-                                    colorScheme="#fff"
-                                    mr={3}
-                                  >
-                                    {isLoading ? <Spinner /> : "Login"}{" "}
-                                  </Button>
-                                  <Link onClick={() => setRegistarion(true)}>
-                                    Don't have an account?{" "}
-                                    <span style={{ color: "blue" }}>
-                                      Create your new account
-                                    </span>
-                                  </Link>
-                                </Flex>
-                              )}
 
-                              {Registarion && (
-                                <Flex flexDirection={"column"} gap={2}>
-                                  <Heading color={"#333"}>Registration</Heading>
-                                  <Input
-                                    placeholder="First name..."
-                                    name="firstname"
-                                    onChange={handlechenge}
-                                  ></Input>
-                                  <Input
-                                    placeholder="Lastst name..."
-                                    name="laststname"
-                                    onChange={handlechenge}
-                                  ></Input>
-                                  <Input
-                                    placeholder="Email..."
-                                    name="email"
-                                    onChange={handlechenge}
-                                  ></Input>
-                                  <Input
-                                    placeholder="Password..."
-                                    name="password"
-                                    type={"password"}
-                                    onChange={handlechenge}
-                                  ></Input>
+      {/* user Login and sigin up Popo up  component   -------------------------------------------------                  */}
 
-                                  <Input
-                                    placeholder="conform Password..."
-                                    type={"password"}
-                                    onChange={(e) => setConform(e.target.value)}
-                                  ></Input>
-                                  <p style={{ color: "red" }}>
-                                    {cred.password !== undefined &&
-                                    conform !== cred.password
-                                      ? "password is not matching"
-                                      : ""}
-                                  </p>
-                                  <Button
-                                    onClick={handleClick}
-                                    fontFamily="arial"
-                                    background="-webkit-gradient(linear,left top,left bottom,from(#058b80),to(#02625a))"
-                                    colorScheme="#fff"
-                                    mr={3}
-                                  >
-                                    {isLoading ? <Spinner /> : "Sign Up"}{" "}
-                                  </Button>
-                                  <Link
-                                    onClick={() => setRegistarion(!Registarion)}
-                                  >
-                                    {" "}
-                                    already have an account
-                                  </Link>
-                                </Flex>
-                              )}
-                            </ModalBody>
-                          </ModalContent>
-                        </Modal>
-                      )}
+                        <UserLogin handleLogout={handleLogout} admin={admin} handlechenge ={handlechenge} Registarion ={Registarion} handleLogin ={handleLogin}setRegistarion ={setRegistarion}setConform ={setConform}cred ={cred}conform ={conform}handleClick ={handleClick}/>
+
                       <Text fontSize={{ base: "11px", md: "12px" }}>
                         New to TRADEMART{" "}
                         <span style={{ color: "blue" }}>Join Now</span>
@@ -490,62 +315,13 @@ const Navbar = () => {
                       <hr />
                     </Box>
                     <Box align="center">
-                      <Button
-                        onClick={() => {
-                          setAdmin(!admin);
-                          onOpen();
-                        }}
-                        m="5px 0px"
-                        fontSize={{ base: "12px", md: "14px" }}
-                        fontFamily="arial"
-                        background="-webkit-gradient(linear,left top,left bottom,from(#058b80),to(#02625a))"
-                        colorScheme="#fff"
-                        size="sm"
-                      >
-                        Admin Login
-                      </Button>
-                      {admin && (
-                        <Modal
-                          closeOnOverlayClick={false}
-                          isOpen={isOpen}
-                          onClose={onClose}
-                        >
-                          <ModalOverlay />
-                          <ModalContent>
-                            <ModalCloseButton />
-                            <ModalBody textAlign={"center"} pb={6}>
-                              <Flex mt={20} flexDirection={"column"} gap={2}>
-                                <Heading color={"#333"}>Login</Heading>
-                                <Input
-                                  placeholder="User name..."
-                                  name="email"
-                                  onChange={handlechenge}
-                                ></Input>
-                                <Input
-                                  placeholder="Password..."
-                                  type={"password"}
-                                  name="password"
-                                  onChange={handlechenge}
-                                ></Input>
-                                <Button
-                                  onClick={handleAdminLogin}
-                                  fontFamily="arial"
-                                  background="-webkit-gradient(linear,left top,left bottom,from(#058b80),to(#02625a))"
-                                  colorScheme="#fff"
-                                  mr={3}
-                                >
-                                  {isLoading ? <Spinner /> : "Login"}
-                                </Button>
-                              </Flex>
-                            </ModalBody>
-                          </ModalContent>
-                        </Modal>
-                      )}
+                            <AdminLogin setAdmin={setAdmin} admin={admin} handlechenge={handlechenge} handleAdminLogin={handleAdminLogin} />
                     </Box>
                   </PopoverFooter>
                 </PopoverContent>
               </Popover>
             </Box>
+            <Flex>
             <IconButton
               size={"md"}
               icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
@@ -556,14 +332,19 @@ const Navbar = () => {
               fontSize={{ base: "20px", sm: "30px" }}
               onClick={isOpen ? onClose : onOpen}
             />
+            <Box display={{ base: "block", md: "none"}}>
+                           <AdminLogin setAdmin={setAdmin} admin={admin} handlechenge={handlechenge} handleAdminLogin={handleAdminLogin} />
+            </Box>
+          </Flex>
           </Flex>
         </Flex>
 
         {isOpen ? (
-          <Box pb={4} display={{ md: "none" }}>
+          <Box pb={4} pl={4}display={{ md: "none" }}>
             <Stack as={"nav"} spacing={4}>
               <Text cursor="pointer" fontSize="12px" color="white">
-                Sign In
+              <UserLogin handleLogout={handleLogout} admin={admin} handlechenge ={handlechenge} Registarion ={Registarion} handleLogin ={handleLogin}setRegistarion ={setRegistarion}setConform ={setConform}cred ={cred}conform ={conform}handleClick ={handleClick}/>
+
               </Text>
               <Text cursor="pointer" fontSize="12px" color="white">
                 Message
@@ -575,11 +356,13 @@ const Navbar = () => {
                 Help
               </Text>
               <Text cursor="pointer" fontSize="12px" color="white">
-                Sell
+                
               </Text>
             </Stack>
-          </Box>
+           
+          </Box> 
         ) : null}
+        
       </Box>
     </>
   );

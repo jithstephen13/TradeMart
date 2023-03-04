@@ -5,7 +5,7 @@ import {
   applyMiddleware,
 } from "redux";
 import thunk from "redux-thunk";
-import { Authreducer } from "./Auth/auth.reducer";
+import { Authreducer } from "./Authentication/auth.reducer";
 
 import { solarpanelreducer } from "./solarpanel/solarpanel.reducer";
 import { projectorreducer } from "./projector/projector.reducer";

@@ -9,7 +9,9 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   let addmin = getItem("admin");
 
-  console.log(addmin, "adm");
+
+      //  ----------------------------------------- Nav bar of Admin page-------------------------------
+
 
   return (
     <div className={Styles.Navbar}>

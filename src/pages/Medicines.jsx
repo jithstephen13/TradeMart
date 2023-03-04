@@ -10,6 +10,7 @@ import {
   Image,
   Checkbox,
   HStack,
+  Stack,
 } from "@chakra-ui/react";
 import { AiFillStar } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
@@ -19,30 +20,33 @@ import {
   Get_medicines_item,
   sortMymedicines,
 } from "../redux/medicines/medicines.action";
-import Loading from "./Loading";
+import ProductpageLoading from "./ProductpageLoading";
 import Product from "./Product";
 import Navbar from "../component/Navbar";
 import Footer from "../component/Footer";
 
-// import Loading from "./Loading";
+
+
+                                            // ==== Medicin Page Component  ======    
 const Medicines = () => {
   const [reset, setReset] = useState(false);
 
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
-
-  // const [data,setData] = useState([])
+  const [order, setOrder] = useState("");
+  const [company, setCompany] = useState( []);
 
   const { isLoading, medicines, isError } = useSelector(
     (store) => store.medicines
   );
+                        //  naviage to the single Product pge
   const handleClick = (el) => {
     navigate(`/productdetails/${el.id}`);
   };
   const handleChange = (e) => {
     const { value } = e.target;
-    console.log(value);
+ 
     if (value == "reset") {
       setReset((previous) => !previous);
       return;
@@ -51,11 +55,31 @@ const Medicines = () => {
   };
   
 
-  useEffect(() => {
-     dispatch(Get_medicines_item());
-  }, [reset]);
 
-  if (isLoading) return <Loading/>;
+                                    //  sorting==========================
+  const handleSort = (e) => {
+    setOrder(e.target.value);
+}
+
+
+  useEffect(() => {
+  
+    dispatch(Get_medicines_item(order,company));
+  }, [order,company]);
+        // =====================filtering ======================
+  const handleFilter = ({ currentTarget: input }) => {
+    if (input.checked) {
+  const state = [...company, input.value];
+  setCompany(state);
+        
+} else {
+  const state = company.filter((val) => val !== input.value);
+  setCompany(state);
+}
+}
+                    //  Loading Compoent 
+  if (isLoading) return <ProductpageLoading />;
+
 
   return (
     <>
@@ -70,15 +94,21 @@ const Medicines = () => {
         }}
       >
         <Product />
-        <VStack
+        <Stack
+          mt={4}
           display={{ md: "none" }}
           margin={"auto"}
           padding={"20px"}
           width={"80%"}
           boxShadow={"rgba(0, 0, 0, 0.35) 0px 5px 15px;"}
         >
+          <Grid templateColumns={{
+              base: "repeat(1 1fr)",
+              sm: "repeat(2, 1fr)",
+              md: "repeat(3, 1fr)",
+            }}><VStack >
           <Text
-            marginTop={2}
+            marginTop={6}
             color={"teal"}
             id="medicinese"
             fontSize={35}
@@ -86,12 +116,74 @@ const Medicines = () => {
           >
             Medicines
           </Text>
-          <select name="" id="" onChange={(e) => handleChange(e)}>
-            <option value="reset">Sort-By-Price</option>
-            <option value="high">High to Low </option>
-            <option value="low">Low to High</option>
-          </select>
-        </VStack>
+          
+          <div onChange={handleSort}>
+            <Text>Sort by Rating</Text>
+                    <input
+                        type="radio"
+                        name="sort_by_rating"
+                        value={"asc"}
+                        defaultChecked={order === "asc"}
+                    />
+                    <label>low</label>
+                    <br />
+                    <input
+                        type="radio"
+                        name="sort_by_rating"
+                        value={"desc"}
+                        defaultChecked={order === "desc"}
+                    />
+                    <label>high</label>
+                </div>
+                </VStack>
+                <Stack align={"center"} mt={16}>
+<Text fontWeight={"extrabold"}> Filter Based on Brands</Text>
+                <Grid m={"auto"} templateColumns={{
+              base: "repeat(2 1fr)",
+              sm: "repeat(4, 1fr)",
+              md: "repeat(3, 1fr)",
+            }} >
+
+
+                                     {/* side bar for filter And Sorting  */}
+{ medicines.companys && <div>
+             <input
+                 type="checkbox"
+                 value={medicines.companys[0]}
+                 onChange={handleFilter}
+                 checked={company.includes(medicines.companys[0])}
+             />
+             <label>{medicines.companys[0]}</label>
+         </div>}
+         { medicines.companys &&  <div>
+             <input
+                 type="checkbox"
+                 value={medicines.companys[1]}
+                 onChange={handleFilter}
+                 checked={company.includes(medicines.companys[1])}
+             />
+             <label>{medicines.companys[1]}</label>
+         </div>}
+         { medicines.companys && <div>
+             <input
+                 type="checkbox"
+                 value={medicines.companys[2]}
+                 onChange={handleFilter}
+                 checked={company.includes(medicines.companys[2])}
+             />
+             <label>{medicines.companys[2]}</label>
+         </div>}
+        { medicines.companys &&  <div>
+             <input
+                 type="checkbox"
+                 value={medicines.companys[3]}
+                 onChange={handleFilter}
+                 checked={company.includes(medicines.companys[3])}
+             />
+             <label>{medicines.companys[3]}</label>
+         </div>}
+</Grid></Stack></Grid>
+        </Stack>
 
         <Flex position={"relative"} justify={"center"} gap={2}>
           <VStack
@@ -120,16 +212,24 @@ const Medicines = () => {
               >
                 Medicines
               </Text>
-              <select
-                style={{ width: "100%" }}
-                name=""
-                id=""
-                onChange={(e) => handleChange(e)}
-              >
-                <option value="reset">Sort-By-Price</option>
-                <option value="high">High to Low </option>
-                <option value="low">Low to High</option>
-              </select>
+              <div onChange={handleSort}>
+                    <input
+                        type="radio"
+                        name="sort_by_rating"
+                        value={"asc"}
+                        defaultChecked={order === "asc"}
+                    />
+                    <label>low</label>
+                    <br />
+                    <input
+                        type="radio"
+                        name="sort_by_rating"
+                        value={"desc"}
+                        defaultChecked={order === "desc"}
+                    />
+                    <label>high</label>
+                </div>
+               
             </Box>
 
             <VStack
@@ -172,20 +272,44 @@ const Medicines = () => {
               align={"start"}
               marginTop={"20px"}
             >
-              <Text fontWeight={"extrabold"}> Related Brands</Text>
-              <Text>Waaree Tablets</Text>
-              <Text>TATA Tablets</Text>
-              <Text>Waaree Tabletss</Text>
-              <Text>Vikram Tablets</Text>
-              <Text>Waaree Tablets</Text>
-              <Text>Adani Tabletss</Text>
-              <Text>Waaree Tablets</Text>
-              <Text>Luminous Tablets</Text>
-              <Text>Loom Tablets</Text>
-              <Text>Renewsys Tablets</Text>
-              <Text>Panasonic Tablets</Text>
-              <Text>Canadian Tablets</Text>
-              <Text>Eastman Tablets</Text>
+              <Text fontWeight={"extrabold"}> Filter Based on Brands</Text>
+              
+     { medicines.companys && <div>
+                    <input
+                        type="checkbox"
+                        value={medicines.companys[0]}
+                        onChange={handleFilter}
+                        checked={company.includes(medicines.companys[0])}
+                    />
+                    <label>{medicines.companys[0]}</label>
+                </div>}
+                { medicines.companys &&  <div>
+                    <input
+                        type="checkbox"
+                        value={medicines.companys[1]}
+                        onChange={handleFilter}
+                        checked={company.includes(medicines.companys[1])}
+                    />
+                    <label>{medicines.companys[1]}</label>
+                </div>}
+                { medicines.companys && <div>
+                    <input
+                        type="checkbox"
+                        value={medicines.companys[2]}
+                        onChange={handleFilter}
+                        checked={company.includes(medicines.companys[2])}
+                    />
+                    <label>{medicines.companys[2]}</label>
+                </div>}
+               { medicines.companys &&  <div>
+                    <input
+                        type="checkbox"
+                        value={medicines.companys[3]}
+                        onChange={handleFilter}
+                        checked={company.includes(medicines.companys[3])}
+                    />
+                    <label>{medicines.companys[3]}</label>
+                </div>}
             </VStack>
           </VStack>
 
@@ -199,15 +323,21 @@ const Medicines = () => {
               md: "repeat(3, 1fr)",
             }}
             gap={6}
+
+
           >
-            { medicines && medicines.map((el) => {
+
+                 {/* =========================== product Mapingggg============== */}
+            {medicines.medins&&medicines.medins.map((el) => {
+
               return (
-                <Box id="probox" key={el.id} m="5px">
+                <Box id="probox" key={el._id} m="5px">
                   <VStack
                     textAlign={"center"}
                     boxShadow={"rgba(0, 0, 0, 0.35) 0px 5px 15px;"}
                     h="auto"
                     p="5"
+                    borderRadius={16}
                   >
                     <Image
                       id="hov"

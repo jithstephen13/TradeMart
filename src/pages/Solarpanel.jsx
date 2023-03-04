@@ -10,17 +10,18 @@ import {
   Image,
   Checkbox,
   HStack,
+  Stack,
 } from "@chakra-ui/react";
 import { AiFillStar } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import "../index.css";
 import { useDispatch, useSelector } from "react-redux";
-import Loading from "./Loading";
-import Product from "./Product";
 import {
   Get_solarpanel_item,
   sortMysolarpanel,
 } from "../redux/solarpanel/solarpanel.action";
+import ProductpageLoading from "./ProductpageLoading";
+import Product from "./Product";
 import Navbar from "../component/Navbar";
 import Footer from "../component/Footer";
 
@@ -31,6 +32,10 @@ const Solarpanel = () => {
 
   const navigate = useNavigate();
 
+  const [order, setOrder] = useState("");
+  const [company, setCompany] = useState( []);
+  // const [data,setData] = useState([])
+
 
   const { isLoading, solarpanel, isError } = useSelector(
     (store) => store.solarpanel
@@ -40,7 +45,7 @@ const Solarpanel = () => {
   };
   const handleChange = (e) => {
     const { value } = e.target;
-    console.log(value);
+ 
     if (value == "reset") {
       setReset((previous) => !previous);
       return;
@@ -51,13 +56,32 @@ const Solarpanel = () => {
   
   
 
+
+
+  const handleSort = (e) => {
+    setOrder(e.target.value);
+}
+
+
   useEffect(() => {
-    dispatch(Get_solarpanel_item());
-  }, [reset]);
+  
+    dispatch(Get_solarpanel_item(order,company));
 
-  console.log(Loading)
+  }, [order,company]);
 
-  if (isLoading) return <Loading />;
+  const handleFilter = ({ currentTarget: input }) => {
+    if (input.checked) {
+  const state = [...company, input.value];
+  setCompany(state);
+        
+} else {
+  const state = company.filter((val) => val !== input.value);
+  setCompany(state);
+}
+}
+  
+  if (isLoading) return <ProductpageLoading />;
+
 
   return (
     <>
@@ -73,28 +97,96 @@ const Solarpanel = () => {
         }}
       >
         <Product />
-        <VStack
+        <Stack
+           mt={4}
           display={{ md: "none" }}
           margin={"auto"}
           padding={"30px 20px"}
           width={"80%"}
           boxShadow={"rgba(0, 0, 0, 0.35) 0px 5px 15px;"}
         >
+          <Grid templateColumns={{
+              base: "repeat(1 1fr)",
+              sm: "repeat(2, 1fr)",
+              md: "repeat(3, 1fr)",
+            }}><VStack>
           <Text
             marginTop={2}
             color={"teal"}
-            id="medicinese"
+            id="solarpanele"
             fontSize={35}
             fontWeight={"bold"}
           >
-            Medicines
+            solarpanel
           </Text>
-          <select name="" id="" onChange={(e) => handleChange(e)}>
-            <option value="reset">Sort-By-Price</option>
-            <option value="high">High to Low </option>
-            <option value="low">Low to High</option>
-          </select>
-        </VStack>
+          
+          <div onChange={handleSort}>
+            <Text>Sort by Rating</Text>
+                    <input
+                        type="radio"
+                        name="sort_by_rating"
+                        value={"asc"}
+                        defaultChecked={order === "asc"}
+                    />
+                    <label>low</label>
+                    <br />
+                    <input
+                        type="radio"
+                        name="sort_by_rating"
+                        value={"desc"}
+                        defaultChecked={order === "desc"}
+                    />
+                    <label>high</label>
+                </div>
+                </VStack>
+                <Stack align={"center"} mt={16}>
+<Text fontWeight={"extrabold"}> Filter Based on Brands</Text>
+                <Grid m={"auto"} templateColumns={{
+              base: "repeat(2 1fr)",
+              sm: "repeat(4, 1fr)",
+              md: "repeat(3, 1fr)",
+            }} >
+
+
+
+{ solarpanel.companys && <div>
+             <input
+                 type="checkbox"
+                 value={solarpanel.companys[0]}
+                 onChange={handleFilter}
+                 checked={company.includes(solarpanel.companys[0])}
+             />
+             <label>{solarpanel.companys[0]}</label>
+         </div>}
+         { solarpanel.companys &&  <div>
+             <input
+                 type="checkbox"
+                 value={solarpanel.companys[1]}
+                 onChange={handleFilter}
+                 checked={company.includes(solarpanel.companys[1])}
+             />
+             <label>{solarpanel.companys[1]}</label>
+         </div>}
+         { solarpanel.companys && <div>
+             <input
+                 type="checkbox"
+                 value={solarpanel.companys[2]}
+                 onChange={handleFilter}
+                 checked={company.includes(solarpanel.companys[2])}
+             />
+             <label>{solarpanel.companys[2]}</label>
+         </div>}
+        { solarpanel.companys &&  <div>
+             <input
+                 type="checkbox"
+                 value={solarpanel.companys[3]}
+                 onChange={handleFilter}
+                 checked={company.includes(solarpanel.companys[3])}
+             />
+             <label>{solarpanel.companys[3]}</label>
+         </div>}
+</Grid></Stack></Grid>
+        </Stack>
 
         <Flex position={"relative"} justify={"center"} gap={2}>
           <VStack
@@ -117,22 +209,32 @@ const Solarpanel = () => {
               <Text
                 marginTop={2}
                 color={"teal"}
-                id="medicinese"
-                fontSize={33}
+
+                id="solarpanele"
+                fontSize={35}
+
                 fontWeight={"bold"}
               >
-                Solarpanel
+                solarpanel
               </Text>
-              <select
-                style={{ width: "100%" }}
-                name=""
-                id=""
-                onChange={(e) => handleChange(e)}
-              >
-                <option value="reset">Sort-By-Price</option>
-                <option value="high">High to Low </option>
-                <option value="low">Low to High</option>
-              </select>
+              <div onChange={handleSort}>
+                    <input
+                        type="radio"
+                        name="sort_by_rating"
+                        value={"asc"}
+                        defaultChecked={order === "asc"}
+                    />
+                    <label>low</label>
+                    <br />
+                    <input
+                        type="radio"
+                        name="sort_by_rating"
+                        value={"desc"}
+                        defaultChecked={order === "desc"}
+                    />
+                    <label>high</label>
+                </div>
+               
             </Box>
 
             <VStack
@@ -163,8 +265,8 @@ const Solarpanel = () => {
               marginTop={"20px"}
             >
               <Text fontWeight={"extrabold"}>Related Category</Text>
-              <Text>Solar Panel Installation</Text>
-              <Text>Solar Panel Cleaning Services</Text>
+              <Text>Medicine Usege</Text>
+              <Text>Medical Services</Text>
             </VStack>
             <VStack
               id="add"
@@ -175,20 +277,44 @@ const Solarpanel = () => {
               align={"start"}
               marginTop={"20px"}
             >
-              <Text fontWeight={"extrabold"}> Related Brands</Text>
-              <Text>Waaree Solar Panels</Text>
-              <Text>TATA Solar Panels</Text>
-              <Text>Waaree Solar Panels</Text>
-              <Text>Vikram Solar Panels</Text>
-              <Text>Waaree Solar Panels</Text>
-              <Text>Adani Solar Panels</Text>
-              <Text>Waaree Solar Panels</Text>
-              <Text>Luminous Solar Panels</Text>
-              <Text>Loom Solar Panel</Text>
-              <Text>Renewsys Solar Panels</Text>
-              <Text>Panasonic Solar Panels</Text>
-              <Text>Canadian Solar Panels</Text>
-              <Text>Eastman Solar Panel</Text>
+              <Text fontWeight={"extrabold"}> Filter Based on Brands</Text>
+              
+     { solarpanel.companys && <div>
+                    <input
+                        type="checkbox"
+                        value={solarpanel.companys[0]}
+                        onChange={handleFilter}
+                        checked={company.includes(solarpanel.companys[0])}
+                    />
+                    <label>{solarpanel.companys[0]}</label>
+                </div>}
+                { solarpanel.companys &&  <div>
+                    <input
+                        type="checkbox"
+                        value={solarpanel.companys[1]}
+                        onChange={handleFilter}
+                        checked={company.includes(solarpanel.companys[1])}
+                    />
+                    <label>{solarpanel.companys[1]}</label>
+                </div>}
+                { solarpanel.companys && <div>
+                    <input
+                        type="checkbox"
+                        value={solarpanel.companys[2]}
+                        onChange={handleFilter}
+                        checked={company.includes(solarpanel.companys[2])}
+                    />
+                    <label>{solarpanel.companys[2]}</label>
+                </div>}
+               { solarpanel.companys &&  <div>
+                    <input
+                        type="checkbox"
+                        value={solarpanel.companys[3]}
+                        onChange={handleFilter}
+                        checked={company.includes(solarpanel.companys[3])}
+                    />
+                    <label>{solarpanel.companys[3]}</label>
+                </div>}
             </VStack>
           </VStack>
 
@@ -203,14 +329,17 @@ const Solarpanel = () => {
             }}
             gap={6}
           >
-            { solarpanel && solarpanel.map((el) => {
+
+            {solarpanel.solarpanel&&solarpanel.solarpanel.map((el) => {
+
               return (
-                <Box id="probox" key={el.id} m="5px">
+                <Box id="probox" key={el._id} m="5px">
                   <VStack
                     textAlign={"center"}
                     boxShadow={"rgba(0, 0, 0, 0.35) 0px 5px 15px;"}
                     h="auto"
                     p="5"
+                    borderRadius={16}
                   >
                     <Image
                       id="hov"
@@ -218,10 +347,9 @@ const Solarpanel = () => {
                       h={{ sm: "125px", md: "185px", lg: "225px" }}
                       alt="product-image"
                     />
-                    <Text fontSize={17}>{el.title}</Text>
-
+                    <Text fontSize={17}>{el.name}</Text>
                     <Text fontWeight={"bold"}>₹ {el.price}</Text>
-                    <Box mb="8px">
+                    <Box m="8px">
                       {Array(5)
                         .fill("")
                         .map((_, i) => {
@@ -246,7 +374,7 @@ const Solarpanel = () => {
                       bg={"rgb(6,128,128)"}
                       padding={"10px"}
                       borderRadius={2}
-                      width={"70%"}
+                      width={"90%"}
                     >
                       {"Contact Supplier >"}
                     </Button>

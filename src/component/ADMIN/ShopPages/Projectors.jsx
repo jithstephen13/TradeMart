@@ -29,34 +29,45 @@ import {
 } from "../../../redux/projector/projector.action";
 import { useDispatch, useSelector } from "react-redux";
 import { RiDeleteBin5Fill } from "react-icons/ri";
-
+                        //  Admin page Projector componets
+ 
+                    
 const Projectors = () => {
   const [id, SetId] = React.useState("");
   const [price, SetPrice] = React.useState("");
-  const { projector } = useSelector((state) => state.projector);
-  console.log(projector, "p");
+  const { projector  } = useSelector((state) => state.projector);
+ 
+  
   const dispatch = useDispatch();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   useEffect(() => {
-    dispatch(Get_projector_item());
-    console.log("hiii");
+    dispatch(Get_projector_item("",[]));
+    
   }, [dispatch]);
   const newprom = async () => {
     setTimeout(() => {
-      dispatch(Get_projector_item());
+      dispatch(Get_projector_item("",[]));
     }, 2000);
   };
+
+        //  update functionality
+
   function handleUpdate() {
     const changes = {
       price: price,
     };
     dispatch(UPDATE_projector_item(id, changes));
+    dispatch(Get_projector_item("",[]))
     newprom();
     onClose();
   }
+
+  // ---------------------delete function  ----------
+
   function handleRemove(id) {
     dispatch(REMOVE_projector_item(id));
+    dispatch(Get_projector_item("",[]))
     newprom();
   }
   return (
@@ -77,8 +88,10 @@ const Projectors = () => {
                 </Tr>
               </Thead>
               <Tbody>
-                {projector.map((el) => (
-                  <Tr key={el.id}>
+
+                      {/* Product mapping */}
+                {projector.projector&&projector.projector.map((el) => (
+                  <Tr key={el._id}>
                     <Td>{el.id}</Td>
                     <Td>{el.name}</Td>
                     <Td>₹{el.price}</Td>
@@ -86,9 +99,11 @@ const Projectors = () => {
                       <Image src={el.img_src} alt={el.id} />
                     </Td>
                     <Td>
-                      <Button onClick={onOpen}>Update</Button>
+                      <Button onClick={()=>{onOpen()
+                      SetId(el._id)
+                      }}>Update</Button>
                     </Td>
-                    <Td onClick={() => handleRemove(el.id)}>
+                    <Td onClick={() => handleRemove(el._id)}>
                       <RiDeleteBin5Fill />
                     </Td>
                   </Tr>
@@ -105,11 +120,7 @@ const Projectors = () => {
             <ModalCloseButton />
             <ModalBody>
               <VStack spacing={5}>
-                <Input
-                  placeholder="Enter Product Id"
-                  value={id}
-                  onChange={(e) => SetId(e.target.value)}
-                />
+              
                 <Input
                   placeholder="Enter New Price"
                   value={price}

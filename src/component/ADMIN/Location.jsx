@@ -1,6 +1,9 @@
 import React from "react";
 import { Box, Image, Text, Grid } from "@chakra-ui/react";
 
+
+                // ---------------------------This is A Static Page to show the Services available pacesss-------------------
+
 const Location = () => {
   return (
     <div>

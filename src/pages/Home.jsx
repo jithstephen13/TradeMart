@@ -346,7 +346,7 @@ const Home = () => {
   ];
 
   const [query, setQuery] = useState("");
-  // console.log()
+
   return (
     <>
       <Navbar />
@@ -387,8 +387,9 @@ const Home = () => {
                 borderRadius="0px"
                 placeholder="All India"
               >
-                {state?.map((el,i) => (
-                  <option style={{ fontSize: "12px" }} value="option2" key={i}>
+                {state?.map((el) => (
+                  <option key={Math.random()} style={{ fontSize: "12px" }} value="option2">
+
                     {el}
                   </option>
                 ))}
@@ -515,6 +516,7 @@ const Home = () => {
                         >
                           {state?.map((el) => (
                             <option
+                            key={Math.random()}
                               style={{ fontSize: "12px" }}
                               value="option2"
                             >
@@ -647,7 +649,8 @@ const Home = () => {
             >
               {sec1.map((el,i) => (
                 <Flex
-                key={i}
+                key={Math.random()}
+
                   p="10px"
                   flexDirection={{ base: "column", sm: "row" }}
                   boxShadow="rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px"
@@ -671,8 +674,8 @@ const Home = () => {
               ))}
               {hide1.map((el,i) => (
                 <Flex
-                key={i}
-                  display={{ base: "none", md: "flex" }}
+                 key={Math.random()}
+                     display={{ base: "none", md: "flex" }}
                   p="10px"
                   flexDirection={{ base: "column", sm: "row" }}
                   boxShadow="rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px"
@@ -760,8 +763,8 @@ const Home = () => {
             >
               {sec2.map((el,i) => (
                 <Flex
-                key={i}
-                  p="10px"
+                 key={Math.random()}
+                     p="10px"
                   flexDirection={{ base: "column", sm: "row" }}
                   boxShadow="rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px"
                 >
@@ -782,9 +785,9 @@ const Home = () => {
                   </Box>
                 </Flex>
               ))}
-              {hide2.map((el,i) => (
-                <a href="/solar" key={i}>
-                  <Flex
+               {hide2.map((el) => (
+                <a key={Math.random()} href="/solar">
+                   <Flex
                     display={{ base: "none", md: "flex" }}
                     p="10px"
                     flexDirection={{ base: "column", sm: "row" }}
@@ -1078,8 +1081,9 @@ const Home = () => {
               columns={{ base: 2, md: 3 }}
               spacing={5}
             >
-              {sec3.map((el,i) => (
-                <a href="/Medicines" key={i}>
+              {sec3.map((el) => (
+                <a key={Math.random()} href="/Medicines">
+
                   <Flex
                     p="10px"
                     flexDirection={{ base: "column", sm: "row" }}
@@ -1307,6 +1311,7 @@ const Home = () => {
             >
               {sec4.map((el) => (
                 <Flex
+                key={Math.random()}
                   p="10px"
                   flexDirection={{ base: "column", sm: "row" }}
                   boxShadow="rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px"
@@ -1330,6 +1335,7 @@ const Home = () => {
               ))}
               {hide4.map((el) => (
                 <Flex
+                  key={Math.random()}
                   display={{ base: "none", md: "flex" }}
                   p="10px"
                   flexDirection={{ base: "column", sm: "row" }}

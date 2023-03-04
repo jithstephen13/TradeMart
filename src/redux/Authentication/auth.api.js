@@ -12,31 +12,31 @@ import {
   doc,
   deleteDoc,
 } from "firebase/firestore";
+import axios from "axios";
 
 const userRef = collection(db, "users");
 const AdminRef = collection(db, "Admin");
 
 export const AddUserApi = async (cred) => {
-  let res = await createUserWithEmailAndPassword(
-    auth,
-    cred.email,
-    cred.password
-  );
-  let res2 = await addDoc(userRef, {
-    firstname: cred.firstname,
-    laststname: cred.laststname,
-    email: cred.email,
-  });
+  try {
+    let res=await axios.post(`https://frail-gold-hen.cyclic.app/users/register`,cred)
+    return res.data
+  } catch (error) {
+    
+  }
 
-  console.log(res);
-  console.log(res2);
-
-  return res._tokenResponse;
+ 
 };
 
 export const LoginApi = async (cred) => {
-  let res = await signInWithEmailAndPassword(auth, cred.email, cred.password);
-  return res._tokenResponse;
+ try {
+  let res= await axios.post(`https://frail-gold-hen.cyclic.app/users/login`,cred)
+   
+  return res.data
+
+ } catch (error) {
+  
+ }
 };
 
 export const LogoutApi = async () => {
@@ -47,7 +47,6 @@ export const LogoutApi = async () => {
 
 export const GetAllUseresAPI = async () => {
   let res = await getDocs(userRef);
-  console.log(res.docs);
   return res.docs;
 };
 
@@ -71,7 +70,6 @@ export const AddAdminApi = async (cred) => {
 
 export const GetAllAdminAPI = async () => {
   let res = await getDocs(AdminRef);
-  console.log(res.docs);
   return res.docs;
 };
 

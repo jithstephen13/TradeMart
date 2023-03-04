@@ -1,7 +1,7 @@
 import { Box, Flex, Grid, Skeleton, SkeletonCircle } from "@chakra-ui/react";
 import React from "react";
-
-const Loading = () => {
+              // component created for product page Loading    
+const ProductpageLoading = () => {
   return (
     <Flex>
       <Box w={"20%"} padding="6" boxShadow="lg" bg="white">
@@ -25,7 +25,11 @@ const Loading = () => {
         marginLeft={"40px"}
         paddingLeft={"15px"}
         width={"80%"}
-        templateColumns="repeat(3, 1fr)"
+        templateColumns={{
+          base: "repeat(1 1fr)",
+          sm: "repeat(2, 1fr)",
+          md: "repeat(3, 1fr)",
+        }}
         gap={6}
       >
         <Box height={"auto"}>
@@ -97,4 +101,4 @@ const Loading = () => {
   );
 };
 
-export default Loading;
+export default ProductpageLoading;

@@ -72,24 +72,24 @@ const Shops = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(Get_medicines_item());
-    dispatch(Get_projector_item());
-    dispatch(Get_solarpanel_item());
+    dispatch(Get_medicines_item("asc",[]));
+    dispatch(Get_projector_item("asc",[]));
+    dispatch(Get_solarpanel_item("asc",[]));
   }, [dispatch]);
 
   const newprom = async () => {
     setTimeout(() => {
-      dispatch(Get_medicines_item());
+      dispatch(Get_medicines_item("",[]));
     }, 2000);
   };
   const newpromProj = async () => {
     setTimeout(() => {
-      dispatch(Get_projector_item());
+      dispatch(Get_projector_item("",[]));
     }, 2000);
   };
   const newpromSolarPanel = async () => {
     setTimeout(() => {
-      dispatch(Get_solarpanel_item());
+      dispatch(Get_solarpanel_item("",[]));
     }, 2000);
   };
 
@@ -106,14 +106,17 @@ const Shops = () => {
     if (ProductObj.category === "medicines") {
       onClose();
       dispatch(ADD_medicines_item(ProductObj));
+      dispatch(Get_medicines_item("",[]))
       newprom();
     } else if (ProductObj.category === "projectors") {
       onClose();
       dispatch(ADD_projector_item(ProductObj));
+      dispatch(Get_projector_item("",[]))
       newpromProj();
     } else if (ProductObj.category === "solarpanel") {
       onClose();
       dispatch(ADD_solarpanel_item(ProductObj));
+      dispatch(Get_solarpanel_item("",[]))
       newpromSolarPanel();
     }
   }

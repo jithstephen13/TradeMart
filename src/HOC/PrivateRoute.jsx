@@ -18,7 +18,7 @@ const PrivateRoute = ({ children }) => {
       backgroundColor: "red",
     });
   }
-  console.log(isAuth);
+
   if (getItem("userData") != null) {
     return children;
   }

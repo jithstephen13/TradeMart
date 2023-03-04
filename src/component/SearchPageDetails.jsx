@@ -16,9 +16,10 @@ import { Link, useParams } from "react-router-dom";
 const SearchPageDetails = ({name}) => {
 
   const [data, setData] = useState([]);
-  // const query = useParams();
-  // let final = query.query;
-  // console.log('final:', final)
+  const query = useParams();
+  let final = query.query;
+
+
 
   const fetchData = (name) => {
     return axios.get("https://trademart-data-2zur.vercel.app/Allproducts", {
@@ -38,9 +39,16 @@ const SearchPageDetails = ({name}) => {
   };
 
   useEffect(() => {
-    fetchData(name)
+
+    fetchData(final)
+      .then((res) => {
+       
+        setData(res.data);
+      })
+      .catch((err) => {
       
-  }, [name]);
+      });
+  }, []);
 
 
   if (data.length === 0) {
@@ -81,7 +89,7 @@ const SearchPageDetails = ({name}) => {
         >
           { data && data.map((el) => {
             return (
-              <GridItem margin={"20px"}>
+              <GridItem key={Math.random()} margin={"20px"}>
                 <Box
                   padding="15px"
                   maxW="sm"
