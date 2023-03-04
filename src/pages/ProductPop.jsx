@@ -158,9 +158,7 @@ const ProductPop = () => {
                     <option>selectname</option>
                     <option value={data.name}>{data.name}</option>
                   </select>
-                  {/* <input type='text'  value={Item.name} name='product name' onChange={handlechenge}   /> */}
                   <label>Price</label>
-                  {/* <input type='text'  value={Item.price} name='price' onChange={handlechenge}    /> */}
                   <select name="price" style={{ border: "1px solid black" }}>
                     <option>select price</option>
                     <option value={data.price}>{data.price}</option>

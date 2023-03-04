@@ -50,7 +50,6 @@ const ProductDetails = () => {
     productType = "solarpanel";
   }
 
-  // console.log(productType);
 
   // Fetch the Related Products
   const getRelatedProduct = async () => {
@@ -107,7 +106,6 @@ const ProductDetails = () => {
         month < 10 ? `0${month}` : `${month}`
       }${"-"}${date}`,
     });
-    // console.log(cred)
   };
 
   const { isOpen, onOpen, onClose } = useDisclosure();

@@ -170,7 +170,6 @@ const Navbar = () => {
                 <Image ml={{ sm: "10px", md: "20px", lg: "30px" }} src={Logo} />
               </Box>
             </Link>
-            {/* <Input placeholder='search' display={{base:"none", md:"flex"}} /> */}
           </HStack>
           <Flex alignItems={"center"} w={{ md: "75%", md: "40%", lg: "30%" }}>
             <Box

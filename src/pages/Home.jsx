@@ -45,6 +45,7 @@ import app2 from "../assets/homepage-assets/app2.PNG";
 import Navbar from "../component/Navbar";
 import Footer from "../component/Footer";
 import { Link } from "react-router-dom";
+import SearchPageDetails from "../component/SearchPageDetails";
 
 const Home = () => {
   let [Carousel, setCarousel] = useState(false);
@@ -345,7 +346,7 @@ const Home = () => {
   ];
 
   const [query, setQuery] = useState("");
-  // console.log('query:', query)
+  // console.log()
   return (
     <>
       <Navbar />
@@ -386,14 +387,16 @@ const Home = () => {
                 borderRadius="0px"
                 placeholder="All India"
               >
-                {state?.map((el) => (
-                  <option style={{ fontSize: "12px" }} value="option2">
+                {state?.map((el,i) => (
+                  <option style={{ fontSize: "12px" }} value="option2" key={i}>
                     {el}
                   </option>
                 ))}
               </Select>
               <Input
-                onChange={(e) => setQuery(e.target.value)}
+                onChange={(e) => {
+                  setQuery(e.target.value)}
+                }
                 paddingLeft="10px"
                 fontSize={{ base: "12px", sm: "13px", md: "15px" }}
                 variant="unstyled"
@@ -402,7 +405,7 @@ const Home = () => {
                 height={{ base: "20px", sm: "30px", md: "50px" }}
                 borderRadius="0px"
               />
-              <Link to={`/searchProduct/${query}`}>
+              {/* <Link to= { `/searchProduct/${query}` }> */}
                 <Button
                   fontSize={{ base: "12px", sm: "13px", md: "15px" }}
                   borderRadius="0px"
@@ -423,10 +426,13 @@ const Home = () => {
                 >
                   Search
                 </Button>
-              </Link>
+              {/* </Link> */}
             </Flex>
           </Box>
         </Box>
+       {
+          query !== "" ? <SearchPageDetails name={query}/> : 
+       <Box>
         {/* -------------------------------MegaMenu--------------------------------------- */}
         <Box backgroundColor="white">
           <MegaMenu />
@@ -639,8 +645,9 @@ const Home = () => {
               columns={{ base: 2, md: 3 }}
               spacing={5}
             >
-              {sec1.map((el) => (
+              {sec1.map((el,i) => (
                 <Flex
+                key={i}
                   p="10px"
                   flexDirection={{ base: "column", sm: "row" }}
                   boxShadow="rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px"
@@ -662,8 +669,9 @@ const Home = () => {
                   </Box>
                 </Flex>
               ))}
-              {hide1.map((el) => (
+              {hide1.map((el,i) => (
                 <Flex
+                key={i}
                   display={{ base: "none", md: "flex" }}
                   p="10px"
                   flexDirection={{ base: "column", sm: "row" }}
@@ -748,10 +756,11 @@ const Home = () => {
               height="100%"
               w={{ base: "100%", xl: "72%" }}
               columns={{ base: 2, md: 3 }}
-              spacing={5}
+              spacing={5} 
             >
-              {sec2.map((el) => (
+              {sec2.map((el,i) => (
                 <Flex
+                key={i}
                   p="10px"
                   flexDirection={{ base: "column", sm: "row" }}
                   boxShadow="rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px"
@@ -773,8 +782,8 @@ const Home = () => {
                   </Box>
                 </Flex>
               ))}
-              {hide2.map((el) => (
-                <a href="/solar">
+              {hide2.map((el,i) => (
+                <a href="/solar" key={i}>
                   <Flex
                     display={{ base: "none", md: "flex" }}
                     p="10px"
@@ -1069,8 +1078,8 @@ const Home = () => {
               columns={{ base: 2, md: 3 }}
               spacing={5}
             >
-              {sec3.map((el) => (
-                <a href="/Medicines">
+              {sec3.map((el,i) => (
+                <a href="/Medicines" key={i}>
                   <Flex
                     p="10px"
                     flexDirection={{ base: "column", sm: "row" }}
@@ -1488,10 +1497,14 @@ const Home = () => {
             <Image w={{ base: "20%", md: "50%" }} src={app2} />
           </Box>
         </Flex>
-
+        </Box>
+        }
         {/* ------------------------------------------------------------------------- */}
       </Box>
+
+      
       <Footer />
+      
     </>
   );
 };

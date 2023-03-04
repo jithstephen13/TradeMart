@@ -41,8 +41,6 @@ const AdminList = () => {
     dispatch(AddAdmin(cred));
     if (!isLoading && !isError) {
       dispatch(GetAllAdmin());
-      //  window.location.reload()
-      // form.current.reset()
     }
   };
   return (

@@ -10,43 +10,47 @@ import {
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import Footer from "./Footer";
-import Navbar from "./Navbar";
+// import Footer from "./Footer";
+// import Navbar from "./Navbar";
 
-const SearchPageDetails = () => {
+const SearchPageDetails = ({name}) => {
+
   const [data, setData] = useState([]);
-  const query = useParams();
-  let final = query.query;
+  // const query = useParams();
+  // let final = query.query;
   // console.log('final:', final)
 
-  const fetchData = (final) => {
+  const fetchData = (name) => {
     return axios.get("https://trademart-data-2zur.vercel.app/Allproducts", {
       params: {
-        q: final,
+        q: name,
       },
     }).then((res) => {
-      console.log(res.data);
-      setData(res.data);
+      // console.log(res.data);
+      // setData(res.data)
+      setTimeout(function(){
+        return setData(res.data)
+   },2000)
     })
     .catch((err) => {
-      console.log("Error: ", true);
+      console.log("Error: ",err.message);
     });;
   };
 
   useEffect(() => {
-    fetchData(final)
+    fetchData(name)
       
-  }, []);
+  }, [name]);
 
-  // Search Product Page
+
   if (data.length === 0) {
     return (
       <>
         {/* Navbar */}
-        <Navbar />
+        {/* <Navbar /> */}
 
         <Text fontWeight="bold" textAlign="center" margin="70px 7px 7px 7px">
-          No results for {final}
+          No results for {name}
         </Text>
         <Text textAlign="center">Try to search something different</Text>
         <Image
@@ -59,14 +63,14 @@ const SearchPageDetails = () => {
         />
 
         {/* Footer */}
-        <Footer />
+        {/* <Footer /> */}
       </>
     );
   } else {
     return (
       <>
         {/* Navbar */}
-        <Navbar />
+        {/* <Navbar /> */}
 
         {/* Products */}
         <Grid
@@ -131,9 +135,10 @@ const SearchPageDetails = () => {
         </Grid>
 
         {/* Footer */}
-        <Footer />
+        {/* <Footer /> */}
       </>
     );
   }
 };
 export default SearchPageDetails;
+

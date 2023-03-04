@@ -24,7 +24,6 @@ import {
 import Navbar from "../component/Navbar";
 import Footer from "../component/Footer";
 
-// import Loading from "./Loading";
 const Solarpanel = () => {
   const [reset, setReset] = useState(false);
 
@@ -32,7 +31,6 @@ const Solarpanel = () => {
 
   const navigate = useNavigate();
 
-  // const [data,setData] = useState([])
 
   const { isLoading, solarpanel, isError } = useSelector(
     (store) => store.solarpanel
