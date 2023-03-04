@@ -46,45 +46,94 @@ let signuser=getItem("signuserData")
 let user=getItem("userData")
 useEffect(()=>{
 
-  if(!isLoading&&signuser!=null&&signuser.Message&&signuser.Message=="New User Successfully Registered! Please Logged In"){
-    setItem("signuserData",{})
+
+
+
+
+  if(!isLoading&&user!=null&&user.Message!=null&&user.Message==="New User Successfully Registered! Please Logged In"){
+    setItem("userData",{...user,Message:null})
     setRegistarion(!Registarion)
     toast({
-     title: "successfully sign in ",
+     title: "Successfully Registered! ",
      description: "",
      status: "success",
      duration: 6000,
      isClosable: true,
    });
+  }
+
+   if(!isLoading&&user!=null&&user.Message!=null&&user.Message==="Cannot able to hash the password"){
+    setItem("userData",{...user,Message:null})
+    setRegistarion(!Registarion)
+    toast({
+     title: "wrong Password ",
+     description: "",
+     status: "error",
+     duration: 6000,
+     isClosable: true,
+   });
+  }
+
+   if(!isLoading&&user!=null&&user.Message!=null&&user.Message==="Fields are required"){
+    setItem("userData",{...user,Message:null})
+    setRegistarion(!Registarion)
+    toast({
+     title: "wrong username or Password ",
+     description: "",
+     status: "error",
+     duration: 6000,
+     isClosable: true,
+   });
+   }
+
+
+
+    //  ===============================================================  
+
+
+   
+
+ 
+
+
+    if(!isLoading&&user!=null&&user.Message!=null&& user.token&&user.Message===`${user.name} you are successfully logged in`){
+      setItem("userData",{...user,Message:null})
+      toast({
+       title: "Successfully Loged in! ",
+       description: "",
+       status: "success",
+       duration: 6000,
+       isClosable: true,
+     });
+    }
   
-   }
+     if(!isLoading&&user!=null&&user.Message!=null&&user.Message==="Incorrect Password"){
+      setItem("userData",{...user,Message:null})
+      setRegistarion(!Registarion)
+      toast({
+       title: "Incorrect Password",
+       description: "",
+       status: "error",
+       duration: 6000,
+       isClosable: true,
+     });
+    }
+  
+     if(!isLoading&&user!=null&&user.Message!=null&&user.Message==="Incorrect Email Address! Please try again"){
+      setItem("userData",{...user,Message:null})
+      setRegistarion(!Registarion)
+      toast({
+       title: "Incorrect Email Address! Please try again",
+       description: "",
+       status: "error",
+       duration: 6000,
+       isClosable: true,
+     });
+     }
 
-   if(!isLoading&&user!=null&&user.token &&user.Message!=null&&user.Message&& user.Message!="Incorrect Email Address! Please try again"){
-   
-    setItem("userData",{...user,Message:null})
-   
-    toast({
-     title: "successfully Login in ",
-     description: "",
-     status: "success",
-     duration: 6000,
-     isClosable: true,
-   });
-   
-   }
+  
 
-   if(!isLoading&&user!=null&&user.Message!=null && user.Message=="Incorrect Email Address! Please try again"){
-    toast({
-      title: "Incorrect Email Address! or Passowoed Please try again",
-      description: "",
-      status: "error",
-      duration: 6000,
-      isClosable: true,
-    });
-    setItem("userData",{...user,Message:null})
-   }
-
-},[signuser,dispatch])
+},[user,dispatch])
     
     return (
         <>

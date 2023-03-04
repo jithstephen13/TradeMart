@@ -20,7 +20,7 @@ export const Authreducer = (state = initialState, { type, payload }) => {
       };
     }
     case types.ADD_USER_SUCCESS: {
-      setItem("signuserData", payload)
+      setItem("userData", payload);
       return {
         ...state,
         isLoading: false,

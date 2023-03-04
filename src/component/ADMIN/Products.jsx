@@ -84,7 +84,7 @@ const Products = () => {
           <LineChart
             width={1000}
             height={400}
-            data={medicines}
+            data={medicines.medins}
             margin={{ top: 1, right: 1, left: 1, bottom: 5 }}
           >
             <CartesianGrid strokeDasharray="30 30" />
@@ -109,7 +109,7 @@ const Products = () => {
           <LineChart
             width={1200}
             height={600}
-            data={projector}
+            data={projector.projector}
             margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
           >
             <CartesianGrid strokeDasharray="45 45" />
@@ -134,7 +134,7 @@ const Products = () => {
           <LineChart
             width={1200}
             height={500}
-            data={solarpanel}
+            data={solarpanel.solarpanel}
             margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
           >
             <CartesianGrid strokeDasharray="50 50" />
