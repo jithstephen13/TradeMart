@@ -9,13 +9,9 @@ const cartRouter = express();
 
 // ---------------- GET ALL CART DATA GET REQUEST ---------------- //
 cartRouter.get("/", async (request, response) => {
-    const query = request.query;
-               
 
     try {
-        const cartdata = await CartModel.find({
-            userID:useID
-            });
+        const cartdata = await CartModel.find();
         response.send(cartdata);
     } catch (error) {
         response.send({ "Message": "Cannot able to get the cart data", "Error": error.message });
@@ -27,11 +23,6 @@ cartRouter.get("/", async (request, response) => {
 cartRouter.post("/addtocart", async (request, response) => {
     const payload = request.body;
 
-    let exist=await CartModel.findById({_id:payload._id})
-    console.log(exist)
-
-    if(exist==null){
-
     try {
         const cartdata = new CartModel(payload);
         await cartdata.save();
@@ -39,13 +30,7 @@ cartRouter.post("/addtocart", async (request, response) => {
     } catch (error) {
         response.send({ "Message": "Cannot able to add the data to cart", "Error": error.message });
     }
-}
-else{
-    await CartModel.findByIdAndUpdate({ _id: payload._id},{quantity:exist.quantity+payload.quantity});
-    response.send({ "Message": "Item Successfully Added Into The Cart!" })
-
-
-}
+ 
 });
 
 

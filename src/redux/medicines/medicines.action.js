@@ -5,7 +5,7 @@ export const Get_medicines_item = (order,company) => async (dispatch) => {
   dispatch({ type: types.GET_medicines_LOADING });
   try {
     let respnce = await axios.get(
-      `https://frail-gold-hen.cyclic.app/medicin?page=1&limit=60&company=${company.toString()}&sort=rating,${order}`
+      `https://frail-gold-hen.cyclic.app/medicin?page=1&limit=45&company=${company.toString()}&sort=rating,${order}`
     );
     setTimeout(function(){
          return dispatch({ type: types.GET_medicines_SUCCESS, payload: respnce.data });

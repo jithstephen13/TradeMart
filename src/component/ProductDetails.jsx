@@ -115,7 +115,15 @@ const ProductDetails = () => {
   const sendEmail = (e) => {
     e.preventDefault();
 
-    dispatch(ADD_Cart_item(cred));
+    console.log({...data,date:cred.date,qty:cred.qty,user_email
+:cred.user_email,user_name:cred.user_name
+
+    })
+
+    dispatch(ADD_Cart_item({...data,date:cred.date,qty:cred.qty,user_email
+      :cred.user_email,user_name:cred.user_name
+      
+          }));
     emailjs
       .sendForm(
         "service_hakjw5z",
