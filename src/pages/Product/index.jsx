@@ -13,7 +13,6 @@ export default function Product() {
     let res = await axios.get(
       "https://trademart-data-2zur.vercel.app/medicines"
     );
- 
   };
 
   return (
@@ -169,13 +168,6 @@ export default function Product() {
             </Tab>
           </TabList>
         </Tabs>
-      </Box>
-
-      <Box className="product_detail">
-        <Box className="product_detail_filter">
-          <Box></Box>
-        </Box>
-        <Box></Box>
       </Box>
     </Box>
   );

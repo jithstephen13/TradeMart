@@ -8,7 +8,10 @@ export const Get_solarpanel_item = (order,company) => async (dispatch) => {
       `https://frail-gold-hen.cyclic.app/solarpanel?page=1&limit=60&company=${company.toString()}&sort=rating,${order}`
     
     );
-    dispatch({ type: types.GET_solarpanel_SUCCESS, payload: respnce.data });
+    setTimeout(function(){
+      return dispatch({ type: types.GET_solarpanel_SUCCESS, payload: respnce.data });
+    },3000)
+    
   } catch (error) {
     dispatch({ type: types.GET_solarpanel_ERROR });
   }

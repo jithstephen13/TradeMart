@@ -58,7 +58,6 @@ const AdninLogin = () => {
     dispatch(GetAllAdmin());
   }, []);
 
-
   return (
     <>
       <Button onClick={onOpen}>Login </Button>:

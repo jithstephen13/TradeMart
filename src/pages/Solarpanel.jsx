@@ -25,16 +25,17 @@ import Product from "./Product";
 import Navbar from "../component/Navbar";
 import Footer from "../component/Footer";
 
-// import Loading from "./Loading";
 const Solarpanel = () => {
   const [reset, setReset] = useState(false);
 
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
+
   const [order, setOrder] = useState("");
   const [company, setCompany] = useState( []);
   // const [data,setData] = useState([])
+
 
   const { isLoading, solarpanel, isError } = useSelector(
     (store) => store.solarpanel
@@ -50,7 +51,11 @@ const Solarpanel = () => {
       return;
     }
     dispatch(sortMysolarpanel(value));
+   
   };
+  
+  
+
 
 
   const handleSort = (e) => {
@@ -77,6 +82,7 @@ const Solarpanel = () => {
   
   if (isLoading) return <ProductpageLoading />;
 
+
   return (
     <>
       <Navbar />
@@ -87,6 +93,7 @@ const Solarpanel = () => {
           display: "flex",
           flexDirection: "column",
           marginTop: "70px",
+          
         }}
       >
         <Product />
@@ -94,7 +101,7 @@ const Solarpanel = () => {
            mt={4}
           display={{ md: "none" }}
           margin={"auto"}
-          padding={"20px"}
+          padding={"30px 20px"}
           width={"80%"}
           boxShadow={"rgba(0, 0, 0, 0.35) 0px 5px 15px;"}
         >
@@ -202,8 +209,10 @@ const Solarpanel = () => {
               <Text
                 marginTop={2}
                 color={"teal"}
+
                 id="solarpanele"
                 fontSize={35}
+
                 fontWeight={"bold"}
               >
                 solarpanel
@@ -320,7 +329,9 @@ const Solarpanel = () => {
             }}
             gap={6}
           >
+
             {solarpanel.solarpanel&&solarpanel.solarpanel.map((el) => {
+
               return (
                 <Box id="probox" key={el._id} m="5px">
                   <VStack

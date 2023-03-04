@@ -109,9 +109,11 @@ let tocken = getItem("userData");
      
         <Flex h={14} alignItems={"center"} justifyContent={"space-between"}>
           <HStack spacing={{ base: 3, md: 8 }} alignItems={"center"}>
+
             <Link to="/" ><Box w={["120px", "140px", "160px", "200px"]}>
               <Image src={Logo} />
             </Box></Link>
+
           </HStack>
           <Flex alignItems={"center"} w={{ md: "75%", md: "40%", lg: "30%" }}>
             <Box

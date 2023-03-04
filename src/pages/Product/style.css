@@ -4,6 +4,7 @@
   display: flex;
   flex-direction: column;
   gap: 5px;
+  padding: 10px;
 }
 .product__heading {
   display: flex;

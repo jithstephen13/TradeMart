@@ -45,7 +45,7 @@ const AdminList = () => {
     dispatch(AddAdmin(cred));
     if (!isLoading && !isError) {
       dispatch(GetAllAdmin());
-   
+
     }
   };
   return (

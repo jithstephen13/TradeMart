@@ -10,43 +10,55 @@ import {
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import Footer from "./Footer";
-import Navbar from "./Navbar";
+// import Footer from "./Footer";
+// import Navbar from "./Navbar";
 
-const SearchPageDetails = () => {
+const SearchPageDetails = ({name}) => {
+
   const [data, setData] = useState([]);
   const query = useParams();
   let final = query.query;
 
 
-  const fetchData = (final) => {
+
+  const fetchData = (name) => {
     return axios.get("https://trademart-data-2zur.vercel.app/Allproducts", {
       params: {
-        q: final,
+        q: name,
       },
-    });
+    }).then((res) => {
+      // console.log(res.data);
+      // setData(res.data)
+      setTimeout(function(){
+        return setData(res.data)
+   },2000)
+    })
+    .catch((err) => {
+      console.log("Error: ",err.message);
+    });;
   };
 
   useEffect(() => {
+
     fetchData(final)
       .then((res) => {
        
         setData(res.data);
       })
       .catch((err) => {
-        console.log("Error: ", true);
+      
       });
   }, []);
 
-  // Search Product Page
+
   if (data.length === 0) {
     return (
       <>
         {/* Navbar */}
-        <Navbar />
+        {/* <Navbar /> */}
 
         <Text fontWeight="bold" textAlign="center" margin="70px 7px 7px 7px">
-          No results for {final}
+          No results for {name}
         </Text>
         <Text textAlign="center">Try to search something different</Text>
         <Image
@@ -59,14 +71,14 @@ const SearchPageDetails = () => {
         />
 
         {/* Footer */}
-        <Footer />
+        {/* <Footer /> */}
       </>
     );
   } else {
     return (
       <>
         {/* Navbar */}
-        <Navbar />
+        {/* <Navbar /> */}
 
         {/* Products */}
         <Grid
@@ -75,9 +87,9 @@ const SearchPageDetails = () => {
           textAlign="center"
           margin="70px 10px 10px 10px"
         >
-          {data.map((el) => {
+          { data && data.map((el) => {
             return (
-              <GridItem margin={"20px"}>
+              <GridItem key={Math.random()} margin={"20px"}>
                 <Box
                   padding="15px"
                   maxW="sm"
@@ -131,9 +143,10 @@ const SearchPageDetails = () => {
         </Grid>
 
         {/* Footer */}
-        <Footer />
+        {/* <Footer /> */}
       </>
     );
   }
 };
 export default SearchPageDetails;
+
