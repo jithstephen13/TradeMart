@@ -22,23 +22,23 @@ const Allroutes = () => {
         path="/Medicines"
         element={
         
-            <Medicines />
+           <PrivateRoute><Medicines /></PrivateRoute> 
           
         }
       />
       <Route
         path="/solar"
         element={
-          
-            <Solarpanel />
+          <PrivateRoute><Solarpanel /></PrivateRoute>
+            
           
         }
       />
       <Route
         path="/Projector"
         element={
-          
-            <Projector />
+          <PrivateRoute> <Projector /></PrivateRoute>
+           
           
         }
       />

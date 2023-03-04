@@ -7,10 +7,10 @@ mongoose.set('strictQuery', true)
 
 const { connection } = require("./configs/db.connnect");
 const { authRouter } = require("./routes/auth.route");
-const { authenticate } = require("./middlewares/auth.middleware");
 const { medicinRouter } = require('./routes/medicin.route');
 const { projectorRouter } = require('./routes/projector.route');
 const { solarpanelRouter } = require('./routes/solarpanel.route');
+const { cartRouter } = require('./routes/addtocart.route');
  
 
 const app = express();
@@ -25,10 +25,12 @@ app.get("/", (request, response) => {
 
 app.use("/users", authRouter);
  
-// app.use(authenticate);
+ 
 app.use("/medicin", medicinRouter);
 app.use("/projector", projectorRouter);
 app.use("/solarpanel", solarpanelRouter);
+
+app.use("/cart",cartRouter)
  
 
 

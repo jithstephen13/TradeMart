@@ -5,7 +5,7 @@ export const Get_Cart_item = () => async (dispatch) => {
   dispatch({ type: types.GET_Cart_LOADING });
   try {
     let respnce = await axios.get(
-      `https://trademart-data-2zur.vercel.app/Cart`
+      `https://frail-gold-hen.cyclic.app/cart`
     );
     dispatch({ type: types.GET_Cart_SUCCESS, payload: respnce.data });
   } catch (error) {
@@ -17,7 +17,7 @@ export const ADD_Cart_item = (cred) => async (dispatch) => {
   dispatch({ type: types.ADD_Cart_LOADING });
   try {
     let res = await axios.post(
-      "https://trademart-data-2zur.vercel.app/Cart",
+      "https://frail-gold-hen.cyclic.app/cart/addtocart",
       cred
     );
     console.log(res.data);
@@ -31,7 +31,7 @@ export const REMOVE_Cart_item = (id) => async (dispatch) => {
   console.log(id);
   dispatch({ type: types.REMOVE_Cart_LOADING });
   try {
-    let res = await axios.delete(`https://trademart-data-2zur.vercel.app/Cart`);
+    let res = await axios.delete(`/Cart`);
     console.log(res.data);
     dispatch({ type: types.REMOVE_Cart_SUCCESS, payload: id });
   } catch (error) {

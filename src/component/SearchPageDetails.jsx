@@ -10,6 +10,7 @@ import {
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import ProductpageLoading from "../pages/ProductpageLoading";
 // import Footer from "./Footer";
 // import Navbar from "./Navbar";
 
@@ -18,20 +19,24 @@ const SearchPageDetails = ({name}) => {
   const [data, setData] = useState([]);
   const query = useParams();
   let final = query.query;
+  const [loading,setLoading]=useState(false)
 
 
 
   const fetchData = (name) => {
+    setLoading(!loading)
+     setTimeout(function(){
+       //setData(res.data)
+       setLoading(!loading)
+   },2000)
     return axios.get("https://trademart-data-2zur.vercel.app/Allproducts", {
       params: {
         q: name,
       },
     }).then((res) => {
       // console.log(res.data);
-      // setData(res.data)
-      setTimeout(function(){
-        return setData(res.data)
-   },2000)
+      setData(res.data)
+     
     })
     .catch((err) => {
       console.log("Error: ",err.message);
@@ -41,17 +46,15 @@ const SearchPageDetails = ({name}) => {
   useEffect(() => {
 
     fetchData(final)
-      .then((res) => {
-       
-        setData(res.data);
-      })
-      .catch((err) => {
-      
-      });
   }, []);
 
+  if (loading){
 
-  if (data.length === 0) {
+    <ProductpageLoading/>
+  }
+
+
+  if (!loading&&data.length==0) {
     return (
       <>
         {/* Navbar */}
@@ -70,17 +73,13 @@ const SearchPageDetails = ({name}) => {
           width={{ base: "70%", md: "50%" }}
         />
 
-        {/* Footer */}
-        {/* <Footer /> */}
+        
       </>
     );
   } else {
     return (
       <>
-        {/* Navbar */}
-        {/* <Navbar /> */}
-
-        {/* Products */}
+        
         <Grid
           templateColumns={{ sm: "repeat(1,1fr)", md: "repeat(4,1fr)" }}
           gap="6"
@@ -142,8 +141,7 @@ const SearchPageDetails = ({name}) => {
           })}
         </Grid>
 
-        {/* Footer */}
-        {/* <Footer /> */}
+        
       </>
     );
   }

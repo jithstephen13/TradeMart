@@ -27,6 +27,8 @@ const Products = () => {
 
   const dispatch = useDispatch();
 
+ 
+
   const data = [
     {
       name: "Drugs",

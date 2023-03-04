@@ -35,8 +35,10 @@ const Dashboard = () => {
   };
 
   React.useEffect(() => {
-    // dispatch(Get_Cart_item());
+     dispatch(Get_Cart_item());
   }, []);
+
+
 
 
                                       // ----- Admin Dashboard with graphs and all 
@@ -91,10 +93,10 @@ const Dashboard = () => {
               </Thead>
               <Tbody>
                 {Cart.map((el) => (
-                  <Tr key={el.id}>
-                    <Td>{el.id}</Td>
+                  <Tr key={el._id}>
+                    <Td>{el._id}</Td>
                     <Td>{el.name}</Td>
-                    <Td>{getCurrentDate()}</Td>
+                    <Td>{el.date}</Td>
                     <Td>{addWeeksToDate(new Date(), 2).toUTCString()}</Td>
                     <Td>₹ {el.price}</Td>
                   </Tr>
