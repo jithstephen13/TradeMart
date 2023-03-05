@@ -29,8 +29,7 @@ Hello everyone, this is a Readme for our construct week project that has been co
 
  
 
-### Deployed Links:
-- https://trademart.netlify.app/
+###[ Deployed Links ](https://trademart.netlify.app/)
 
 ## [Deployed backend URL](https://frail-gold-hen.cyclic.app)
  
