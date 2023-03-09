@@ -29,8 +29,9 @@ Hello everyone, this is a Readme for our construct week project that has been co
 
  
 
-### Deployed Links:
-- https://trademart.netlify.app/
+## [Deployed Links ](https://trademart.netlify.app/)
+
+## [Deployed backend URL](https://frail-gold-hen.cyclic.app)
  
  
 
@@ -53,6 +54,8 @@ So we are tried to connect  our user and deler through email ,Means if our user 
 - React Routing
 - React Redux
 - React Redux Thunk
+- Eexpress
+- Mongodb
 - CSS
 - HTML
 - Chakra UI Library
