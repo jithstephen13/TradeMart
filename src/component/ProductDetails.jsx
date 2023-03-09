@@ -36,12 +36,9 @@ import Footer from "./Footer";
 const ProductDetails = () => {
   const [data, setData] = useState([]);
   const [relatedData, setRelatedData] = useState([]);
+  const [loading,setLoading] = useState(false)
   const { id } = useParams();
   let productType = "";
-  // console.log(id);
-  // console.log(typeof id);
-  // console.log(id.length);
-  // console.log(id[0]);
 
   // Chack and Set the Product Types
   if (id[0] === "m") {
@@ -52,31 +49,37 @@ const ProductDetails = () => {
     productType = "solarpanel";
   }
 
-  console.log(productType);
 
   // Fetch the Related Products
   const getRelatedProduct = async () => {
+
     const product = await axios.get(
       `https://trademart-data-2zur.vercel.app/${productType}`
-    );
-    setRelatedData(product.data);
+    ).then((res) => {
+      setLoading(true);
+      console.log(loading)
+      setRelatedData(res.data)
+    }).catch((err) => {
+      console.log(err.message);
+    })
   };
+
+  
 
   const data1 = relatedData.splice(4, relatedData.length); // Show only 4 Related Products
 
   // Fetch the Particular Product according to id
   const getProduct = async (id) => {
-    // console.log(id);
-    const product = await axios.get(
+     const product = await axios.get(
       `https://trademart-data-2zur.vercel.app/Allproducts/${id}`
     );
     setData(product.data);
   };
-  console.log("Data:", data);
-
+ 
   useEffect(() => {
     getProduct(id);
     getRelatedProduct();
+    
   }, [id]);
 
   const OverlayOne = () => (
@@ -100,11 +103,11 @@ const ProductDetails = () => {
         month < 10 ? `0${month}` : `${month}`
       }${"-"}${date}`,
     });
-    // console.log(cred)
   };
 
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [overlay, setOverlay] = useState(<OverlayOne />);
+ 
 
   const form = useRef();
   const dispatch = useDispatch();
@@ -112,7 +115,15 @@ const ProductDetails = () => {
   const sendEmail = (e) => {
     e.preventDefault();
 
-    dispatch(ADD_Cart_item(cred));
+    console.log({...data,date:cred.date,qty:cred.qty,user_email
+:cred.user_email,user_name:cred.user_name
+
+    })
+
+    dispatch(ADD_Cart_item({...data,date:cred.date,qty:cred.qty,user_email
+      :cred.user_email,user_name:cred.user_name
+      
+          }));
     emailjs
       .sendForm(
         "service_hakjw5z",
@@ -135,9 +146,17 @@ const ProductDetails = () => {
 
   return (
     <>
-    <Navbar /> 
+      {/* Navbar */}
+      <Navbar />
+
       {/* Body Part */}
-      <div style={{ padding: "10px", backgroundColor: "#f9f8f7" }}>
+      <div
+        style={{
+          padding: "10px",
+          backgroundColor: "#f9f8f7",
+          marginTop: "70px",
+        }}
+      >
         <Stack
           w="100%"
           flexDirection={{ base: "column", md: "row" }}
@@ -214,7 +233,7 @@ const ProductDetails = () => {
                 onOpen();
               }}
             >
-              Get Latest Price
+              Buy now
             </Button>
 
             {/* Sidebar Pop-up */}
@@ -263,7 +282,7 @@ const ProductDetails = () => {
                         <label>Name</label>
                         <input
                           type="text"
-                          style={{ border: "1px solid black", padding: "3px" }}
+                          style={{ border: "1px solid black", padding: "5px" }}
                           placeholder="Name"
                           name="user_name"
                           onChange={handlechenge}
@@ -271,7 +290,7 @@ const ProductDetails = () => {
                         <label>Email</label>
                         <input
                           type="email"
-                          style={{ border: "1px solid black", padding: "3px" }}
+                          style={{ border: "1px solid black", padding: "5px" }}
                           placeholder="Email ..."
                           name="user_email"
                           onChange={handlechenge}
@@ -279,7 +298,7 @@ const ProductDetails = () => {
                         <label>Quantity</label>
                         <input
                           type="text"
-                          style={{ border: "1px solid black", padding: "3px" }}
+                          style={{ border: "1px solid black", padding: "5px" }}
                           placeholder="Quantity"
                           name="qty"
                           onChange={handlechenge}
@@ -322,7 +341,7 @@ const ProductDetails = () => {
                           }}
                         >
                           {" "}
-                          Sent
+                          Order Confirm
                         </Button>
                       </form>
                     </Box>
@@ -381,7 +400,7 @@ const ProductDetails = () => {
             </HStack>
             <hr />
             <Link href="" style={{ color: "#1b9a84", fontWeight: "bold" }}>
-              View More Sellers >
+              View More Sellers {">"}
             </Link>
           </Stack>
         </Stack>
@@ -404,7 +423,7 @@ const ProductDetails = () => {
             textAlign="center"
             margin="10px"
           >
-            {relatedData.map((el, id) => (
+            { relatedData && relatedData.map((el, id) => (
               <GridItem margin={"10px"}>
                 <Box
                   padding="15px"
@@ -414,7 +433,7 @@ const ProductDetails = () => {
                   overflow="hidden"
                 >
                   <Image
-                    style={{ width: "80%", margin: "12px" }}
+                    style={{ width: "80%", height: "200px", margin: "12px" }}
                     src={el.img_src}
                     alt={el.name}
                   />
@@ -436,7 +455,7 @@ const ProductDetails = () => {
                       {el.name}
                     </Box>
 
-                    <Box fontWeight="bold" mt="8px" mb="8px">
+                    <Box fontWeight="bold" m="8px">
                       Price: ₹ {el.price}
                       <Box as="span" color="gray.600" fontSize="sm">
                         / Piece
@@ -453,7 +472,7 @@ const ProductDetails = () => {
                         bgColor="#25766a"
                         _hover={{ backgroundColor: "#1b9a84", color: "white" }}
                       >
-                        Add to Cart
+                        See more details ...
                       </Button>
                     </ItemLink>
                   </Box>
@@ -463,7 +482,9 @@ const ProductDetails = () => {
           </Grid>
         </Stack>
       </div>
-      <Footer /> 
+
+      {/* Footer */}
+      <Footer />
     </>
   );
 };
